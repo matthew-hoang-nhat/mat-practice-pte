@@ -8,10 +8,11 @@ class AppRouter {
   const AppRouter();
 
   GoRouter get router => GoRouter(
-        initialLocation: AppPaths.login,
+        initialLocation: '/',
         routes: AppPages.pages,
         debugLogDiagnostics: true,
-        redirect: (context, state) => _redirect(context, state),
+
+        // redirect: (context, state) => _redirect(context, state),
       );
 
   _redirect(BuildContext context, GoRouterState state) {

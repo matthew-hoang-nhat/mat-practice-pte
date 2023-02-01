@@ -5,14 +5,19 @@ part 'vi_vn.dart';
 enum MaLanguage { en, vi }
 
 class MaLocate {
-  late var getStr = _enUS;
+  var _str = _enUS;
+
+  String str(String key) {
+    return _str[key] ?? 'Error NOT FOUND';
+  }
+
   changeLanguage(MaLanguage language) {
     switch (language) {
       case MaLanguage.en:
-        getStr = _enUS;
+        _str = _enUS;
         break;
       case MaLanguage.vi:
-        getStr = _viVN;
+        // _str = _viVN;
         break;
       default:
     }

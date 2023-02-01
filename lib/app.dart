@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_themes.dart';
 import 'package:mat_practice_pte/src/configs/routes/app_router.dart';
@@ -11,13 +10,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppThemes appTheme = LightTheme();
-    return MultiBlocProvider(
-      providers: const [],
-      child: MaterialApp.router(
-        theme: appTheme.themeData(),
-        builder: FlutterSmartDialog.init(),
-        routerConfig: GlobalVariables.getIt<AppRouter>().router,
-      ),
+    return MaterialApp.router(
+      theme: appTheme.themeData(),
+      builder: FlutterSmartDialog.init(),
+      routerConfig: GlobalVariables.getIt<AppRouter>().router,
     );
   }
 }

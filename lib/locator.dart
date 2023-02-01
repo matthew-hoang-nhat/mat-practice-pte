@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import 'package:mat_practice_pte/src/configs/locate/ma_locate.dart';
+import 'package:mat_practice_pte/src/utils/global_variables.dart';
 
 import 'src/configs/routes/app_router.dart';
 
@@ -16,13 +17,15 @@ Future<void> locator() async {
         projectId: '"mat-practice-pte"');
   }
   await Firebase.initializeApp(options: firebaseOptions);
+  await setupDependenciesGraph();
 }
 
 Future<void> setupDependenciesGraph() async {
   await _registerCoreModule();
   _registerApiModule();
   await _registerRepositoriesModule();
-  GetIt.I.registerSingleton(const AppRouter());
+  GlobalVariables.getIt.registerSingleton(const AppRouter());
+  GlobalVariables.getIt.registerSingleton(MaLocate());
 }
 
 Future<void> _registerCoreModule() async {}
