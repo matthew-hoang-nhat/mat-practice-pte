@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "611444805102",
+    "project_id": "mat-practice-pte",
+    "storage_bucket": "mat-practice-pte.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611444805102:android:d56cf5b0804e44132ad2ff",
+        "android_client_info": {
+          "package_name": "go.mat.mat_practice_pte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611444805102-vtjl2qd18ivvllk86vah3fbbg8n7i5u9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD24basv3nYcu2lag7PfK-4_OOXPz_6CQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611444805102-s6b09hoj3hltms5n8mlm34n37v67tikk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

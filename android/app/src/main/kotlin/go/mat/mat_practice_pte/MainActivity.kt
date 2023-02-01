@@ -1,4 +1,4 @@
-package com.example.mat_pratice_pte
+package go.mat.mat_practice_pte
 
 import io.flutter.embedding.android.FlutterActivity
 
