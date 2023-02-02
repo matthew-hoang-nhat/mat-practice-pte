@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>611444805102-a5v73h9n82jipidsho71j571rogn3d9i.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.611444805102-a5v73h9n82jipidsho71j571rogn3d9i</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>611444805102-caik8rfvaslvd9g883flmc0c5q3s969j.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDdxraJgAgrvOCoidtgBT5NCcfpNdSA7DM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>611444805102</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.matPraticePte</string>
+	<key>PROJECT_ID</key>
+	<string>mat-practice-pte</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mat-practice-pte.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:611444805102:ios:28056ebb499590872ad2ff</string>
+	<key>DATABASE_URL</key>
+	<string>https://mat-practice-pte-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
