@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mat_practice_pte/src/configs/locate/ma_locate.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
+import 'package:mat_practice_pte/src/widgets/mat.dart';
 
 import 'src/configs/routes/app_router.dart';
 
@@ -26,6 +27,9 @@ Future<void> setupDependenciesGraph() async {
   await _registerRepositoriesModule();
   GlobalVariables.getIt.registerSingleton(const AppRouter());
   GlobalVariables.getIt.registerSingleton(MaLocate());
+
+  // ignore: unnecessary_cast
+  GlobalVariables.getIt.registerSingleton(AndroidMatApp() as MatApp);
 }
 
 Future<void> _registerCoreModule() async {}
