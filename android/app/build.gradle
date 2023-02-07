@@ -23,6 +23,12 @@ if (flutterVersionName == null) {
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+<<<<<<< HEAD
+=======
+// apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+>>>>>>> bb1b3e861da28ec919b535d14386e5be1ea42038
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
