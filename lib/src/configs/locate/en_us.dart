@@ -3,6 +3,13 @@ part of 'f_locate.dart';
 final _enUS = {
   FLocalKey.title: 'Mat Practice',
 
+  FLocalKey.weakPassword: '* Weak password',
+  FLocalKey.emailAlreadyInUse: '* Email already in use',
+  FLocalKey.invalidEmail: '* Invalid Email.',
+  FLocalKey.require: '* Required.',
+  FLocalKey.userNotFound: 'User not found.',
+  FLocalKey.wrongUsernameOrPassword: 'Wrong Username or Password.',
+
   //Login Screen
   FLocalKey.email: 'Email',
   FLocalKey.password: 'Password',
@@ -17,7 +24,7 @@ final _enUS = {
   FLocalKey.privacyPolicy: 'Privacy Policy',
 
   // register screen
-  FLocalKey.hintUsername: 'User Name',
+  FLocalKey.hintNickName: 'User Name',
   FLocalKey.hintPassword: 'Password (at least 6 characters)',
   FLocalKey.titleNotiRegister: 'Terms of Use and Privacy Policy',
   FLocalKey.bodyNotiRegister:

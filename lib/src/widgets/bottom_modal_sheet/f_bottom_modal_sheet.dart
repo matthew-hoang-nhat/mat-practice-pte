@@ -3,7 +3,7 @@ import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
 
 class FBottomModalSheet {
-  static void showFModalBottomSheet(
+  static void showMeModalBottomSheet(
     context, {
     required String title,
     required Widget widget,
