@@ -5,7 +5,12 @@ import 'app_colors.dart';
 
 class DarkTheme extends AppThemes {
   final ThemeData _darkTheme = ThemeData(
-      appBarTheme: const AppBarTheme(color: AppColors.colorPrimary),
+      appBarTheme: const AppBarTheme(
+        color: AppColors.colorPrimary,
+        elevation: 0,
+      ),
+      checkboxTheme: CheckboxThemeData(
+          overlayColor: MaterialStateProperty.all(AppColors.colorPrimary)),
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       primaryColor: AppColors.colorPrimary,
@@ -47,7 +52,7 @@ class LightTheme extends AppThemes {
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
         TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
       }),
-      backgroundColor: AppColors.white,
+      // backgroundColor: AppColors.whiteGrey,
       textTheme: TextTheme(
         headline1: AppTextStyles.headline1,
         headline2: AppTextStyles.headline2,
