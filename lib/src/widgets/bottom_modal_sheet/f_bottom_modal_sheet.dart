@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
 
-class MaBottomModalSheet {
-  static void showMeModalBottomSheet(
+class FBottomModalSheet {
+  static void showFModalBottomSheet(
     context, {
     required String title,
     required Widget widget,

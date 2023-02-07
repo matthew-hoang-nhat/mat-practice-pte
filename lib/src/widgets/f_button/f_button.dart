@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 
-class RectangleButton extends MaButton {
-  const RectangleButton(
+class RectangleFButton extends FButton {
+  const RectangleFButton(
       {super.key,
       required super.onClick,
       required super.title,
@@ -23,8 +23,8 @@ class RectangleButton extends MaButton {
   }
 }
 
-abstract class MaButton extends StatelessWidget {
-  const MaButton(
+abstract class FButton extends StatelessWidget {
+  const FButton(
       {super.key, required this.onClick, required this.title, this.isEnabled});
   final Function() onClick;
   final String title;

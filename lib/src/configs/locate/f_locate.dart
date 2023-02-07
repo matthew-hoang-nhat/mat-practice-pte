@@ -1,22 +1,22 @@
-import 'package:mat_practice_pte/src/configs/locate/ma_local_key.dart';
+import 'package:mat_practice_pte/src/configs/locate/f_local_key.dart';
 part 'en_us.dart';
 part 'vi_vn.dart';
 
-enum MaLanguage { en, vi }
+enum FLanguage { en, vi }
 
-class MaLocate {
+class FLocate {
   var _str = _enUS;
 
   String str(String key) {
     return _str[key] ?? 'Error NOT FOUND';
   }
 
-  changeLanguage(MaLanguage language) {
+  changeLanguage(FLanguage language) {
     switch (language) {
-      case MaLanguage.en:
+      case FLanguage.en:
         _str = _enUS;
         break;
-      case MaLanguage.vi:
+      case FLanguage.vi:
         // _str = _viVN;
         break;
       default:

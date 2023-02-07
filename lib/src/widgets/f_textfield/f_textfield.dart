@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 
-class RoundMaTextField extends MaTextField {
-  const RoundMaTextField(
+class RoundFTextField extends FTextField {
+  const RoundFTextField(
       {super.key,
       required super.onChanged,
       required super.controller,
@@ -28,8 +28,8 @@ class RoundMaTextField extends MaTextField {
   }
 }
 
-abstract class MaTextField extends StatelessWidget {
-  const MaTextField(
+abstract class FTextField extends StatelessWidget {
+  const FTextField(
       {super.key,
       required this.onChanged,
       this.hintText,

@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mat_practice_pte/src/configs/locate/ma_locate.dart';
+import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/widgets/mat.dart';
+import 'package:mat_practice_pte/src/widgets/f_app.dart';
 import 'firebase_options.dart';
 import 'src/configs/routes/app_router.dart';
 
@@ -17,10 +17,10 @@ Future<void> setupDependenciesGraph() async {
   _registerApiModule();
   await _registerRepositoriesModule();
   GlobalVariables.getIt.registerSingleton(const AppRouter());
-  GlobalVariables.getIt.registerSingleton(MaLocate());
+  GlobalVariables.getIt.registerSingleton(FLocate());
 
   // ignore: unnecessary_cast
-  GlobalVariables.getIt.registerSingleton(AndroidMatApp() as MatApp);
+  GlobalVariables.getIt.registerSingleton(AndroidFApp() as FApp);
 }
 
 Future<void> _registerCoreModule() async {}

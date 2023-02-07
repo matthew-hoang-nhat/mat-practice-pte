@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
-import 'package:mat_practice_pte/src/widgets/bottom_modal_sheet/ma_bottom_modal_sheet.dart';
-import 'package:mat_practice_pte/src/widgets/ma_button/ma_button.dart';
-import 'package:mat_practice_pte/src/widgets/ma_checkbox/ma_checkbox.dart';
-import 'package:mat_practice_pte/src/widgets/ma_textfield/ma_textfield.dart';
+import 'package:mat_practice_pte/src/widgets/bottom_modal_sheet/f_bottom_modal_sheet.dart';
+import 'package:mat_practice_pte/src/widgets/f_button/f_button.dart';
+import 'package:mat_practice_pte/src/widgets/f_checkbox/f_checkbox.dart';
+import 'package:mat_practice_pte/src/widgets/f_textfield/f_textfield.dart';
 
-class AndroidMatApp extends MatApp {
+class AndroidFApp extends FApp {
   @override
-  MaButton button({required Function() onClick, required String title}) {
-    return RectangleButton(onClick: onClick, title: title);
+  FButton button({required Function() onClick, required String title}) {
+    return RectangleFButton(onClick: onClick, title: title);
   }
 
   @override
-  MaTextField textField(
+  FTextField textField(
       {required Function(String) onChanged,
       String? hintText,
       required TextEditingController controller,
       bool? isObscureText}) {
-    return RoundMaTextField(
+    return RoundFTextField(
       controller: controller,
       onChanged: onChanged,
       hintText: hintText,
@@ -105,8 +105,8 @@ class AndroidMatApp extends MatApp {
   }
 
   @override
-  MaCheckBox checkbox({bool? value, required Function(bool?) onChanged}) =>
-      RoundMaCheckBox(onChanged: onChanged, value: value);
+  FCheckBox checkbox({bool? value, required Function(bool?) onChanged}) =>
+      RoundFCheckBox(onChanged: onChanged, value: value);
 
   @override
   showBottomModalSheet(context,
@@ -114,11 +114,11 @@ class AndroidMatApp extends MatApp {
           required Widget widget,
           Widget? action,
           double? sizeHeight}) =>
-      MaBottomModalSheet.showMeModalBottomSheet(context,
+      FBottomModalSheet.showFModalBottomSheet(context,
           title: title, widget: widget, action: action);
 }
 
-abstract class MatShow {
+abstract class FAppFunctions {
   showBottomModalSheet(context,
       {required String title,
       required Widget widget,
@@ -139,14 +139,14 @@ abstract class MatShow {
   showToast(String msg);
 }
 
-abstract class MatWidgets {
-  MaButton button({required Function() onClick, required String title});
-  MaTextField textField(
+abstract class FAppWidgets {
+  FButton button({required Function() onClick, required String title});
+  FTextField textField(
       {required Function(String) onChanged,
       String? hintText,
       required TextEditingController controller,
       bool? isObscureText});
-  MaCheckBox checkbox({bool? value, required Function(bool?) onChanged});
+  FCheckBox checkbox({bool? value, required Function(bool?) onChanged});
 }
 
-abstract class MatApp implements MatShow, MatWidgets {}
+abstract class FApp implements FAppFunctions, FAppWidgets {}
