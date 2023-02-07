@@ -17,7 +17,7 @@ final _viVN = {
   MaLocalKey.privacyPolicy: 'Luật sử dụng',
 
   // register screen
-  MaLocalKey.hintUsername: 'Tên tài khoản',
+  MaLocalKey.hintNickName: 'Tên tài khoản',
   MaLocalKey.hintPassword: 'Mật khẩu (ít nhất 6 ký tự)',
   MaLocalKey.titleNotiRegister: 'Điều khoản và luật sử dụng',
   MaLocalKey.bodyNotiRegister:

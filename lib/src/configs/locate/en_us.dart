@@ -3,6 +3,13 @@ part of 'ma_locate.dart';
 final _enUS = {
   MaLocalKey.title: 'Mat Practice',
 
+  MaLocalKey.weakPassword: '* Weak password',
+  MaLocalKey.emailAlreadyInUse: '* Email already in use',
+  MaLocalKey.invalidEmail: '* Invalid Email.',
+  MaLocalKey.require: '* Required.',
+  MaLocalKey.userNotFound: 'User not found.',
+  MaLocalKey.wrongUsernameOrPassword: 'Wrong Username or Password.',
+
   //Login Screen
   MaLocalKey.email: 'Email',
   MaLocalKey.password: 'Password',
@@ -15,9 +22,10 @@ final _enUS = {
   MaLocalKey.termsOfUseAnd: 'Terms of Use',
   MaLocalKey.and: 'and',
   MaLocalKey.privacyPolicy: 'Privacy Policy',
+  MaLocalKey.successfullyLogin: 'Welcome to Mat Practice',
 
   // register screen
-  MaLocalKey.hintUsername: 'User Name',
+  MaLocalKey.hintNickName: 'Nickname',
   MaLocalKey.hintPassword: 'Password (at least 6 characters)',
   MaLocalKey.titleNotiRegister: 'Terms of Use and Privacy Policy',
   MaLocalKey.bodyNotiRegister:
