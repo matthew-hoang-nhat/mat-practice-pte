@@ -1,4 +1,4 @@
-class MaLocalKey {
+class FLocalKey {
   static const String title = 'title';
 
   //notification register
