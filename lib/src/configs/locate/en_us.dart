@@ -1,79 +1,79 @@
-part of 'ma_locate.dart';
+part of 'f_locate.dart';
 
 final _enUS = {
-  MaLocalKey.title: 'Mat Practice',
+  FLocalKey.title: 'Mat Practice',
 
   //Login Screen
-  MaLocalKey.email: 'Email',
-  MaLocalKey.password: 'Password',
-  MaLocalKey.register: 'Register',
-  MaLocalKey.login: 'Login',
-  MaLocalKey.signInWithGoogle: 'Sign in with Google',
-  MaLocalKey.loginWithExistingAccounts: 'Login with Existing Accounts',
-  MaLocalKey.forgotPassword: 'Forgot Password',
-  MaLocalKey.iVeReadAndAgreedToThe: "I've read and agreed to the",
-  MaLocalKey.termsOfUseAnd: 'Terms of Use',
-  MaLocalKey.and: 'and',
-  MaLocalKey.privacyPolicy: 'Privacy Policy',
+  FLocalKey.email: 'Email',
+  FLocalKey.password: 'Password',
+  FLocalKey.register: 'Register',
+  FLocalKey.login: 'Login',
+  FLocalKey.signInWithGoogle: 'Sign in with Google',
+  FLocalKey.loginWithExistingAccounts: 'Login with Existing Accounts',
+  FLocalKey.forgotPassword: 'Forgot Password',
+  FLocalKey.iVeReadAndAgreedToThe: "I've read and agreed to the",
+  FLocalKey.termsOfUseAnd: 'Terms of Use',
+  FLocalKey.and: 'and',
+  FLocalKey.privacyPolicy: 'Privacy Policy',
 
   // register screen
-  MaLocalKey.hintUsername: 'User Name',
-  MaLocalKey.hintPassword: 'Password (at least 6 characters)',
-  MaLocalKey.titleNotiRegister: 'Terms of Use and Privacy Policy',
-  MaLocalKey.bodyNotiRegister:
+  FLocalKey.hintUsername: 'User Name',
+  FLocalKey.hintPassword: 'Password (at least 6 characters)',
+  FLocalKey.titleNotiRegister: 'Terms of Use and Privacy Policy',
+  FLocalKey.bodyNotiRegister:
       'Before logging in / creating an account, please read our Terms of Use and Privacy Policy thoroughtly. Tap "Agree" to agree with the Terms of Use and Privacy Policy to continue',
-  MaLocalKey.agree: 'Agree',
-  MaLocalKey.disagree: 'Disagree',
+  FLocalKey.agree: 'Agree',
+  FLocalKey.disagree: 'Disagree',
 
   // Home Screen
 
   // Category Screen
-  MaLocalKey.hintCategory: 'Done %s, Found %s Questions',
-  MaLocalKey.practice: 'Practice',
-  MaLocalKey.guide: 'Guide',
-  MaLocalKey.mark: 'Mark',
-  MaLocalKey.unmark: 'Unmark ALL',
-  MaLocalKey.pracStatus: 'Prac. Status',
-  MaLocalKey.resetStatus: 'Reset Status',
-  MaLocalKey.ok: 'OK',
-  MaLocalKey.reset: 'Reset',
+  FLocalKey.hintCategory: 'Done %s, Found %s Questions',
+  FLocalKey.practice: 'Practice',
+  FLocalKey.guide: 'Guide',
+  FLocalKey.mark: 'Mark',
+  FLocalKey.unmark: 'Unmark ALL',
+  FLocalKey.pracStatus: 'Prac. Status',
+  FLocalKey.resetStatus: 'Reset Status',
+  FLocalKey.ok: 'OK',
+  FLocalKey.reset: 'Reset',
 
   // Detail lesson
-  MaLocalKey.hintReorderParagraph: 'Long press to drag to the correct order',
+  FLocalKey.hintReorderParagraph: 'Long press to drag to the correct order',
 
   // Detail Profile
-  MaLocalKey.photo: 'Photo',
-  MaLocalKey.nickname: 'Nickname',
-  MaLocalKey.save: 'Save',
-  MaLocalKey.hintChangeNickName: 'Please enter a new nickname',
-  MaLocalKey.hintChangePhoto: 'Change Photo',
+  FLocalKey.photo: 'Photo',
+  FLocalKey.nickname: 'Nickname',
+  FLocalKey.save: 'Save',
+  FLocalKey.hintChangeNickName: 'Please enter a new nickname',
+  FLocalKey.hintChangePhoto: 'Change Photo',
 
   // Profile
-  MaLocalKey.darkMode: 'Dark Mode',
-  MaLocalKey.contactUs: 'Contact Us',
-  MaLocalKey.aboutMatPractice: 'About Mat Practice',
-  MaLocalKey.shareApp: 'Share app',
-  MaLocalKey.rateOurApp: 'Rate our app',
-  MaLocalKey.termsOfUse: 'Terms of Use',
-  MaLocalKey.logOut: 'Log out',
-  MaLocalKey.language: 'Language',
+  FLocalKey.darkMode: 'Dark Mode',
+  FLocalKey.contactUs: 'Contact Us',
+  FLocalKey.aboutMatPractice: 'About Mat Practice',
+  FLocalKey.shareApp: 'Share app',
+  FLocalKey.rateOurApp: 'Rate our app',
+  FLocalKey.termsOfUse: 'Terms of Use',
+  FLocalKey.logOut: 'Log out',
+  FLocalKey.language: 'Language',
 
   // Discuss
-  MaLocalKey.comment: 'Comment',
-  MaLocalKey.board: 'Board',
-  MaLocalKey.me: 'Me',
-  MaLocalKey.iWannaSay: 'I wanna say',
-  MaLocalKey.score: 'Score',
-  MaLocalKey.hintComment: 'Enter your comments here ...',
+  FLocalKey.comment: 'Comment',
+  FLocalKey.board: 'Board',
+  FLocalKey.me: 'Me',
+  FLocalKey.iWannaSay: 'I wanna say',
+  FLocalKey.score: 'Score',
+  FLocalKey.hintComment: 'Enter your comments here ...',
 
   // Noti
-  MaLocalKey.titleInfoNoti: 'Information',
-  MaLocalKey.titleWarningNoti: 'Warning',
-  MaLocalKey.titleErrNoti: 'Error',
+  FLocalKey.titleInfoNoti: 'Information',
+  FLocalKey.titleWarningNoti: 'Warning',
+  FLocalKey.titleErrNoti: 'Error',
 
   // Vocab
-  MaLocalKey.vocab: 'Vocab',
-  MaLocalKey.labelTotalWords: 'Total %s Words',
-  MaLocalKey.unfamiliar: 'Unfamiliar',
-  MaLocalKey.familiar: 'Familiar',
+  FLocalKey.vocab: 'Vocab',
+  FLocalKey.labelTotalWords: 'Total %s Words',
+  FLocalKey.unfamiliar: 'Unfamiliar',
+  FLocalKey.familiar: 'Familiar',
 };
