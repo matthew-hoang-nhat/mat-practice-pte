@@ -12,13 +12,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppThemes appTheme = LightTheme();
-    return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            lazy: false,
-            create: (context) => AppCubit()..initCubit(),
-          )
-        ],
+    return BlocProvider(
+        create: (context) => AppCubit()..initCubit(),
         child: MaterialApp.router(
           theme: appTheme.themeData(),
           builder: FlutterSmartDialog.init(),
