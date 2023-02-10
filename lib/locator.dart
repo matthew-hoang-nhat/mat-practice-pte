@@ -4,6 +4,7 @@ import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/category_repository_impl.dart';
 
 import 'package:mat_practice_pte/src/utils/repository/user_repository_impl.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
@@ -37,5 +38,6 @@ void _registerApiModule() {}
 Future<void> _registerRepositoriesModule() async {
   GlobalVariables.getIt
     ..registerSingleton(AuthenticateRepositoryImpl())
-    ..registerSingleton(UserRepositoryImpl());
+    ..registerSingleton(UserRepositoryImpl())
+    ..registerSingleton(CategoryRepositoryImpl());
 }
