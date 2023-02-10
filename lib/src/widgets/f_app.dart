@@ -3,14 +3,25 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
 import 'package:mat_practice_pte/src/widgets/bottom_modal_sheet/f_bottom_modal_sheet.dart';
+
 import 'package:mat_practice_pte/src/widgets/f_button/f_button.dart';
 import 'package:mat_practice_pte/src/widgets/f_checkbox/f_checkbox.dart';
 import 'package:mat_practice_pte/src/widgets/f_textfield/f_textfield.dart';
 
+enum FToastType {
+  warning,
+  error,
+  information,
+}
+
 class AndroidFApp extends FApp {
   @override
-  FButton button({required Function() onClick, required String title}) {
-    return RectangleFButton(onClick: onClick, title: title);
+  FButton button(
+      {required Function() onClick,
+      required String title,
+      Widget? suffixIcon}) {
+    return RectangleFButton(
+        onClick: onClick, title: title, suffixIcon: suffixIcon);
   }
 
   @override
@@ -79,7 +90,7 @@ class AndroidFApp extends FApp {
   }
 
   @override
-  showMaDialog(
+  showFDialog(
     context, {
     required String title,
     required String body,
@@ -100,8 +111,17 @@ class AndroidFApp extends FApp {
   }
 
   @override
-  showToast(String msg) {
-    SmartDialog.showToast(msg);
+  showToast(String msg, {FToastType type = FToastType.information}) {
+    switch (type) {
+      case FToastType.information:
+        SmartDialog.showToast(msg);
+        break;
+      case FToastType.error:
+      case FToastType.warning:
+        SmartDialog.showToast('${msg}aaa');
+        break;
+      default:
+    }
   }
 
   @override
@@ -114,17 +134,34 @@ class AndroidFApp extends FApp {
           required Widget widget,
           Widget? action,
           double? sizeHeight}) =>
-      FBottomModalSheet.showFModalBottomSheet(context,
+      FBottomModalSheet.showMeModalBottomSheet(context,
           title: title, widget: widget, action: action);
+
+  @override
+  FButton outlineButton(
+      {required Function() onClick,
+      required String title,
+      Color? foregoundColor,
+      Color? backgroundColor,
+      Widget? suffixIcon,
+      Widget? prefixIcon}) {
+    return OutlineFButton(
+        onClick: onClick,
+        title: title,
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        backgroundColor: backgroundColor,
+        foregoundColor: foregoundColor);
+  }
 }
 
-abstract class FAppFunctions {
+abstract class FAppShows {
   showBottomModalSheet(context,
       {required String title,
       required Widget widget,
       double? sizeHeight,
       Widget? action});
-  showMaDialog(
+  showFDialog(
     context, {
     required String title,
     required String body,
@@ -136,11 +173,19 @@ abstract class FAppFunctions {
     required List<Map<String, Function()>> actions,
     required Map<String, Function()> redAction,
   });
-  showToast(String msg);
+  showToast(String msg, {FToastType type = FToastType.information});
 }
 
 abstract class FAppWidgets {
-  FButton button({required Function() onClick, required String title});
+  FButton button(
+      {required Function() onClick, required String title, Widget? suffixIcon});
+  FButton outlineButton(
+      {required Function() onClick,
+      required String title,
+      Color? foregoundColor,
+      Color? backgroundColor,
+      Widget? suffixIcon,
+      Widget? prefixIcon});
   FTextField textField(
       {required Function(String) onChanged,
       String? hintText,
@@ -149,4 +194,4 @@ abstract class FAppWidgets {
   FCheckBox checkbox({bool? value, required Function(bool?) onChanged});
 }
 
-abstract class FApp implements FAppFunctions, FAppWidgets {}
+abstract class FApp implements FAppShows, FAppWidgets {}

@@ -17,7 +17,8 @@ final _viVN = {
   FLocalKey.privacyPolicy: 'Luật sử dụng',
 
   // register screen
-  FLocalKey.hintUsername: 'Tên tài khoản',
+
+  FLocalKey.hintNickName: 'Tên tài khoản',
   FLocalKey.hintPassword: 'Mật khẩu (ít nhất 6 ký tự)',
   FLocalKey.titleNotiRegister: 'Điều khoản và luật sử dụng',
   FLocalKey.bodyNotiRegister:
