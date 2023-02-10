@@ -5,6 +5,9 @@ import 'package:mat_practice_pte/src/features/home/ui/home_screen.dart';
 
 import 'package:mat_practice_pte/src/widgets/bottom_app_bar/f_home_bottom_app_bar.dart';
 
+import 'me_screen.dart';
+import 'saved_screen.dart';
+
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
@@ -20,10 +23,10 @@ class MainScreen extends StatelessWidget {
               case 0:
                 return const HomeScreen();
               case 1:
-                return const HomeScreen();
+                return const SavedScreen();
               case 2:
               default:
-                return const HomeScreen();
+                return const MeScreen();
             }
           },
         ),
