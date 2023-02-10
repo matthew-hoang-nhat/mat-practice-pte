@@ -10,18 +10,19 @@ part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(const AppInitial(isLightMode: true));
-  final fuser = GlobalVariables.getIt<FUser>();
+
+  final _fuser = GlobalVariables.getIt<FUser>();
 
   initCubit() async {
     await Future.delayed(const Duration(seconds: 1));
-    if (fuser.isLogged) {
+    if (_fuser.isLogged) {
       GoRouter.of(GlobalVariables.navigatorKey.currentContext!)
           .goNamed(AppPaths.home);
     }
   }
 
-  signOut() async {
-    await fuser.signOut();
+  Future<void> signOut() async {
+    await _fuser.signOut();
     GoRouter.of(GlobalVariables.navigatorKey.currentContext!)
         .goNamed(AppPaths.login);
   }

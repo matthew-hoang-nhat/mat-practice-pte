@@ -49,7 +49,7 @@ class LightTheme extends AppThemes {
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),
         TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
       }),
-      backgroundColor: AppColors.white,
+      scaffoldBackgroundColor: AppColors.whiteGrey,
       textTheme: TextTheme(
         headline1: AppTextStyles.headline1,
         headline2: AppTextStyles.headline2,

@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/features/auth/ui/login_screen.dart';
 import 'package:mat_practice_pte/src/features/auth/ui/register_screen.dart';
-import 'package:mat_practice_pte/src/features/home/ui/home_screen.dart';
+import 'package:mat_practice_pte/src/features/home/ui/main_screen.dart';
 
 class AppPages {
   static const List<String> noNeedAuthenticatedPages = [
@@ -13,7 +13,7 @@ class AppPages {
     GoRoute(
       path: '/',
       name: AppPaths.home,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => const MainScreen(),
     ),
     GoRoute(
         path: '/login',

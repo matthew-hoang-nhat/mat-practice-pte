@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:mat_practice_pte/src/configs/constants/app_assets.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
 import 'package:mat_practice_pte/src/widgets/bottom_modal_sheet/f_bottom_modal_sheet.dart';
+import 'package:mat_practice_pte/src/widgets/dimentions/f_padding_sizes.dart';
 
 import 'package:mat_practice_pte/src/widgets/f_button/f_button.dart';
 import 'package:mat_practice_pte/src/widgets/f_checkbox/f_checkbox.dart';
 import 'package:mat_practice_pte/src/widgets/f_textfield/f_textfield.dart';
 
-enum FToastType {
+enum FShowType {
   warning,
   error,
-  information,
+  information;
+
+  @override
+  String toString() {
+    switch (this) {
+      case FShowType.information:
+        return 'Information';
+
+      case FShowType.error:
+        return 'Error';
+
+      case FShowType.warning:
+        return 'Warning';
+    }
+  }
 }
 
 class AndroidFApp extends FApp {
@@ -29,11 +45,13 @@ class AndroidFApp extends FApp {
       {required Function(String) onChanged,
       String? hintText,
       required TextEditingController controller,
+      double? borderRadius,
       bool? isObscureText}) {
     return RoundFTextField(
       controller: controller,
       onChanged: onChanged,
       hintText: hintText,
+      borderRadius: borderRadius ?? 4,
       isObscureText: isObscureText ?? false,
     );
   }
@@ -41,83 +59,134 @@ class AndroidFApp extends FApp {
   @override
   showAlertDialog(
     context, {
-    required String title,
     required String body,
+    String? title,
+    FShowType type = FShowType.information,
     required List<Map<String, Function()>> actions,
     required Map<String, Function()> redAction,
   }) {
+    Color titleColor = AppColors.colorPrimary;
+    switch (type) {
+      case FShowType.information:
+        titleColor = AppColors.colorPrimary;
+        break;
+      case FShowType.warning:
+      case FShowType.error:
+        titleColor = AppColors.red;
+        break;
+    }
+
+    final titleAlert = title ?? type.toString();
+
     showDialog(
         context: context,
         builder: (dialogContext) {
-          return AlertDialog(
-              alignment: Alignment.center,
-              actionsAlignment: MainAxisAlignment.center,
-              title: Center(
-                  child: Text(
-                title,
-                style: AppTextStyles.headline6
-                    .copyWith(color: AppColors.colorPrimary),
-              )),
-              content: Wrap(
-                alignment: WrapAlignment.center,
-                runAlignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [Text(body)],
-              ),
-              actions: [
-                if (redAction.isNotEmpty)
-                  TextButton(
-                      onPressed: () {
-                        redAction.values.first();
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(
-                        redAction.keys.first,
-                        style: AppTextStyles.body2.copyWith(
-                            color: AppColors.red, fontWeight: FontWeight.bold),
-                      )),
-                ...actions
-                    .map((e) => TextButton(
-                          onPressed: () {
-                            e.values.first();
-                            Navigator.of(context).pop();
-                          },
-                          child: Text(e.keys.first),
-                        ))
-                    .toList(),
-              ]);
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: FPaddingSizes.s30),
+                    child: AlertDialog(
+                        alignment: Alignment.center,
+                        actionsAlignment: MainAxisAlignment.center,
+                        title: Center(
+                            child: Text(
+                          titleAlert,
+                          style: AppTextStyles.headline6
+                              .copyWith(color: titleColor),
+                        )),
+                        content: Wrap(
+                          alignment: WrapAlignment.center,
+                          runAlignment: WrapAlignment.center,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [Text(body)],
+                        ),
+                        actions: [
+                          if (redAction.isNotEmpty)
+                            TextButton(
+                                onPressed: () {
+                                  redAction.values.first();
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  redAction.keys.first,
+                                  style: AppTextStyles.body2.copyWith(
+                                      color: AppColors.red,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                          ...actions
+                              .map((e) => TextButton(
+                                    onPressed: () {
+                                      e.values.first();
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text(e.keys.first),
+                                  ))
+                              .toList(),
+                        ]),
+                  ),
+                  Image.asset(AppAssets.iconLogo, width: 70),
+                ],
+              )
+            ],
+          );
         });
   }
 
   @override
   showFDialog(
     context, {
-    required String title,
+    FShowType title = FShowType.information,
     required String body,
   }) {
     showDialog(
         context: context,
         builder: (dialogContext) {
-          return AlertDialog(
-            title: Center(child: Text(title)),
-            content: Wrap(
-              alignment: WrapAlignment.center,
-              children: [
-                Text(body),
-              ],
-            ),
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  ClipRRect(
+                    child: Padding(
+                        padding: const EdgeInsets.only(top: FPaddingSizes.s30),
+                        child: AlertDialog(
+                          alignment: Alignment.center,
+                          actionsAlignment: MainAxisAlignment.center,
+                          title: Center(
+                              child: Text(
+                            title.toString(),
+                            style: AppTextStyles.headline6
+                                .copyWith(color: AppColors.colorPrimary),
+                          )),
+                          content: Wrap(
+                            alignment: WrapAlignment.center,
+                            runAlignment: WrapAlignment.center,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [Text(body)],
+                          ),
+                        )),
+                  ),
+                  Image.asset(AppAssets.iconLogo, width: 70),
+                ],
+              )
+            ],
           );
         });
   }
 
   @override
-  showToast(String msg, {FToastType type = FToastType.information}) {
+  showToast(String msg, {FShowType type = FShowType.information}) {
     switch (type) {
-      case FToastType.information:
+      case FShowType.information:
         SmartDialog.showToast(msg);
         break;
-      case FToastType.error:
-      case FToastType.warning:
+      case FShowType.error:
+      case FShowType.warning:
         SmartDialog.showToast('${msg}aaa');
         break;
       default:
@@ -163,17 +232,18 @@ abstract class FAppShows {
       Widget? action});
   showFDialog(
     context, {
-    required String title,
+    FShowType title,
     required String body,
   });
   showAlertDialog(
     context, {
-    required String title,
+    String? title,
     required String body,
+    FShowType type,
     required List<Map<String, Function()>> actions,
     required Map<String, Function()> redAction,
   });
-  showToast(String msg, {FToastType type = FToastType.information});
+  showToast(String msg, {FShowType type = FShowType.information});
 }
 
 abstract class FAppWidgets {
@@ -189,6 +259,7 @@ abstract class FAppWidgets {
   FTextField textField(
       {required Function(String) onChanged,
       String? hintText,
+      double? borderRadius,
       required TextEditingController controller,
       bool? isObscureText});
   FCheckBox checkbox({bool? value, required Function(bool?) onChanged});

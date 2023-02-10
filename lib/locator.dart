@@ -4,12 +4,15 @@ import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
+
+import 'package:mat_practice_pte/src/utils/repository/user_repository_impl.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 import 'firebase_options.dart';
 import 'src/configs/routes/app_router.dart';
 
 Future<void> locator() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await setupDependenciesGraph();
 }
@@ -32,5 +35,7 @@ Future<void> _registerCoreModule() async {
 Future<void> registerAppSharedAsync() async {}
 void _registerApiModule() {}
 Future<void> _registerRepositoriesModule() async {
-  GlobalVariables.getIt.registerSingleton(AuthenticateRepositoryImpl());
+  GlobalVariables.getIt
+    ..registerSingleton(AuthenticateRepositoryImpl())
+    ..registerSingleton(UserRepositoryImpl());
 }

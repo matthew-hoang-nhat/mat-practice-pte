@@ -2,8 +2,11 @@
 part of 'app_cubit.dart';
 
 class AppState extends Equatable {
-  const AppState({required this.isLightMode});
+  const AppState({
+    required this.isLightMode,
+  });
   final bool isLightMode;
+
   @override
   List<Object> get props => [isLightMode];
 

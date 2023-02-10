@@ -1,5 +1,7 @@
 class FLocalKey {
-  static const String title = 'title';
+  static const String appName = 'title';
+  static const String version = 'version';
+  static const String nameVersion = 'nameVersion';
 
   //notification register
   static const String weakPassword = 'weak-password';
@@ -34,14 +36,18 @@ class FLocalKey {
 
   // Home Screen
   static const String todayPracticed = 'todayPracticed';
+  static const String daysUntilExam = 'daysUntilExam';
   static const String totalPracticed = 'totalPracticed';
   static const String pracDays = 'pracDays';
   static const String practice = 'practice';
   static const String speaking = 'speaking';
   static const String writing = 'writing';
   static const String reading = 'reading';
+  static const String hintReading = 'hintReading';
+  static const String hintListening = 'hintListening';
   static const String listening = 'listening';
   static const String hintSearch = 'hintSearch';
+  static const String studyTools = 'studyTools';
 
   // Category Screen
   static const String hintCategory = 'hintCategory';
@@ -76,6 +82,8 @@ class FLocalKey {
   static const termsOfUse = 'termsOfUse';
   static const logOut = 'logOut';
   static const language = 'language';
+  static const help = 'help';
+  static const vocabBooks = 'vocabBooks';
 
   // Discuss
   static const comment = 'comment';

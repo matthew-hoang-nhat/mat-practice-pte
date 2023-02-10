@@ -1,7 +1,9 @@
 part of 'f_locate.dart';
 
 final _enUS = {
-  FLocalKey.title: 'Mat Practice',
+  FLocalKey.appName: 'Mat Practice',
+  FLocalKey.version: '8.3.0',
+  FLocalKey.nameVersion: 'Mat Practice 8.3.0',
 
   FLocalKey.weakPassword: '* Weak password',
   FLocalKey.emailAlreadyInUse: '* Email already in use',
@@ -9,6 +11,20 @@ final _enUS = {
   FLocalKey.require: '* Required.',
   FLocalKey.userNotFound: 'User not found.',
   FLocalKey.wrongUsernameOrPassword: 'Wrong Username or Password.',
+
+  // Home Screen
+  FLocalKey.daysUntilExam: 'Days Until Exam',
+  FLocalKey.todayPracticed: 'Today Practiced',
+  FLocalKey.totalPracticed: 'Total Practiced',
+  FLocalKey.pracDays: 'Prac. Days',
+  FLocalKey.speaking: 'Speaking',
+  FLocalKey.writing: 'Writing',
+  FLocalKey.reading: 'Reading',
+  FLocalKey.hintReading: 'Immediate Feedback',
+  FLocalKey.hintListening: 'Questions Daily Updated',
+  FLocalKey.listening: 'Listening',
+  FLocalKey.hintSearch: 'Search Question Content / Number',
+  FLocalKey.studyTools: 'Study Tools',
 
   //Login Screen
   FLocalKey.email: 'Email',
@@ -64,6 +80,8 @@ final _enUS = {
   FLocalKey.termsOfUse: 'Terms of Use',
   FLocalKey.logOut: 'Log out',
   FLocalKey.language: 'Language',
+  FLocalKey.help: 'Help (Q & A)',
+  FLocalKey.vocabBooks: 'Vocab books',
 
   // Discuss
   FLocalKey.comment: 'Comment',
