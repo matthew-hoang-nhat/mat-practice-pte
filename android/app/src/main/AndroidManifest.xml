@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mat_pratice_pte">
+    package="go.mat.mat_practice_pte">
    <application
         android:label="mat_pratice_pte"
         android:name="${applicationName}"
