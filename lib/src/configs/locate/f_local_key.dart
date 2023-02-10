@@ -1,5 +1,13 @@
-class MaLocalKey {
+class FLocalKey {
   static const String title = 'title';
+
+  //notification register
+  static const String weakPassword = 'weak-password';
+  static const String emailAlreadyInUse = 'email-already-in-use';
+  static const String invalidEmail = 'invalid-email';
+  static const String require = 'emptyTextField';
+  static const String userNotFound = 'user-not-found';
+  static const String wrongUsernameOrPassword = 'username-or-pasword-wrong';
 
   //Login Screen
   static const String email = 'email';
@@ -13,9 +21,10 @@ class MaLocalKey {
   static const String termsOfUseAnd = 'termsOfUseAnd';
   static const String and = 'and';
   static const String privacyPolicy = 'privacyPolicy';
+  static const String successfullyLogin = 'successfullyLogin';
 
   // register screen
-  static const String hintUsername = 'username';
+  static const String hintNickName = 'hintNickName';
   static const String hintPassword = 'hintPassword';
 
   static const String titleNotiRegister = 'notiRegister';

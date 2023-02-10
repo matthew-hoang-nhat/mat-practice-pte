@@ -1,79 +1,80 @@
-part of 'ma_locate.dart';
+part of 'f_locate.dart';
 
 final _viVN = {
-  MaLocalKey.title: 'Mat Practice',
+  FLocalKey.title: 'Mat Practice',
 
   //Login Screen
-  MaLocalKey.email: 'Email',
-  MaLocalKey.password: 'Mật khẩu',
-  MaLocalKey.register: 'Đăng ký',
-  MaLocalKey.login: 'Đăng nhập',
-  MaLocalKey.signInWithGoogle: 'Đăng nhập với Google',
-  MaLocalKey.loginWithExistingAccounts: 'Đăng nhập với tài khoản đã tồn tại',
-  MaLocalKey.forgotPassword: 'Quên mật khẩu',
-  MaLocalKey.iVeReadAndAgreedToThe: "Tôi đồng ý với",
-  MaLocalKey.termsOfUseAnd: 'Điều khoản',
-  MaLocalKey.and: 'và',
-  MaLocalKey.privacyPolicy: 'Luật sử dụng',
+  FLocalKey.email: 'Email',
+  FLocalKey.password: 'Mật khẩu',
+  FLocalKey.register: 'Đăng ký',
+  FLocalKey.login: 'Đăng nhập',
+  FLocalKey.signInWithGoogle: 'Đăng nhập với Google',
+  FLocalKey.loginWithExistingAccounts: 'Đăng nhập với tài khoản đã tồn tại',
+  FLocalKey.forgotPassword: 'Quên mật khẩu',
+  FLocalKey.iVeReadAndAgreedToThe: "Tôi đồng ý với",
+  FLocalKey.termsOfUseAnd: 'Điều khoản',
+  FLocalKey.and: 'và',
+  FLocalKey.privacyPolicy: 'Luật sử dụng',
 
   // register screen
-  MaLocalKey.hintUsername: 'Tên tài khoản',
-  MaLocalKey.hintPassword: 'Mật khẩu (ít nhất 6 ký tự)',
-  MaLocalKey.titleNotiRegister: 'Điều khoản và luật sử dụng',
-  MaLocalKey.bodyNotiRegister:
+
+  FLocalKey.hintNickName: 'Tên tài khoản',
+  FLocalKey.hintPassword: 'Mật khẩu (ít nhất 6 ký tự)',
+  FLocalKey.titleNotiRegister: 'Điều khoản và luật sử dụng',
+  FLocalKey.bodyNotiRegister:
       'Trước khi đăng nhập / đăng ký tài khoản, vui lòng đọc qua Điều khoản và luật sử dụng. Nhấn "Đồng ý" đồng nghĩa với việc chấp thuận Điều khoản và luật sử dụng',
-  MaLocalKey.agree: 'Đồng ý',
-  MaLocalKey.disagree: 'Không đồng ý',
+  FLocalKey.agree: 'Đồng ý',
+  FLocalKey.disagree: 'Không đồng ý',
 
   // Home Screen
 
   // Category Screen
-  MaLocalKey.hintCategory: 'Đã làm %s, tìm thấy %s câu hỏi',
-  MaLocalKey.practice: 'Luyện tập',
-  MaLocalKey.guide: 'Hướng dẫn',
-  MaLocalKey.mark: 'Đánh dấu',
-  MaLocalKey.unmark: 'Húy TẤT CẢ đánh dấu',
-  MaLocalKey.pracStatus: 'Trạng thái. luyện tập',
-  MaLocalKey.resetStatus: 'Hủy tất cả trạng thái',
-  MaLocalKey.ok: 'Đồng ý',
-  MaLocalKey.reset: 'Đặt lại',
+  FLocalKey.hintCategory: 'Đã làm %s, tìm thấy %s câu hỏi',
+  FLocalKey.practice: 'Luyện tập',
+  FLocalKey.guide: 'Hướng dẫn',
+  FLocalKey.mark: 'Đánh dấu',
+  FLocalKey.unmark: 'Húy TẤT CẢ đánh dấu',
+  FLocalKey.pracStatus: 'Trạng thái. luyện tập',
+  FLocalKey.resetStatus: 'Hủy tất cả trạng thái',
+  FLocalKey.ok: 'Đồng ý',
+  FLocalKey.reset: 'Đặt lại',
 
   // Detail lesson
-  MaLocalKey.hintReorderParagraph: 'Nhấn giữ và kéo để di chuyển thứ tự',
+  FLocalKey.hintReorderParagraph: 'Nhấn giữ và kéo để di chuyển thứ tự',
 
   // Detail Profile
-  MaLocalKey.photo: 'Ảnh đại diện',
-  MaLocalKey.nickname: 'Nickname',
-  MaLocalKey.save: 'Lưu',
-  MaLocalKey.hintChangeNickName: 'Nhập nickname mới',
-  MaLocalKey.hintChangePhoto: 'Đổi ảnh đại diện mới',
+  FLocalKey.photo: 'Ảnh đại diện',
+  FLocalKey.nickname: 'Nickname',
+  FLocalKey.save: 'Lưu',
+  FLocalKey.hintChangeNickName: 'Nhập nickname mới',
+  FLocalKey.hintChangePhoto: 'Đổi ảnh đại diện mới',
 
   // Profile
-  MaLocalKey.darkMode: 'Chế độ tối',
-  MaLocalKey.contactUs: 'Liên hệ chúng tôi',
-  MaLocalKey.aboutMatPractice: 'Về Mat Practice',
-  MaLocalKey.shareApp: 'Chia sẻ ứng dụng',
-  MaLocalKey.rateOurApp: 'Đánh giá ứng dụng',
-  MaLocalKey.termsOfUse: 'Điều khoản',
-  MaLocalKey.logOut: 'Đăng xuất',
-  MaLocalKey.language: 'Ngôn ngữ',
+  FLocalKey.darkMode: 'Chế độ tối',
+  FLocalKey.contactUs: 'Liên hệ chúng tôi',
+  FLocalKey.aboutMatPractice: 'Về Mat Practice',
+  FLocalKey.shareApp: 'Chia sẻ ứng dụng',
+  FLocalKey.rateOurApp: 'Đánh giá ứng dụng',
+  FLocalKey.termsOfUse: 'Điều khoản',
+  FLocalKey.logOut: 'Đăng xuất',
+  FLocalKey.language: 'Ngôn ngữ',
 
   // Discuss
-  MaLocalKey.comment: 'Bình luận',
-  MaLocalKey.board: 'Lịch sử làm bài',
-  MaLocalKey.me: 'Của tôi',
-  MaLocalKey.iWannaSay: 'Bình luận',
-  MaLocalKey.score: 'Điểm',
-  MaLocalKey.hintComment: 'Nhập bình luận của bạn ...',
+  FLocalKey.comment: 'Bình luận',
+  FLocalKey.board: 'Lịch sử làm bài',
+  FLocalKey.me: 'Của tôi',
+  FLocalKey.iWannaSay: 'Bình luận',
+  FLocalKey.score: 'Điểm',
+  FLocalKey.hintComment: 'Nhập bình luận của bạn ...',
 
   // Noti
-  MaLocalKey.titleInfoNoti: 'Thông báo',
-  MaLocalKey.titleWarningNoti: 'Cảnh báo',
-  MaLocalKey.titleErrNoti: 'Lỗi mất rồi',
+  FLocalKey.titleInfoNoti: 'Thông báo',
+  FLocalKey.titleWarningNoti: 'Cảnh báo',
+  FLocalKey.titleErrNoti: 'Lỗi mất rồi',
 
   // Vocab
-  MaLocalKey.vocab: 'Từ vựng',
-  MaLocalKey.labelTotalWords: 'Tất cả %s từ',
-  MaLocalKey.unfamiliar: 'Không biết',
-  MaLocalKey.familiar: 'Thân quen',
+  FLocalKey.vocab: 'Từ vựng',
+  FLocalKey.labelTotalWords: 'Tất cả %s từ',
+  FLocalKey.unfamiliar: 'Không biết',
+  FLocalKey.familiar: 'Thân quen',
 };
