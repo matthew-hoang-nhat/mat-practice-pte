@@ -4,6 +4,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_themes.dart';
 import 'package:mat_practice_pte/src/configs/routes/app_router.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/app_cubit.dart';
+import 'package:mat_practice_pte/src/features/word_definition/cubit/show_bottom_definition_cubit.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 
 class App extends StatelessWidget {
@@ -12,8 +13,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppThemes appTheme = LightTheme();
-    return BlocProvider(
-        create: (context) => AppCubit()..initCubit(),
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (contex) => AppCubit()..initCubit()),
+          BlocProvider(
+            create: (context) => ShowBottomDefinitionCubit(),
+          ),
+        ],
         child: MaterialApp.router(
           theme: appTheme.themeData(),
           builder: FlutterSmartDialog.init(),
