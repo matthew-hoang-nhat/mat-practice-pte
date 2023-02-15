@@ -5,7 +5,7 @@ import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
 import 'package:mat_practice_pte/src/utils/repository/category_repository_impl.dart';
-
+import 'package:mat_practice_pte/src/utils/repository/lesson_repository_impl.dart';
 import 'package:mat_practice_pte/src/utils/repository/user_repository_impl.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 import 'firebase_options.dart';
@@ -39,5 +39,6 @@ Future<void> _registerRepositoriesModule() async {
   GlobalVariables.getIt
     ..registerSingleton(AuthenticateRepositoryImpl())
     ..registerSingleton(UserRepositoryImpl())
-    ..registerSingleton(CategoryRepositoryImpl());
+    ..registerSingleton(CategoryRepositoryImpl())
+    ..registerSingleton(LessonRepositoryImpl());
 }

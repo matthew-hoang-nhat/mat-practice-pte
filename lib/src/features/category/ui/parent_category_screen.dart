@@ -59,9 +59,9 @@ class ParentCategoryScreen extends StatelessWidget {
                             child: Column(
                               children: state.readingCategories
                                   .map((e) => InkWell(
-                                      // onTap: () => context
-                                      //     .read<ParentCategoryCubit>()
-                                      //     .categoryOnClick(context, id: e.id),
+                                      onTap: () => context
+                                          .read<ParentCategoryCubit>()
+                                          .categoryOnClick(context, id: e.id),
                                       child: itemCategory(category: e)))
                                   .toList(),
                             ),
@@ -78,9 +78,9 @@ class ParentCategoryScreen extends StatelessWidget {
                             child: Column(
                               children: state.listeningCategories
                                   .map((e) => InkWell(
-                                      // onTap: () => context
-                                      //     .read<ParentCategoryCubit>()
-                                      //     .categoryOnClick(context, id: e.id),
+                                      onTap: () => context
+                                          .read<ParentCategoryCubit>()
+                                          .categoryOnClick(context, id: e.id),
                                       child: itemCategory(category: e)))
                                   .toList(),
                             ),
