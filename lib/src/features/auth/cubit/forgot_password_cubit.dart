@@ -7,7 +7,7 @@ import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
 import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/helpers/firebase_error.dart';
-import 'package:mat_practice_pte/src/utils/helpers/validate.dart';
+import 'package:mat_practice_pte/src/utils/helpers/validates.dart';
 import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
 import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
