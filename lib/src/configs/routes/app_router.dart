@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 
@@ -12,7 +13,8 @@ class AppRouter {
 
   GoRouter get router => GoRouter(
         initialLocation: '/',
-        navigatorKey: GlobalVariables.navigatorKey,
+        // initialLocation: '/forgot-password',
+        navigatorKey: FCoordinator.navigatorKey,
         routes: AppPages.pages,
         debugLogDiagnostics: true,
         redirect: _redirect,

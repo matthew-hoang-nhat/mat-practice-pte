@@ -2,10 +2,11 @@ import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_assets.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
+import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
+import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 
 class FHomeBottomAppBar extends StatefulWidget {
-  const FHomeBottomAppBar({super.key, required this.onTap});
-  final Function(int) onTap;
+  const FHomeBottomAppBar({super.key});
 
   @override
   State<FHomeBottomAppBar> createState() => _FHomeBottomAppBarState();
@@ -19,7 +20,7 @@ class _FHomeBottomAppBarState extends State<FHomeBottomAppBar> {
       elevation: 1,
       onTap: (value) {
         currentIndex = value;
-        widget.onTap(value);
+        onTap(value);
         setState(() {});
       },
       currentIndex: currentIndex,
@@ -42,5 +43,20 @@ class _FHomeBottomAppBarState extends State<FHomeBottomAppBar> {
             label: 'Me'),
       ],
     );
+  }
+
+  onTap(int index) {
+    switch (index) {
+      case 0:
+        FCoordinator.goNamed(AppPaths.home);
+        break;
+      case 1:
+        FCoordinator.goNamed(AppPaths.saved);
+        break;
+      case 2:
+        FCoordinator.goNamed(AppPaths.me);
+        break;
+      default:
+    }
   }
 }
