@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
+import 'package:mat_practice_pte/src/configs/constants/firebase_collection_names.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/remote/f_result.dart';
@@ -8,14 +9,14 @@ import 'package:mat_practice_pte/src/utils/remote/models/detail_lesson.dart';
 import 'package:mat_practice_pte/src/utils/repository/lesson_repository.dart';
 
 class LessonRepositoryImpl extends LessonRepository {
-  final _database = GlobalVariables.firestore;
+  LessonRepositoryImpl(this._ref);
+  final FirebaseFirestore _ref;
+
   String? get uid => GlobalVariables.getIt<FUser>().firebaseUser?.uid;
   final List<String> markCodes = ['red', 'grey'];
 
-  final rootDiscussS0 = 'discuss';
-  final resultPracticedS1 = 'history_practiced';
-  final resultPracticedS2 = 'history';
-  final resultUserData = 'user_data';
+  final rootUsersS0 = 'users';
+  final markS1 = 'mark';
 
   Future<FResult<List<dynamic>>> _getUserLessons(
       {required String idCategory,
@@ -24,10 +25,10 @@ class LessonRepositoryImpl extends LessonRepository {
       required bool isQNumDescending,
       String? lastIdLesson}) async {
     try {
-      dynamic query = _database
+      dynamic query = _ref
           .collection(rootUsersS0)
           .doc(uid)
-          .collection(resultUserData)
+          .collection(FirebaseCollectionNames.resultUserData)
           .where('id_category', isEqualTo: idCategory);
       final markStr = filterMark.toString();
 
@@ -86,10 +87,10 @@ class LessonRepositoryImpl extends LessonRepository {
     required String idCategory,
   }) async {
     try {
-      final result = await _database
+      final result = await _ref
           .collection(rootUsersS0)
           .doc(uid)
-          .collection(resultUserData)
+          .collection(FirebaseCollectionNames.resultUserData)
           .where('id_category', isEqualTo: idCategory)
           .where('id', isEqualTo: idLesson)
           .get();
@@ -102,7 +103,6 @@ class LessonRepositoryImpl extends LessonRepository {
     }
   }
 
-  @override
   Future<FResult<List<DetailLesson>>> getLessonsNoFilter({
     required String idCategory,
     String? lastIdLesson,
@@ -111,7 +111,7 @@ class LessonRepositoryImpl extends LessonRepository {
     try {
       final docs = [];
       if (lastIdLesson == null) {
-        final result = await _database
+        final result = await _ref
             .collection('categories')
             .doc(idCategory)
             .collection('lessons')
@@ -120,14 +120,14 @@ class LessonRepositoryImpl extends LessonRepository {
             .get();
         docs.addAll(result.docs);
       } else {
-        final lastDocs = await _database
+        final lastDocs = await _ref
             .collection('categories')
             .doc(idCategory)
             .collection('lessons')
             .where('id', isEqualTo: lastIdLesson)
             .get();
         final lastDoc = lastDocs.docs.first;
-        final result = await _database
+        final result = await _ref
             .collection('categories')
             .doc(idCategory)
             .collection('lessons')
@@ -167,14 +167,11 @@ class LessonRepositoryImpl extends LessonRepository {
     }
   }
 
-  final rootUsersS0 = 'users';
-  final markS1 = 'mark';
-
   @override
   Future<FResult<DetailLesson>> getDetailLesson(
       {required String idCategory, required String idLesson}) async {
     try {
-      final lessonSnapshot = await _database
+      final lessonSnapshot = await _ref
           .collection('categories')
           .doc(idCategory)
           .collection('lessons')
@@ -188,7 +185,6 @@ class LessonRepositoryImpl extends LessonRepository {
     }
   }
 
-  @override
   Future<FResult<List<DetailLesson>>> getLessonsWithFilter({
     required String idCategory,
     String? lastIdLesson,
@@ -268,14 +264,13 @@ class LessonRepositoryImpl extends LessonRepository {
         filterPracticed: filterPracticed));
   }
 
-  @override
   Future<FResult<int>> getCountFoundLessonNoFilter(
       {required String idCategory}) async {
     try {
-      final result = await _database
-          .collection('categories')
+      final result = await _ref
+          .collection(FirebaseCollectionNames.categories)
           .doc(idCategory)
-          .collection('lessons')
+          .collection(FirebaseCollectionNames.lessons)
           .count()
           .get();
       final count = result.count;
@@ -285,16 +280,15 @@ class LessonRepositoryImpl extends LessonRepository {
     }
   }
 
-  @override
   Future<FResult<int>> getCountFoundLessonWithFilter(
       {required String idCategory,
       FilterMarkEnum? filterMark,
       FilterPracticedEnum? filterPracticed}) async {
     try {
-      dynamic query = _database
+      dynamic query = _ref
           .collection(rootUsersS0)
           .doc(uid)
-          .collection(resultUserData)
+          .collection(FirebaseCollectionNames.resultUserData)
           .where('id_category', isEqualTo: idCategory);
       final markStr = filterMark.toString();
 

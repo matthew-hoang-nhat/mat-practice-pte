@@ -66,39 +66,9 @@ abstract class LessonRepository {
     FilterPracticedEnum? filterPracticed,
   });
 
-  Future<FResult<List<DetailLesson>>> getLessonsNoFilter({
-    required String idCategory,
-    String? lastIdLesson,
-    required bool isQNumDescending,
-  });
-
-  Future<FResult<List<DetailLesson>>> getLessonsWithFilter({
-    required String idCategory,
-    String? lastIdLesson,
-    required FilterMarkEnum filterMark,
-    required bool isQNumDescending,
-    required FilterPracticedEnum filterPracticed,
-  });
-
   Future<FResult<int>> getCountFoundLesson({
     required String idCategory,
     FilterMarkEnum? filterMark,
     FilterPracticedEnum? filterPracticed,
   });
-
-  Future<FResult<int>> getCountFoundLessonWithFilter(
-      {required String idCategory,
-      FilterMarkEnum? filterMark,
-      FilterPracticedEnum? filterPracticed});
-  Future<FResult<int>> getCountFoundLessonNoFilter(
-      {required String idCategory});
-
-  // Future<FResult<String>> doMarkLesson(
-  //     {required String idCategory,
-  //     required String idLesson,
-  //     required String markCode});
-  // Future<FResult<String>> doUnmarkLesson({
-  //   required String idCategory,
-  //   required String idLesson,
-  // });
 }
