@@ -10,7 +10,7 @@ import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
 import 'package:mat_practice_pte/src/utils/remote/models/word/m_word.dart';
 import 'package:mat_practice_pte/src/utils/remote/models/word/meaning.dart';
 import 'package:mat_practice_pte/src/utils/remote/models/word/phonetic.dart';
-import 'package:mat_practice_pte/src/utils/repository/word_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
 import 'package:mat_practice_pte/src/utils/wrapper.dart';
 import 'package:mat_practice_pte/src/widgets/dimentions/f_padding_sizes.dart';
 import 'package:mat_practice_pte/src/widgets/dimentions/f_sizeboxs.dart';
@@ -23,7 +23,7 @@ class ShowBottomDefinitionCubit extends Cubit<ShowBottomDefinitionState> {
   ShowBottomDefinitionCubit() : super(const ShowBottomDefinitionInitial());
 
   final mat = GlobalVariables.getIt<FApp>();
-  final wordRepo = GlobalVariables.getIt<WordRepositoryImpl>();
+  final wordRepo = DomainManager.instance.wordRepository;
 
   Future<void> _fetchDefinition(String word) async {
     emit(state.copyWith(

@@ -8,7 +8,7 @@ import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
 
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
-import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 
 part 'register_state.dart';
@@ -53,7 +53,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   final mat = GlobalVariables.getIt<FApp>();
   final maLocate = GlobalVariables.getIt<FLocate>();
-  final authenticateRepo = GlobalVariables.getIt<AuthenticateRepositoryImpl>();
+  final authenticateRepo = DomainManager.instance.authenticateRepository;
 
   notificationError(String error) {
     emit(state.copyWith(

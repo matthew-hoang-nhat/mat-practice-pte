@@ -10,14 +10,14 @@ import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
 import 'package:mat_practice_pte/src/utils/remote/models/m_user.dart';
-import 'package:mat_practice_pte/src/utils/repository/user_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(const HomeInitial(user: null, currentIndexSplash: 0));
 
-  final userRepo = GlobalVariables.getIt<UserRepositoryImpl>();
+  final userRepo = DomainManager.instance.userRepository;
   final fUser = GlobalVariables.getIt<FUser>();
   late final pageViewController = PageController(initialPage: 0);
   Timer? _timer;

@@ -7,7 +7,7 @@ import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
-import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 
 part 'login_state.dart';
@@ -25,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  final authenticateRepo = GlobalVariables.getIt<AuthenticateRepositoryImpl>();
+  final authenticateRepo = DomainManager.instance.authenticateRepository;
   final mat = GlobalVariables.getIt<FApp>();
 
   emailOnChanged(String value) {

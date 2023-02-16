@@ -9,7 +9,7 @@ import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/helpers/firebase_error.dart';
 import 'package:mat_practice_pte/src/utils/helpers/validates.dart';
 import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
-import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 part 'forgot_password_state.dart';
 
@@ -18,7 +18,7 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
       : super(const ForgotPasswordInitial(
             isLoading: false, notificationEmail: ''));
 
-  final authRepo = GlobalVariables.getIt<AuthenticateRepositoryImpl>();
+  final authRepo = DomainManager.instance.authenticateRepository;
   final fShows = GlobalVariables.getIt<FApp>();
   final TextEditingController emailController = TextEditingController();
   final fLocate = GlobalVariables.getIt<FLocate>();
