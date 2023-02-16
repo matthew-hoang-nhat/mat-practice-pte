@@ -19,10 +19,10 @@ class AppRouter {
       );
 
   FutureOr<String?> _redirect(BuildContext context, GoRouterState state) {
-    bool isRouteToLogin = false;
+    bool isRouteToLogin = true;
     for (String item in AppPages.noNeedAuthenticatedPages) {
-      if (state.location.contains(item) == false) {
-        isRouteToLogin = true;
+      if (state.location.contains(item)) {
+        isRouteToLogin = false;
         break;
       }
     }

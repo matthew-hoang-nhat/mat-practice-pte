@@ -2,10 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
+import 'package:mat_practice_pte/src/services/audio_manger.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
+import 'package:mat_practice_pte/src/utils/remote/services/definition_service.dart';
+import 'package:mat_practice_pte/src/utils/remote/services/dio_http_client.dart';
 import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
-
+import 'package:mat_practice_pte/src/utils/repository/category_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/lesson_repository_impl.dart';
 import 'package:mat_practice_pte/src/utils/repository/user_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/word_repository_impl.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 import 'firebase_options.dart';
 import 'src/configs/routes/app_router.dart';
@@ -29,13 +34,23 @@ Future<void> _registerCoreModule() async {
     // ignore: unnecessary_cast
     ..registerSingleton(AndroidFApp() as FApp)
     ..registerSingleton(const AppRouter())
-    ..registerSingleton(FLocate());
+    ..registerSingleton(FLocate())
+    ..registerSingleton(FAudioManager())
+    ..registerSingleton(DioHttpClient('https://api.dictionaryapi.dev'));
 }
 
 Future<void> registerAppSharedAsync() async {}
-void _registerApiModule() {}
+void _registerApiModule() {
+  GlobalVariables.getIt.registerSingleton(
+      DefinitionService(GlobalVariables.getIt<DioHttpClient>()));
+}
+
 Future<void> _registerRepositoriesModule() async {
   GlobalVariables.getIt
     ..registerSingleton(AuthenticateRepositoryImpl())
-    ..registerSingleton(UserRepositoryImpl());
+    ..registerSingleton(UserRepositoryImpl())
+    ..registerSingleton(CategoryRepositoryImpl())
+    ..registerSingleton(LessonRepositoryImpl())
+    ..registerSingleton(WordRepositoryImpl());
+  // ..registerSingleton(AdminCategoryRepositoryImpl());
 }

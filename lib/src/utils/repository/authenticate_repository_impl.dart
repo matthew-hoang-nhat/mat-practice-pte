@@ -73,4 +73,17 @@ class AuthenticateRepositoryImpl extends AuthenticateRepository {
       return FResult.error(ex.toString());
     }
   }
+
+  @override
+  Future<FResult<String>> sendPasswordResetEmail(
+      {required String email}) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return FResult.success('Sucessfully');
+    } on FirebaseAuthException catch (e) {
+      return FResult.error(e.code);
+    } catch (ex) {
+      return FResult.error(ex.toString());
+    }
+  }
 }

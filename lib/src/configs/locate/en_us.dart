@@ -48,6 +48,10 @@ final _enUS = {
   FLocalKey.agree: 'Agree',
   FLocalKey.disagree: 'Disagree',
 
+  // Forgot password
+  FLocalKey.sendToEmail: 'Send to Email',
+  FLocalKey.successfullySendToEmail: 'Successfully send to email',
+
   // Home Screen
 
   // Category Screen

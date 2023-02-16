@@ -169,11 +169,20 @@ class LoginScreen extends StatelessWidget {
                     );
                   },
                 ),
-                Text(
-                  maLocate.str(FLocalKey.forgotPassword),
-                  style: AppTextStyles.body2.copyWith(
-                      color: AppColors.grey,
-                      decoration: TextDecoration.underline),
+                BlocBuilder<LoginCubit, LoginState>(
+                  builder: (context, state) {
+                    return InkWell(
+                      onTap: () => context
+                          .read<LoginCubit>()
+                          .forgotPasswordOnClick(context),
+                      child: Text(
+                        maLocate.str(FLocalKey.forgotPassword),
+                        style: AppTextStyles.body2.copyWith(
+                            color: AppColors.grey,
+                            decoration: TextDecoration.underline),
+                      ),
+                    );
+                  },
                 ),
                 FSizeBoxs.h20,
               ],
