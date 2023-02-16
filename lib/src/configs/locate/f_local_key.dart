@@ -34,6 +34,10 @@ class FLocalKey {
   static const String agree = 'agree';
   static const String disagree = 'disagree';
 
+  // forgot password
+  static const String sendToEmail = 'sendToEmail';
+  static const String successfullySendToEmail = 'successfullySendToEmail';
+
   // Home Screen
   static const String todayPracticed = 'todayPracticed';
   static const String daysUntilExam = 'daysUntilExam';
