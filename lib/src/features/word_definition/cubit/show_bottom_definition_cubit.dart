@@ -20,7 +20,7 @@ part '../../../utils/helpers/ext_word_definition.dart';
 part 'show_bottom_definition_state.dart';
 
 class ShowBottomDefinitionCubit extends Cubit<ShowBottomDefinitionState> {
-  ShowBottomDefinitionCubit() : super(const ShowBottomDefinitionInitial());
+  ShowBottomDefinitionCubit() : super(ShowBottomDefinitionState.init());
 
   final mat = GlobalVariables.getIt<FApp>();
   final wordRepo = DomainManager.instance.wordRepository;

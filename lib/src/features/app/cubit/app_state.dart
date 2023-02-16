@@ -9,6 +9,8 @@ class AppState extends Equatable {
   final bool isLightMode;
   final List<FCategory> categories;
 
+  factory AppState.init() => const AppState(isLightMode: true, categories: []);
+
   @override
   List<Object> get props => [isLightMode, categories];
 
@@ -21,11 +23,4 @@ class AppState extends Equatable {
       categories: categories ?? this.categories,
     );
   }
-}
-
-class AppInitial extends AppState {
-  const AppInitial({
-    required super.isLightMode,
-    required super.categories,
-  });
 }

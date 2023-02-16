@@ -13,14 +13,7 @@ import 'package:mat_practice_pte/src/widgets/f_app.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit()
-      : super(const LoginInitial(
-          isLiked: false,
-          isAccepted: false,
-          isLoading: false,
-          notificationEmail: '',
-          notificationPassword: '',
-        ));
+  LoginCubit() : super(LoginState.init());
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

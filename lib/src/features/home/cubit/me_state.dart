@@ -3,6 +3,7 @@ part of 'me_cubit.dart';
 
 class MeState extends Equatable {
   const MeState({required this.nickname});
+  factory MeState.init() => const MeState(nickname: '');
   final String nickname;
   @override
   List<Object> get props => [nickname];
@@ -14,8 +15,4 @@ class MeState extends Equatable {
       nickname: nickname ?? this.nickname,
     );
   }
-}
-
-class MeInitial extends MeState {
-  const MeInitial({required super.nickname});
 }

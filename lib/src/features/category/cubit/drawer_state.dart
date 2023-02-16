@@ -10,6 +10,16 @@ class DrawerState extends Equatable {
     required this.category,
     required this.isLoading,
   });
+
+  factory DrawerState.init(String idCategory) => DrawerState(
+        lessons: const [],
+        idCategory: idCategory,
+        category: null,
+        practiced: null,
+        mark: null,
+        isIdDescending: false,
+        isLoading: false,
+      );
   final String idCategory;
   final List<DetailLesson> lessons;
   final FCategory? category;
@@ -42,16 +52,4 @@ class DrawerState extends Equatable {
       isLoading: isLoading ?? this.isLoading,
     );
   }
-}
-
-class DrawerInitial extends DrawerState {
-  const DrawerInitial({
-    required super.lessons,
-    required super.isIdDescending,
-    required super.idCategory,
-    required super.category,
-    required super.practiced,
-    required super.mark,
-    required super.isLoading,
-  });
 }

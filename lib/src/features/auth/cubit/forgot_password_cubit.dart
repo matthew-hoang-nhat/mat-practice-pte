@@ -15,9 +15,7 @@ import 'package:mat_practice_pte/src/widgets/f_app.dart';
 part 'forgot_password_state.dart';
 
 class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
-  ForgotPasswordCubit()
-      : super(const ForgotPasswordInitial(
-            isLoading: false, notificationEmail: ''));
+  ForgotPasswordCubit() : super(ForgotPasswordState.init());
 
   final authRepo = DomainManager.instance.authenticateRepository;
   final fShows = GlobalVariables.getIt<FApp>();

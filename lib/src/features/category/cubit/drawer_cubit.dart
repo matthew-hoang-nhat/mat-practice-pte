@@ -13,15 +13,7 @@ part 'drawer_state.dart';
 
 class DrawerCubit extends Cubit<DrawerState> {
   DrawerCubit({required String idCategory})
-      : super(DrawerInitial(
-          lessons: const [],
-          idCategory: idCategory,
-          category: null,
-          practiced: null,
-          mark: null,
-          isIdDescending: false,
-          isLoading: false,
-        ));
+      : super(DrawerState.init(idCategory));
 
   @override
   void emit(DrawerState state) {

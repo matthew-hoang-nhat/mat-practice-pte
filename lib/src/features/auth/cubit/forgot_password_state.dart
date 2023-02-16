@@ -6,6 +6,8 @@ class ForgotPasswordState extends Equatable {
     required this.isLoading,
     required this.notificationEmail,
   });
+  factory ForgotPasswordState.init() =>
+      const ForgotPasswordState(isLoading: false, notificationEmail: '');
   final bool isLoading;
   final String notificationEmail;
   @override
@@ -20,11 +22,4 @@ class ForgotPasswordState extends Equatable {
       notificationEmail: notificationEmail ?? this.notificationEmail,
     );
   }
-}
-
-class ForgotPasswordInitial extends ForgotPasswordState {
-  const ForgotPasswordInitial({
-    required super.isLoading,
-    required super.notificationEmail,
-  });
 }
