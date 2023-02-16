@@ -7,4 +7,5 @@ abstract class AuthenticateRepository {
   Future<FResult<UserCredential>> loginWithGoogle();
   Future<FResult<UserCredential>> loginWithEmailPassword(
       {required String email, required String password});
+  Future<FResult<String>> sendPasswordResetEmail({required String email});
 }

@@ -57,6 +57,8 @@ class RectangleFButton extends FButton {
     return ElevatedButton(
       onPressed: onClick,
       style: ButtonStyle(
+          padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
+              vertical: FPaddingSizes.s10, horizontal: FPaddingSizes.s20)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
           textStyle: MaterialStateProperty.all(

@@ -1,7 +1,7 @@
 part of 'f_locate.dart';
 
 final _viVN = {
-  FLocalKey.title: 'Mat Practice',
+  FLocalKey.appName: 'Mat Practice',
 
   //Login Screen
   FLocalKey.email: 'Email',

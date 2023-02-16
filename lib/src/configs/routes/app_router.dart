@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mat_practice_pte/src/features/app/cubit/app_cubit.dart';
+import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 
 import 'app_pages.dart';
@@ -20,15 +19,15 @@ class AppRouter {
       );
 
   FutureOr<String?> _redirect(BuildContext context, GoRouterState state) {
-    bool isRouteToLogin = false;
+    bool isRouteToLogin = true;
     for (String item in AppPages.noNeedAuthenticatedPages) {
-      if (state.location.contains(item) == false) {
-        isRouteToLogin = true;
+      if (state.location.contains(item)) {
+        isRouteToLogin = false;
         break;
       }
     }
 
-    final isSigned = context.read<AppCubit>().fuser.isLogged;
+    final isSigned = GlobalVariables.getIt<FUser>().isLogged;
     if ((isSigned == false) & (isRouteToLogin == true)) {
       return '/login';
     }
