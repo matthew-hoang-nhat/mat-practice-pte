@@ -139,14 +139,16 @@ class HomeScreen extends StatelessWidget {
                 hint: fLocate.str(FLocalKey.hintReading),
                 title: fLocate.str(FLocalKey.reading),
                 iconData: AppIcons.iconBookOutline,
-                onTap: () {}),
+                onTap: () =>
+                    cubitContext.read<HomeCubit>().readingOnClick(context)),
             FSizeBoxs.w20,
             itemPracticeWidget(
                 backgroundColor: AppColors.green,
                 hint: fLocate.str(FLocalKey.hintListening),
                 title: fLocate.str(FLocalKey.listening),
                 iconData: AppIcons.iconHeadphoneOutline,
-                onTap: () {}),
+                onTap: () =>
+                    cubitContext.read<HomeCubit>().listeningOnCLick(context)),
           ],
         );
       },
@@ -176,13 +178,15 @@ class HomeScreen extends StatelessWidget {
                 ),
                 _iconWithTextWidget(
                   text: fLocate.str(FLocalKey.reading),
-                  onTap: () {},
+                  onTap: () =>
+                      cubitContext.read<HomeCubit>().readingOnClick(context),
                   iconData: AppIcons.iconBookOutline,
                   type: _HomeWidgetType.guide,
                 ),
                 _iconWithTextWidget(
                   text: fLocate.str(FLocalKey.listening),
-                  onTap: () {},
+                  onTap: () =>
+                      cubitContext.read<HomeCubit>().listeningOnCLick(context),
                   iconData: AppIcons.iconHeadphoneOutline,
                   type: _HomeWidgetType.guide,
                 ),
