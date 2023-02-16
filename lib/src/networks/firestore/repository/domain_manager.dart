@@ -1,17 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/remote/services/definition_service.dart';
-import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
-import 'package:mat_practice_pte/src/utils/repository/category_repository.dart';
-import 'package:mat_practice_pte/src/utils/repository/category_repository_impl.dart';
-import 'package:mat_practice_pte/src/utils/repository/lesson_repository.dart';
-import 'package:mat_practice_pte/src/utils/repository/lesson_repository_impl.dart';
-import 'package:mat_practice_pte/src/utils/repository/user_repository.dart';
-import 'package:mat_practice_pte/src/utils/repository/user_repository_impl.dart';
-import 'package:mat_practice_pte/src/utils/repository/word_repository_impl.dart';
-
+import '../../http/repository/word_repository.dart';
+import '../../http/repository/word_repository_impl.dart';
+import '../../http/services/definition_service.dart';
 import 'authenticate_repository.dart';
-import 'word_repository.dart';
+import 'authenticate_repository_impl.dart';
+import 'category_repository.dart';
+import 'category_repository_impl.dart';
+import 'lesson_repository.dart';
+import 'lesson_repository_impl.dart';
+import 'user_repository.dart';
+import 'user_repository_impl.dart';
 
 class DomainManager {
   DomainManager._() {

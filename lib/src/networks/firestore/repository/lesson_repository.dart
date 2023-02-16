@@ -1,5 +1,5 @@
-import 'package:mat_practice_pte/src/utils/remote/f_result.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/detail_lesson.dart';
+import '../../f_result.dart';
+import '../../models/lesson/detail_lesson.dart';
 
 enum FilterMarkEnum {
   allMark,

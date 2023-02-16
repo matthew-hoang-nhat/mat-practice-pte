@@ -5,11 +5,12 @@ import 'package:mat_practice_pte/src/configs/locate/f_local_key.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
 import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
+import 'package:mat_practice_pte/src/networks/fetch_resource.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/domain_manager.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/helpers/firebase_error.dart';
 import 'package:mat_practice_pte/src/utils/helpers/validates.dart';
-import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
-import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
+
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 part 'forgot_password_state.dart';
 

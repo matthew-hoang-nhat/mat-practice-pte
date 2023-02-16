@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/word/phonetic.dart';
 
 import 'meaning.dart';
+import 'phonetic.dart';
 part 'm_word.freezed.dart';
 part 'm_word.g.dart';
 

@@ -5,10 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_local_key.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
-
+import 'package:mat_practice_pte/src/networks/fetch_resource.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/domain_manager.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
-import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 
 part 'register_state.dart';

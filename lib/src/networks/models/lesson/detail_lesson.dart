@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:mat_practice_pte/src/utils/remote/models/question_group.dart';
+import 'question_group.dart';
 
 class DetailLesson {
   final String id;

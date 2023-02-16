@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mat_practice_pte/src/configs/constants/firebase_collection_names.dart';
-import 'package:mat_practice_pte/src/utils/base_collection_reference.dart';
-import 'package:mat_practice_pte/src/utils/remote/f_result.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
-import 'package:mat_practice_pte/src/utils/repository/category_repository.dart';
+import '../../f_result.dart';
+import '../../models/category/f_category.dart';
+import '../base_collection_reference.dart';
+import 'category_repository.dart';
 
 class CategoryRepositoryImpl extends BaseCollectionReference<FCategory>
     implements CategoryRepository {

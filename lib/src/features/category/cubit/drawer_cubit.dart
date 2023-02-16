@@ -1,12 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-
-import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/detail_lesson.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
-import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
-import 'package:mat_practice_pte/src/utils/repository/lesson_repository.dart';
+import 'package:mat_practice_pte/src/networks/fetch_resource.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/domain_manager.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/lesson_repository.dart';
+import 'package:mat_practice_pte/src/networks/models/category/f_category.dart';
+import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
 import 'package:mat_practice_pte/src/utils/wrapper.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 

@@ -1,9 +1,10 @@
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/remote/f_result.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/word/m_word.dart';
-import 'package:mat_practice_pte/src/utils/remote/services/definition_service.dart';
-import 'package:mat_practice_pte/src/utils/repository/word_repository.dart';
+
+import '../../f_result.dart';
+import '../../models/word/m_word.dart';
+import '../services/definition_service.dart';
+import 'word_repository.dart';
 
 class WordRepositoryImpl extends WordRepository {
   WordRepositoryImpl(this.wordService);

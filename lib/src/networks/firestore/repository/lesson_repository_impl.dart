@@ -3,10 +3,10 @@ import 'package:logger/logger.dart';
 import 'package:mat_practice_pte/src/configs/constants/firebase_collection_names.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/remote/f_result.dart';
-import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/detail_lesson.dart';
-import 'package:mat_practice_pte/src/utils/repository/lesson_repository.dart';
+import '../../f_result.dart';
+import '../../fetch_resource.dart';
+import '../../models/lesson/detail_lesson.dart';
+import 'lesson_repository.dart';
 
 class LessonRepositoryImpl extends LessonRepository {
   LessonRepositoryImpl(this._ref);

@@ -1,6 +1,8 @@
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/remote/f_result.dart';
+
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
+
+import 'f_result.dart';
 
 Future<void> fetchResource<T>(
   FResult<T> resource, {

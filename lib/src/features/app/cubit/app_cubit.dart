@@ -2,10 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/domain_manager.dart';
+import 'package:mat_practice_pte/src/networks/models/category/f_category.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
-import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
-
 import 'f_user.dart';
 
 part 'app_state.dart';
