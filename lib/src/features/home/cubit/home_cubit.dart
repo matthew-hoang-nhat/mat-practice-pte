@@ -14,7 +14,7 @@ import 'package:mat_practice_pte/src/utils/global_variables.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(const HomeInitial(user: null, currentIndexSplash: 0));
+  HomeCubit() : super(HomeState.init());
 
   final userRepo = DomainManager.instance.userRepository;
   final fUser = GlobalVariables.getIt<FUser>();

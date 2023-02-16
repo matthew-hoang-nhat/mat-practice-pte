@@ -7,6 +7,8 @@ class ShowBottomDefinitionState extends Equatable {
     this.isSaved,
   });
 
+  factory ShowBottomDefinitionState.init() => const ShowBottomDefinitionState();
+
   final MWord? definition;
   final bool? isSaved;
   @override
@@ -21,8 +23,4 @@ class ShowBottomDefinitionState extends Equatable {
       definition: definition == null ? this.definition : definition.value,
     );
   }
-}
-
-class ShowBottomDefinitionInitial extends ShowBottomDefinitionState {
-  const ShowBottomDefinitionInitial();
 }

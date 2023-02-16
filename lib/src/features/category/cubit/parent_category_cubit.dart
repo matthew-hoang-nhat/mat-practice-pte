@@ -6,9 +6,7 @@ import 'package:mat_practice_pte/src/networks/models/category/f_category.dart';
 part 'parent_category_state.dart';
 
 class ParentCategoryCubit extends Cubit<ParentCategoryState> {
-  ParentCategoryCubit()
-      : super(const ParentCategoryInitial(
-            listeningCategories: [], readingCategories: []));
+  ParentCategoryCubit() : super(ParentCategoryState.init());
 
   initCubit() async {}
 

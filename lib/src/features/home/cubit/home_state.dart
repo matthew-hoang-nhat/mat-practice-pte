@@ -3,6 +3,10 @@ part of 'home_cubit.dart';
 
 class HomeState extends Equatable {
   const HomeState({required this.currentIndexSplash, required this.user});
+  factory HomeState.init() => const HomeState(
+        currentIndexSplash: 0,
+        user: null,
+      );
   final MUser? user;
   final int currentIndexSplash;
   @override
@@ -17,8 +21,4 @@ class HomeState extends Equatable {
       currentIndexSplash: currentIndexSplash ?? this.currentIndexSplash,
     );
   }
-}
-
-class HomeInitial extends HomeState {
-  const HomeInitial({required super.user, required super.currentIndexSplash});
 }

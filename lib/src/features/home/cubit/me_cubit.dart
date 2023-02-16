@@ -10,7 +10,7 @@ import 'package:mat_practice_pte/src/widgets/f_app.dart';
 part 'me_state.dart';
 
 class MeCubit extends Cubit<MeState> {
-  MeCubit() : super(const MeInitial(nickname: ''));
+  MeCubit() : super(MeState.init());
 
   final fAppShows = GlobalVariables.getIt<FApp>();
   final fUser = GlobalVariables.getIt<FUser>();

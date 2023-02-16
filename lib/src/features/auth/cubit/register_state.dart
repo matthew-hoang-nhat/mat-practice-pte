@@ -13,6 +13,18 @@ class RegisterState extends Equatable {
     required this.notificationEmail,
     required this.notificationPassword,
   });
+
+  factory RegisterState.init() => const RegisterState(
+        password: '',
+        notificationEmail: '',
+        notificationPassword: '',
+        notificationNickname: '',
+        email: '',
+        username: '',
+        isLiked: false,
+        isAccepted: false,
+        isLoading: false,
+      );
   final String password;
   final String email;
   final String username;
@@ -58,18 +70,4 @@ class RegisterState extends Equatable {
       isLoading: isLoading ?? this.isLoading,
     );
   }
-}
-
-class RegisterInitial extends RegisterState {
-  const RegisterInitial({
-    required super.password,
-    required super.isLiked,
-    required super.isAccepted,
-    required super.email,
-    required super.username,
-    required super.notificationEmail,
-    required super.notificationNickname,
-    required super.notificationPassword,
-    required super.isLoading,
-  });
 }

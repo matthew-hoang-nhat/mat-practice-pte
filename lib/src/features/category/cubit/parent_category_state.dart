@@ -8,6 +8,8 @@ class ParentCategoryState extends Equatable {
   final List<FCategory> readingCategories;
   final List<FCategory> listeningCategories;
 
+  factory ParentCategoryState.init() =>
+      const ParentCategoryState(listeningCategories: [], readingCategories: []);
   @override
   List<Object> get props => [readingCategories, listeningCategories];
 
@@ -20,9 +22,4 @@ class ParentCategoryState extends Equatable {
       listeningCategories: listeningCategories ?? this.listeningCategories,
     );
   }
-}
-
-class ParentCategoryInitial extends ParentCategoryState {
-  const ParentCategoryInitial(
-      {required super.readingCategories, required super.listeningCategories});
 }

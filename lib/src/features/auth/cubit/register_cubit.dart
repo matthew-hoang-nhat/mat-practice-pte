@@ -13,18 +13,7 @@ import 'package:mat_practice_pte/src/widgets/f_app.dart';
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit()
-      : super(const RegisterInitial(
-          password: '',
-          notificationEmail: '',
-          notificationPassword: '',
-          notificationNickname: '',
-          email: '',
-          username: '',
-          isLiked: false,
-          isAccepted: false,
-          isLoading: false,
-        ));
+  RegisterCubit() : super(RegisterState.init());
 
   TextEditingController passwordController = TextEditingController();
   TextEditingController nicknameController = TextEditingController();

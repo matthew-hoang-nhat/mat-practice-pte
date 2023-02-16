@@ -10,7 +10,7 @@ import 'f_user.dart';
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
-  AppCubit() : super(const AppInitial(isLightMode: true, categories: []));
+  AppCubit() : super(AppState.init());
 
   final _fuser = GlobalVariables.getIt<FUser>();
 

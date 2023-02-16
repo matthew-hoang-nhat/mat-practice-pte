@@ -9,6 +9,13 @@ class LoginState extends Equatable {
     required this.notificationEmail,
     required this.notificationPassword,
   });
+  factory LoginState.init() => const LoginState(
+        isLiked: false,
+        isAccepted: false,
+        isLoading: false,
+        notificationEmail: '',
+        notificationPassword: '',
+      );
 
   final String notificationEmail;
   final String notificationPassword;
@@ -40,13 +47,4 @@ class LoginState extends Equatable {
       isLoading: isLoading ?? this.isLoading,
     );
   }
-}
-
-class LoginInitial extends LoginState {
-  const LoginInitial(
-      {required super.isLiked,
-      required super.notificationEmail,
-      required super.notificationPassword,
-      required super.isLoading,
-      required super.isAccepted});
 }
