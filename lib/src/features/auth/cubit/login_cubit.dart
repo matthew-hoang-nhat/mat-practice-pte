@@ -59,6 +59,10 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
+  forgotPasswordOnClick(context) {
+    GoRouter.of(context).pushNamed(AppPaths.forgotPassword);
+  }
+
   loginWithEmailPasswordOnClick(context) async {
     if (isFilledAllTextFields() == false) {
       checkFilledAllTextFields();
