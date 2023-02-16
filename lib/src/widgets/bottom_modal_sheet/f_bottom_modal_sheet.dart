@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
-import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
 
 class FBottomModalSheet {
   static void showMeModalBottomSheet(
     context, {
-    required String title,
+    required Widget title,
     required Widget widget,
     double? sizeHeight,
     Widget? action,
@@ -57,9 +56,7 @@ class FBottomModalSheet {
                           children: [
                             Row(
                               children: [
-                                Expanded(
-                                    child: Text(title,
-                                        style: AppTextStyles.headline5)),
+                                Expanded(child: title),
                                 if (action != null) action
                               ],
                             ),

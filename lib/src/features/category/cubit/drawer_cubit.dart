@@ -1,0 +1,190 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+
+import 'package:mat_practice_pte/src/utils/global_variables.dart';
+import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
+import 'package:mat_practice_pte/src/utils/remote/models/detail_lesson.dart';
+import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
+import 'package:mat_practice_pte/src/utils/repository/category_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/lesson_repository.dart';
+import 'package:mat_practice_pte/src/utils/repository/lesson_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/wrapper.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+part 'drawer_state.dart';
+
+class DrawerCubit extends Cubit<DrawerState> {
+  DrawerCubit({required String idCategory})
+      : super(DrawerInitial(
+          lessons: const [],
+          idCategory: idCategory,
+          category: null,
+          practiced: null,
+          mark: null,
+          isIdDescending: false,
+          isLoading: false,
+        ));
+
+  @override
+  void emit(DrawerState state) {
+    if (isClosed) return;
+    super.emit(state);
+  }
+
+  final _lessonRepo = GlobalVariables.getIt<LessonRepositoryImpl>();
+  final _categoryRepo = GlobalVariables.getIt<CategoryRepositoryImpl>();
+
+  initCubit() async {
+    _fetchCategory();
+
+    _setLoading(true);
+    await _refreshLessons();
+    _setLoading(false);
+  }
+
+  iconNewOnClick(context) {
+    emit(state.copyWith(isNew: !state.isIdDescending));
+    _fetchData();
+  }
+
+  _setLoading(bool value) {
+    emit(state.copyWith(isLoading: value));
+  }
+
+  okButtonOnClick() {
+    SmartDialog.dismiss();
+    _fetchData();
+  }
+
+  resetButtonOnClick() {
+    SmartDialog.dismiss();
+    emit(state.copyWith(
+      mark: Wrapper(null),
+      practiced: Wrapper(null),
+    ));
+    _fetchData();
+  }
+
+  _fetchData() async {
+    _setLoading(true);
+    await _fetchLessons();
+    _setLoading(false);
+  }
+
+  markOnClick(context, {required String? mark}) async {
+    if (mark == state.mark) {
+      emit(state.copyWith(mark: Wrapper(null)));
+    } else {
+      emit(state.copyWith(
+        mark: Wrapper(mark),
+        practiced: Wrapper(null),
+      ));
+    }
+  }
+
+  pracStatusOnClick({required String practiced}) async {
+    if (practiced == state.practiced) {
+      emit(state.copyWith(practiced: Wrapper(null)));
+    } else {
+      emit(state.copyWith(
+        practiced: Wrapper(practiced),
+        mark: Wrapper(null),
+      ));
+    }
+  }
+
+  RefreshController refreshController = RefreshController();
+
+  void onRefresh() async {
+    await _refreshLessons();
+    refreshController.refreshCompleted();
+  }
+
+  void onLoading() async {
+    await _fetchNextPageLessons();
+    refreshController.loadComplete();
+  }
+
+  _fetchCategory() async {
+    final result = await _categoryRepo.getCategory(id: state.idCategory);
+    fetchResource(result, onSuccess: () {
+      emit(state.copyWith(category: result.data));
+    });
+  }
+
+  _refreshLessons() async {
+    emit(state.copyWith(lessons: []));
+    final filterMark =
+        state.mark != null ? FilterMarkEnum.tryParse(state.mark!) : null;
+    final filterPracticed = state.practiced != null
+        ? FilterPracticedEnum.tryParse(state.practiced!)
+        : null;
+    final result = await _lessonRepo.getLessons(
+        idCategory: state.idCategory,
+        filterMark: filterMark,
+        filterPracticed: filterPracticed,
+        isQNumDescending: state.isIdDescending);
+
+    fetchResource(result, onSuccess: () {
+      emit(state.copyWith(lessons: result.data));
+    });
+  }
+
+  int currentPageLesson = -1;
+  bool isFetchNextPageLesson = false;
+
+  _fetchLessons({String? idLastLesson}) async {
+    final filterMark =
+        state.mark != null ? FilterMarkEnum.tryParse(state.mark!) : null;
+    final filterPracticed = state.practiced != null
+        ? FilterPracticedEnum.tryParse(state.practiced!)
+        : null;
+    final result = await _lessonRepo.getLessons(
+        idLastLesson: idLastLesson,
+        idCategory: state.idCategory,
+        isQNumDescending: state.isIdDescending,
+        filterPracticed: filterPracticed,
+        filterMark: filterMark);
+
+    final resultCount = await _lessonRepo.getCountFoundLesson(
+      idCategory: state.idCategory,
+      filterMark: filterMark,
+      filterPracticed: filterPracticed,
+    );
+
+    final newFoundLesson = resultCount.data;
+    final newLessons = result.data;
+
+    fetchResource(result, onSuccess: () {
+      emit(state.copyWith(
+          lessons: newLessons,
+          category: state.category?.copyWith(foundLesson: newFoundLesson)));
+    });
+  }
+
+  _fetchNextPageLessons() async {
+    if (isFetchNextPageLesson) return;
+
+    isFetchNextPageLesson = true;
+    final filterMark =
+        state.mark != null ? FilterMarkEnum.tryParse(state.mark!) : null;
+    final filterPracticed = state.practiced != null
+        ? FilterPracticedEnum.tryParse(state.practiced!)
+        : null;
+
+    final result = await _lessonRepo.getLessons(
+        idCategory: state.idCategory,
+        idLastLesson: state.lessons.last.id,
+        filterMark: filterMark,
+        isQNumDescending: state.isIdDescending,
+        filterPracticed: filterPracticed);
+    fetchResource(result, onSuccess: () {
+      final oldLessons = state.lessons;
+      final newLessons = result.data!;
+      emit(state.copyWith(lessons: [...oldLessons, ...newLessons]));
+    });
+
+    isFetchNextPageLesson = false;
+  }
+}
