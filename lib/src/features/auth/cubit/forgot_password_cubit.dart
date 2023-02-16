@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_local_key.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
-import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/helpers/firebase_error.dart';
@@ -75,7 +74,7 @@ class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
       result,
       onSuccess: () {
         fShows.showToast(fLocate.str(FLocalKey.successfullySendToEmail));
-        FCoordinator.goNamed(AppPaths.login);
+        FCoordinator.showLoginScreen();
       },
       onError: () {
         final notificationEmail =

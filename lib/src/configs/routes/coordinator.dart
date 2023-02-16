@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 
 class FCoordinator {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -55,4 +56,36 @@ class FCoordinator {
         queryParams: queryParams,
         extra: extra,
       );
+
+  static void showLoginScreen() {
+    goNamed(AppPaths.login);
+  }
+
+  static void showForgotScreen() {
+    pushNamed(AppPaths.forgotPassword);
+  }
+
+  static void showHomeScreen() {
+    goNamed(AppPaths.home);
+  }
+
+  static void showRegisterScreen() {
+    pushNamed(AppPaths.register);
+  }
+
+  static void showDrawerScreen({required String idCategory}) {
+    pushNamed(AppPaths.drawer, params: {'id': idCategory});
+  }
+
+  static void showParentCategoryScreen({required String parentCategoryType}) {
+    goNamed(AppPaths.parentCategory, extra: parentCategoryType);
+  }
+
+  static void showSavedScreen() {
+    goNamed(AppPaths.saved);
+  }
+
+  static void showMeScreen() {
+    goNamed(AppPaths.me);
+  }
 }

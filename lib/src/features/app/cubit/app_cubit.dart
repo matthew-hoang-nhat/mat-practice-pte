@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
@@ -33,7 +32,7 @@ class AppCubit extends Cubit<AppState> {
 
   Future<void> signOut() async {
     await _fuser.signOut();
-    FCoordinator.goNamed(AppPaths.login);
+    FCoordinator.showLoginScreen();
   }
 
   changeMode() {

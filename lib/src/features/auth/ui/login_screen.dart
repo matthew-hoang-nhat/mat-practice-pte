@@ -6,7 +6,6 @@ import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_local_key.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
 
-import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/features/auth/cubit/login_cubit.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
@@ -122,7 +121,7 @@ class LoginScreen extends StatelessWidget {
                     Expanded(
                       child: matWidgets.outlineButton(
                           onClick: () {
-                            FCoordinator.pushNamed(AppPaths.register);
+                            FCoordinator.showRegisterScreen();
                           },
                           title: maLocate.str(FLocalKey.register)),
                     ),
