@@ -108,8 +108,8 @@ class AndroidFApp extends FApp {
                           if (redAction.isNotEmpty)
                             TextButton(
                                 onPressed: () {
+                                  Navigator.of(dialogContext).pop();
                                   redAction.values.first();
-                                  Navigator.of(context).pop();
                                 },
                                 child: Text(
                                   redAction.keys.first,
@@ -120,8 +120,8 @@ class AndroidFApp extends FApp {
                           ...actions
                               .map((e) => TextButton(
                                     onPressed: () {
+                                      Navigator.of(dialogContext).pop();
                                       e.values.first();
-                                      Navigator.of(context).pop();
                                     },
                                     child: Text(e.keys.first),
                                   ))
