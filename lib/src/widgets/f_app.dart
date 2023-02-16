@@ -199,7 +199,7 @@ class AndroidFApp extends FApp {
 
   @override
   showBottomModalSheet(context,
-          {required String title,
+          {required Widget title,
           required Widget widget,
           Widget? action,
           double? sizeHeight}) =>
@@ -226,10 +226,11 @@ class AndroidFApp extends FApp {
 
 abstract class FAppShows {
   showBottomModalSheet(context,
-      {required String title,
+      {required Widget title,
       required Widget widget,
       double? sizeHeight,
       Widget? action});
+
   showFDialog(
     context, {
     FShowType title,

@@ -2,8 +2,11 @@ import 'package:community_material_icon/community_material_icon.dart';
 
 class AppIcons {
   static const iconHeadphoneOutline = CommunityMaterialIcons.headphones;
+  static const iconStarOutline = CommunityMaterialIcons.star_outline;
+  static const iconStar = CommunityMaterialIcons.star;
   static const iconRecorderOutline =
       CommunityMaterialIcons.record_circle_outline;
+  static const iconVolumn = CommunityMaterialIcons.volume_high;
   static const iconBookOutline = CommunityMaterialIcons.book_outline;
   static const iconBook = CommunityMaterialIcons.book;
   static const iconUser = CommunityMaterialIcons.account;
