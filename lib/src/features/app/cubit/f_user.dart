@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/m_user.dart';
+import 'package:mat_practice_pte/src/networks/models/user/m_user.dart';
 
 class FUser {
   bool get isLogged => FirebaseAuth.instance.currentUser != null;

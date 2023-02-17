@@ -6,12 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
+import 'package:mat_practice_pte/src/networks/fetch_resource.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/domain_manager.dart';
+import 'package:mat_practice_pte/src/networks/models/user/m_user.dart';
 
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/m_user.dart';
-import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
-
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
