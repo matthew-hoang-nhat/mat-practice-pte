@@ -1,28 +1,28 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/remote/services/definition_service.dart';
 import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
 import 'package:mat_practice_pte/src/utils/repository/category_repository.dart';
 import 'package:mat_practice_pte/src/utils/repository/category_repository_impl.dart';
-import 'package:mat_practice_pte/src/utils/repository/lesson_repository.dart';
-import 'package:mat_practice_pte/src/utils/repository/lesson_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/lesson/lesson_user_data_repository_impl.dart';
+import 'package:mat_practice_pte/src/utils/repository/lesson/raw_lesson_repository_impl.dart';
 import 'package:mat_practice_pte/src/utils/repository/user_repository.dart';
 import 'package:mat_practice_pte/src/utils/repository/user_repository_impl.dart';
 import 'package:mat_practice_pte/src/utils/repository/word_repository_impl.dart';
 
 import 'authenticate_repository.dart';
+import 'lesson/lesson_repository.dart';
+import 'lesson/lesson_repository_impl.dart';
 import 'word_repository.dart';
 
 class DomainManager {
   DomainManager._() {
-    authenticateRepository = AuthenticateRepositoryImpl(database);
-    categoryRepository = CategoryRepositoryImpl(database);
-    userRepository = UserRepositoryImpl(database);
-    lessonRepository = LessonRepositoryImpl(database);
-    wordRepository =
-        WordRepositoryImpl(GlobalVariables.getIt<DefinitionService>());
+    authenticateRepository = AuthenticateRepositoryImpl();
+    categoryRepository = CategoryRepositoryImpl();
+    userRepository = UserRepositoryImpl();
+    lessonRepository = LessonRepositoryImpl(
+        lessonUserDataRepository: LessonUserDataRepositoryImpl(),
+        rawLessonRepository: RawLessonRepositoryImpl());
+    wordRepository = WordRepositoryImpl();
   }
-  final database = FirebaseFirestore.instance;
+
   static DomainManager? _instance;
   static DomainManager get instance => _instance ?? DomainManager._();
 

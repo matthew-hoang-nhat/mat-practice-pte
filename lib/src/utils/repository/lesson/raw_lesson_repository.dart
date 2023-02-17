@@ -1,0 +1,15 @@
+import 'package:mat_practice_pte/src/utils/remote/f_result.dart';
+import 'package:mat_practice_pte/src/utils/remote/models/detail_lesson.dart';
+
+abstract class RawLessonRepository {
+  Future<FResult<DetailLesson>> getRawDetailLesson(
+      {required String idCategory, required String idLesson});
+
+  Future<FResult<int>> getRawCountFoundLesson({required String idCategory});
+
+  Future<FResult<List<DetailLesson>>> getRawLessons({
+    required String idCategory,
+    String? lastIdLesson,
+    required bool isQNumDescending,
+  });
+}

@@ -2,12 +2,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BaseCollectionReference<T> {
   BaseCollectionReference(this.ref);
-
   final CollectionReference<T> ref;
 
   Future<bool> exist(String id) async {
     final documentSnapshot = await ref.doc(id).get();
     return documentSnapshot.exists;
+  }
+
+  Future<List<T>> getALl({CollectionReference<T>? optionRef}) async {
+    QuerySnapshot<T> documentSnapshot;
+    if (optionRef == null) {
+      documentSnapshot = await ref.get();
+    } else {
+      documentSnapshot = await optionRef.get();
+    }
+
+    return documentSnapshot.docs.map((e) => e.data()).toList();
   }
 
   Future<T?> get(String id) async {

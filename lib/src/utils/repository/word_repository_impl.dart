@@ -6,14 +6,13 @@ import 'package:mat_practice_pte/src/utils/remote/services/definition_service.da
 import 'package:mat_practice_pte/src/utils/repository/word_repository.dart';
 
 class WordRepositoryImpl extends WordRepository {
-  WordRepositoryImpl(this.wordService);
-  final DefinitionService wordService;
+  final ref = GlobalVariables.getIt<DefinitionService>();
 
   String? get uid => GlobalVariables.getIt<FUser>().firebaseUser?.uid;
   @override
   Future<FResult<MWord>> getDefinition(String text) async {
     try {
-      final words = await wordService.getWordDictionary(text);
+      final words = await ref.getWordDictionary(text);
       final word = words.first;
       return FResult.success(word);
     } catch (ex) {

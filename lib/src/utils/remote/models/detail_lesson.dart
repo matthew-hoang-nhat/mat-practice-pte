@@ -4,6 +4,59 @@ import 'dart:convert';
 
 import 'package:mat_practice_pte/src/utils/remote/models/question_group.dart';
 
+enum FilterMarkEnum {
+  allMark,
+  red,
+  grey;
+
+  static FilterMarkEnum? tryParse(String value) {
+    switch (value) {
+      case 'Red':
+        return FilterMarkEnum.red;
+      case 'Grey':
+        return FilterMarkEnum.grey;
+      case 'All mark':
+        return FilterMarkEnum.allMark;
+
+      default:
+    }
+    return null;
+  }
+
+  @override
+  String toString() {
+    switch (this) {
+      case FilterMarkEnum.red:
+        return 'Red';
+      case FilterMarkEnum.grey:
+        return 'Grey';
+      case FilterMarkEnum.allMark:
+        return 'All mark';
+    }
+  }
+}
+
+enum FilterPracticedEnum {
+  practiced;
+
+  static FilterPracticedEnum? tryParse(String value) {
+    switch (value) {
+      case 'Practiced':
+        return FilterPracticedEnum.practiced;
+      default:
+    }
+    return null;
+  }
+
+  @override
+  String toString() {
+    switch (this) {
+      case FilterPracticedEnum.practiced:
+        return 'Practiced';
+    }
+  }
+}
+
 class DetailLesson {
   final String id;
   final String codeLesson;

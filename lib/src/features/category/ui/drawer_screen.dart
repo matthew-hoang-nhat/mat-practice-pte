@@ -13,7 +13,7 @@ import 'package:mat_practice_pte/src/features/category/widgets/category_drawer_w
 import 'package:mat_practice_pte/src/features/category/widgets/triangle_painter.dart';
 import 'package:mat_practice_pte/src/utils/helpers/helpers.dart';
 import 'package:mat_practice_pte/src/utils/remote/models/detail_lesson.dart';
-import 'package:mat_practice_pte/src/utils/repository/lesson_repository.dart';
+
 import 'package:mat_practice_pte/src/widgets/dimentions/f_padding_sizes.dart';
 import 'package:mat_practice_pte/src/widgets/dimentions/f_sizeboxs.dart';
 import 'package:mat_practice_pte/src/widgets/loading_widget.dart';

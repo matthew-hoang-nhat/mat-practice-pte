@@ -6,7 +6,6 @@ import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
 import 'package:mat_practice_pte/src/utils/remote/models/detail_lesson.dart';
 import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
 import 'package:mat_practice_pte/src/utils/repository/domain_manager.dart';
-import 'package:mat_practice_pte/src/utils/repository/lesson_repository.dart';
 import 'package:mat_practice_pte/src/utils/wrapper.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -145,11 +144,15 @@ class DrawerCubit extends Cubit<DrawerState> {
         filterPracticed: filterPracticed,
         filterMark: filterMark);
 
+    final mark =
+        state.mark != null ? FilterMarkEnum.tryParse(state.mark!) : null;
+    final practiced = state.practiced != null
+        ? FilterPracticedEnum.tryParse(state.practiced!)
+        : null;
     final resultCount = await _lessonRepo.getCountFoundLesson(
-      idCategory: state.idCategory,
-      filterMark: filterMark,
-      filterPracticed: filterPracticed,
-    );
+        idCategory: state.idCategory,
+        filterMark: mark,
+        filterPracticed: practiced);
 
     final newFoundLesson = resultCount.data;
     final newLessons = result.data;
