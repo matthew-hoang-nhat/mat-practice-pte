@@ -5,12 +5,12 @@ import '../reference/user_collection_reference.dart';
 import 'user_repository.dart';
 
 class UserRepositoryImpl extends UserRepository {
-  final userRef = UserCollectionReference();
+  final ref = UserCollectionReference();
 
   @override
   Future<FResult<MUser>> getInfoUser({required String uid}) async {
     try {
-      final user = await userRef.get(uid);
+      final user = await ref.get(uid);
       return FResult.success(user);
     } catch (ex) {
       return FResult.error(ex.toString());

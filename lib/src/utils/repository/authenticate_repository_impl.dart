@@ -6,7 +6,7 @@ import 'package:mat_practice_pte/src/utils/remote/models/m_user.dart';
 import 'package:mat_practice_pte/src/utils/repository/authenticate_repository.dart';
 
 class AuthenticateRepositoryImpl extends AuthenticateRepository {
-  final userRef = UserCollectionReference();
+  final ref = UserCollectionReference();
 
   @override
   Future<FResult<String>> registerEmailPassword(
@@ -18,7 +18,7 @@ class AuthenticateRepositoryImpl extends AuthenticateRepository {
         password: password,
       );
       final uid = userCredential.user!.uid;
-      await userRef.set(uid, MUser(uid: uid, nickname: nickname, email: email));
+      await ref.set(uid, MUser(uid: uid, nickname: nickname, email: email));
       return FResult.success('Successfully Register');
     } on FirebaseAuthException catch (e) {
       return FResult.error(e.code);
