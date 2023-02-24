@@ -109,15 +109,7 @@ class AppPages {
         path: path,
         name: name,
         builder: (context, state) {
-          // final extra = state.extra as Map<String, dynamic>;
-          final extra = <String, dynamic>{
-            'isQNumDescending': false,
-            'filterMark': null,
-            'filterPracticed': null,
-            'idCategory': 'R5',
-            'initIdLesson': '3',
-            'initIndex': 3,
-          };
+          final extra = state.extra as Map<String, dynamic>;
           return LessonScaffold(
             filterMark: extra['filterMark'],
             isQNumDescending: extra['isQNumDescending'],
