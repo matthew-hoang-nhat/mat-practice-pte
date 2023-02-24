@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
+import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/features/lesson/cubit/lesson_state.dart';
+import 'package:mat_practice_pte/src/features/server/widgets/score_bottom_navigation_widget.dart';
 import 'package:mat_practice_pte/src/networks/fetch_resource.dart';
 import 'package:mat_practice_pte/src/networks/firestore/repository/domain_manager.dart';
 import 'package:mat_practice_pte/src/networks/firestore/repository/lesson/lesson_repository.dart';
+import 'package:mat_practice_pte/src/networks/models/do_score/do_score.dart';
 import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
 import 'package:mat_practice_pte/src/utils/wrapper.dart';
 part 'lesson_action.dart';
@@ -27,6 +31,32 @@ class LessonCubit extends Cubit<LessonState> {
 
   final lessonRepo = DomainManager.instance.lessonRepository;
   final scrollController = ScrollController();
+
+  // final markRepo = DomainManager.instance.markRepository;
+  // Future<void> markOnClick(String? value) async {
+  //   final newCurrentLesson =
+  //       state.currentLesson?.copyWith(mark: Wrapper(value));
+  //   var lessons = List<DetailLesson>.from(state.lessons);
+  //   lessons[_indexLesson(newCurrentLesson!.id)] = newCurrentLesson;
+
+  //   emit(state.copyWith(
+  //     lessons: lessons,
+  //     currentLesson: newCurrentLesson,
+  //   ));
+
+  //   final isDoMark = value != null;
+  //   if (isDoMark) {
+  //     markRepo.doMark(
+  //         idCategory: state.idCategory,
+  //         idLesson: state.currentLesson!.id,
+  //         mark: value);
+  //   } else {
+  //     markRepo.unMark(
+  //       idCategory: state.idCategory,
+  //       idLesson: state.currentLesson!.id,
+  //     );
+  //   }
+  // }
 
   void initCubit() async {
     setIsLoading(true);
@@ -58,6 +88,11 @@ class LessonCubit extends Cubit<LessonState> {
   void doneOnCLick() async {
     emit(state.copyWith(isDone: true));
     setIsShowAnswer(true);
+
+    if (state.isDone && state.doScore != null) {
+      await _doScore();
+      clearDoScore();
+    }
   }
 
   void redoOnClick() async {
@@ -69,6 +104,26 @@ class LessonCubit extends Cubit<LessonState> {
       duration: const Duration(seconds: 1),
       curve: Curves.easeIn,
     );
+  }
+
+  final serverRepo = DomainManager.instance.server;
+  Future<void> _doScore() async {
+    if (state.doScore != null) {
+      final scoreResult = await serverRepo.doScore(state.doScore!);
+      fetchResource(scoreResult, onSuccess: () {
+        final score = scoreResult.data!['myScore']!;
+        final totalScore = scoreResult.data!['totalScore']!;
+        FCoordinator.showBottomModalSheet(
+          title: Center(child: Text('Result', style: AppTextStyles.headline6)),
+          widget: ScoreBottomNavigationWidget(
+            myScore: score,
+            total: totalScore,
+            onCancel: FCoordinator.onBack,
+            title: state.currentLesson!.title,
+          ),
+        );
+      });
+    }
   }
 
   Future<void> loadMoreLessons(
@@ -176,5 +231,12 @@ class LessonCubit extends Cubit<LessonState> {
 
   void clearDoScore() {
     emit(state.copyWith(doScore: Wrapper(null)));
+  }
+
+  void setDoScore(DoScore doScore) {
+    emit(state.copyWith(
+        doScore: Wrapper(doScore.copyWith(
+      idCategory: state.idCategory,
+    ))));
   }
 }

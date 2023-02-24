@@ -18,6 +18,8 @@ class DioHttpClient extends DioForNative {
     options.headers[keyAccept] = 'application/json; charset=utf-8';
     options.connectTimeout = const Duration(milliseconds: 2000);
     options.receiveTimeout = const Duration(milliseconds: 2000);
+    options.sendTimeout = const Duration(milliseconds: 2000);
+
     handler.next(options);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/networks/fetch_resource.dart';
 import 'package:mat_practice_pte/src/networks/firestore/repository/domain_manager.dart';
 import 'package:mat_practice_pte/src/networks/models/category/f_category.dart';
@@ -127,7 +128,21 @@ class DrawerCubit extends Cubit<DrawerState> {
     });
   }
 
-  lessonOnClick({required String idLesson, required int index}) {}
+  lessonOnClick({required String idLesson, required int index}) {
+    final mark =
+        state.mark != null ? FilterMarkEnum.tryParse(state.mark!) : null;
+    final practiced = state.practiced != null
+        ? FilterPracticedEnum.tryParse(state.practiced!)
+        : null;
+
+    FCoordinator.pushDetailLesson(
+        initIdLesson: idLesson,
+        idCategory: state.idCategory,
+        isQNumDescending: state.isIdDescending,
+        filterMark: mark,
+        filterPracticed: practiced,
+        initIndex: index);
+  }
 
   int currentPageLesson = -1;
   bool isFetchNextPageLesson = false;

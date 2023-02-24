@@ -204,7 +204,7 @@ class AndroidFApp extends FApp {
           Widget? action,
           double? sizeHeight}) =>
       FBottomModalSheet.showMeModalBottomSheet(context,
-          title: title, widget: widget, action: action);
+          sizeHeight: sizeHeight, title: title, widget: widget, action: action);
 
   @override
   FButton outlineButton(

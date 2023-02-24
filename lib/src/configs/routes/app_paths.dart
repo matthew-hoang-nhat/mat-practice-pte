@@ -7,4 +7,5 @@ class AppPaths {
   static const parentCategory = 'parentCategory';
   static const drawer = 'drawer';
   static const forgotPassword = 'forgot-password';
+  static const singleChoiceAnswerScreen = 'single-choice-answer';
 }

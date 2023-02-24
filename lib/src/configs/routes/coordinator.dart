@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
+import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
+import 'package:mat_practice_pte/src/utils/global_variables.dart';
+import 'package:mat_practice_pte/src/widgets/f_app.dart';
 
 class FCoordinator {
   static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> shellNavigatorKey =
       GlobalKey<NavigatorState>();
   static BuildContext get context => navigatorKey.currentState!.context;
   static String get location => GoRouter.of(context).location;
@@ -87,5 +92,36 @@ class FCoordinator {
 
   static void showMeScreen() {
     goNamed(AppPaths.me);
+  }
+
+  static final fShows = GlobalVariables.getIt<FApp>();
+  static void showBottomModalSheet(
+      {required Widget title, required Widget widget}) {
+    fShows.showBottomModalSheet(
+        sizeHeight: 0.4, context, title: title, widget: widget);
+  }
+
+  static void pushDetailLesson(
+      {required String initIdLesson,
+      required int initIndex,
+      required String idCategory,
+      required FilterMarkEnum? filterMark,
+      required bool? isQNumDescending,
+      required FilterPracticedEnum? filterPracticed}) {
+    final nameRoute = GlobalVariables.nameRouteLessonType[idCategory];
+    if (nameRoute != null) {
+      goNamed(
+        nameRoute,
+        params: {'id': idCategory},
+        extra: {
+          'isQNumDescending': isQNumDescending,
+          'filterMark': filterMark,
+          'filterPracticed': filterPracticed,
+          'idCategory': idCategory,
+          'initIdLesson': initIdLesson,
+          'initIndex': initIndex,
+        },
+      );
+    }
   }
 }
