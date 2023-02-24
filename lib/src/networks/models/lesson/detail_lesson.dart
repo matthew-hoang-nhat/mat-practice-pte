@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 
+import 'package:mat_practice_pte/src/utils/wrapper.dart';
+
 import 'question_group.dart';
 
 enum FilterMarkEnum {
@@ -89,7 +91,7 @@ class DetailLesson {
     String? idCategory,
     String? audioUrl,
     String? timeCreated,
-    String? mark,
+    Wrapper<String>? mark,
     int? countPracticed,
     QuestionGroup? questionGroup,
   }) {
@@ -101,7 +103,7 @@ class DetailLesson {
       idCategory: idCategory ?? this.idCategory,
       audioUrl: audioUrl ?? this.audioUrl,
       timeCreated: timeCreated ?? this.timeCreated,
-      mark: mark ?? this.mark,
+      mark: mark == null ? this.mark : mark.value,
       countPracticed: countPracticed ?? this.countPracticed,
       questionGroup: questionGroup ?? this.questionGroup,
     );

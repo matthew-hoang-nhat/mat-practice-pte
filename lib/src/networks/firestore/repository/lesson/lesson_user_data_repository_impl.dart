@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/networks/f_result.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/lesson/lesson_repository.dart';
 import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
 import 'package:mat_practice_pte/src/networks/models/lesson_user_data/lesson_user_data.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
@@ -18,6 +19,7 @@ class LessonUserDataRepositoryImpl extends LessonUserDataRepository {
       {required String idCategory,
       required FilterMarkEnum? filterMark,
       required FilterPracticedEnum? filterPracticed,
+      required FetchArrowType fetchArrowType,
       required bool isQNumDescending,
       String? lastIdLesson}) async {
     try {
@@ -45,7 +47,6 @@ class LessonUserDataRepositoryImpl extends LessonUserDataRepository {
 
         default:
       }
-
       final docs = [];
       if (lastIdLesson == null) {
         final result = await query
@@ -56,12 +57,21 @@ class LessonUserDataRepositoryImpl extends LessonUserDataRepository {
       } else {
         final lastDocs = await query.where('id', isEqualTo: lastIdLesson).get();
         final lastDoc = lastDocs.docs.first;
-        final result = await query
-            .startAfterDocument(lastDoc)
-            .orderBy('id', descending: isQNumDescending)
-            .limit(5)
-            .get();
-        docs.addAll(result.docs);
+        if (fetchArrowType == FetchArrowType.next) {
+          final result = await query
+              .orderBy('id', descending: isQNumDescending)
+              .startAfterDocument(lastDoc)
+              .limit(5)
+              .get();
+          docs.addAll(result.docs);
+        } else {
+          final result = await query
+              .orderBy('id', descending: isQNumDescending)
+              .endBeforeDocument(lastDoc)
+              .limit(5)
+              .get();
+          docs.addAll(result.docs);
+        }
       }
 
       final List<LessonUserData> userLessons = [];

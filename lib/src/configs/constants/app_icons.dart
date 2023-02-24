@@ -2,6 +2,10 @@ import 'package:community_material_icon/community_material_icon.dart';
 
 class AppIcons {
   static const iconHeadphoneOutline = CommunityMaterialIcons.headphones;
+  static const iconMarkOutline = CommunityMaterialIcons.bookmark_outline;
+  static const iconMark = CommunityMaterialIcons.bookmark;
+  static const iconDownCircleOutline =
+      CommunityMaterialIcons.chevron_down_circle_outline;
   static const iconStarOutline = CommunityMaterialIcons.star_outline;
   static const iconStar = CommunityMaterialIcons.star;
   static const iconRecorderOutline =
@@ -10,6 +14,8 @@ class AppIcons {
   static const iconBookOutline = CommunityMaterialIcons.book_outline;
   static const iconBook = CommunityMaterialIcons.book;
   static const iconUser = CommunityMaterialIcons.account;
+  static const iconPrevious = CommunityMaterialIcons.chevron_left;
+  static const iconNext = CommunityMaterialIcons.chevron_right;
   static const iconUserOutline = CommunityMaterialIcons.account_outline;
   static const iconLanguageOutline = CommunityMaterialIcons.translate;
   static const iconLockOutline = CommunityMaterialIcons.lock_outline;

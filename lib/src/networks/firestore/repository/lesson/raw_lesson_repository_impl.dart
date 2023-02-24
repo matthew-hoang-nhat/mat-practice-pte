@@ -1,5 +1,6 @@
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/networks/f_result.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/lesson/lesson_repository.dart';
 import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import '../../reference/category_collection_reference.dart';
@@ -17,6 +18,7 @@ class RawLessonRepositoryImpl extends RawLessonRepository {
   Future<FResult<List<DetailLesson>>> getRawLessons({
     required String idCategory,
     String? lastIdLesson,
+    required FetchArrowType fetchArrowType,
     required bool isQNumDescending,
   }) async {
     try {
@@ -35,13 +37,23 @@ class RawLessonRepositoryImpl extends RawLessonRepository {
             .where('id', isEqualTo: lastIdLesson)
             .get();
         final lastDoc = lastDocs.docs.first;
-        final result = await lessonsRef(idCategory)
-            .ref
-            .orderBy('id', descending: isQNumDescending)
-            .startAfterDocument(lastDoc)
-            .limit(5)
-            .get();
-        lessons.addAll(result.docs.map((e) => e.data()).toList());
+        if (fetchArrowType == FetchArrowType.next) {
+          final result = await lessonsRef(idCategory)
+              .ref
+              .orderBy('id', descending: isQNumDescending)
+              .startAfterDocument(lastDoc)
+              .limit(5)
+              .get();
+          lessons.addAll(result.docs.map((e) => e.data()).toList());
+        } else {
+          final result = await lessonsRef(idCategory)
+              .ref
+              .orderBy('id', descending: isQNumDescending)
+              .endAtDocument(lastDoc)
+              .limit(5)
+              .get();
+          lessons.addAll(result.docs.map((e) => e.data()).toList());
+        }
       }
       return FResult.success(lessons);
     } catch (ex) {

@@ -23,4 +23,6 @@ class AppTextStyles {
       GoogleFonts.nunito(fontSize: 12, color: AppColors.colorLabel);
   static final caption = GoogleFonts.nunito(fontSize: 13);
   static final phonetic = GoogleFonts.voces(fontSize: 14);
+
+  static final preQuestion = GoogleFonts.nunito(fontSize: 20);
 }

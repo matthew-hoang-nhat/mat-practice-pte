@@ -127,6 +127,8 @@ class DrawerCubit extends Cubit<DrawerState> {
     });
   }
 
+  lessonOnClick({required String idLesson, required int index}) {}
+
   int currentPageLesson = -1;
   bool isFetchNextPageLesson = false;
 
