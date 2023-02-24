@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/networks/models/category/f_category.dart';
 part 'parent_category_state.dart';
@@ -13,7 +12,7 @@ class ParentCategoryCubit extends Cubit<ParentCategoryState> {
   initCubit() async {}
 
   categoryOnClick(context, {required String id}) {
-    FCoordinator.pushNamed(AppPaths.drawer, params: {'id': id});
+    FCoordinator.showDrawerScreen(idCategory: id);
   }
 
   separateCategories(List<FCategory> categories) {

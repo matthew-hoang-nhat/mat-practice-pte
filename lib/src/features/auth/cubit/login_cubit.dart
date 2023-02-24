@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_local_key.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
-import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/networks/fetch_resource.dart';
 import 'package:mat_practice_pte/src/networks/firestore/repository/domain_manager.dart';
@@ -60,7 +59,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   forgotPasswordOnClick(context) {
-    FCoordinator.pushNamed(AppPaths.forgotPassword);
+    FCoordinator.showForgotScreen();
   }
 
   loginWithEmailPasswordOnClick(context) async {
@@ -80,7 +79,7 @@ class LoginCubit extends Cubit<LoginState> {
       result,
       onSuccess: () {
         mat.showToast(maLocate.str(FLocalKey.successfullyLogin));
-        FCoordinator.goNamed(AppPaths.home);
+        FCoordinator.showHomeScreen();
       },
       onError: () {
         notificationError(result.error ?? '');
@@ -108,7 +107,7 @@ class LoginCubit extends Cubit<LoginState> {
     fetchResource(
       result,
       onSuccess: () {
-        FCoordinator.goNamed(AppPaths.home);
+        FCoordinator.showHomeScreen();
       },
       onError: () {},
     );
