@@ -55,26 +55,25 @@ class LessonAppBar extends StatelessWidget implements PreferredSizeWidget {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: DropdownButton<String?>(
-                  value: state.currentLesson?.mark,
-                  items: [
-                    DropdownMenuItem(
-                        value: FilterMarkEnum.red.toString(),
-                        child: const Icon(AppIcons.iconMark,
-                            color: AppColors.red)),
-                    DropdownMenuItem(
-                        value: FilterMarkEnum.grey.toString(),
-                        child: const Icon(AppIcons.iconMark,
-                            color: AppColors.grey)),
-                    const DropdownMenuItem(
-                        value: null,
-                        child: Icon(AppIcons.iconMarkOutline,
-                            color: AppColors.grey)),
-                  ],
-                  icon: const Visibility(
-                      visible: false, child: Icon(Icons.arrow_downward)),
-                  onChanged: (String? value) {}
-                  //  context.read<LessonCubit>().markOnClick,
-                  ),
+                value: state.currentLesson?.mark,
+                items: [
+                  DropdownMenuItem(
+                      value: FilterMarkEnum.red.toString(),
+                      child:
+                          const Icon(AppIcons.iconMark, color: AppColors.red)),
+                  DropdownMenuItem(
+                      value: FilterMarkEnum.grey.toString(),
+                      child:
+                          const Icon(AppIcons.iconMark, color: AppColors.grey)),
+                  const DropdownMenuItem(
+                      value: null,
+                      child: Icon(AppIcons.iconMarkOutline,
+                          color: AppColors.grey)),
+                ],
+                icon: const Visibility(
+                    visible: false, child: Icon(Icons.arrow_downward)),
+                onChanged: context.read<LessonCubit>().markOnClick,
+              ),
             )
           ],
         );

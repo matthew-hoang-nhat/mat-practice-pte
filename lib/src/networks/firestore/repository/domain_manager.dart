@@ -4,6 +4,8 @@ import 'package:mat_practice_pte/src/networks/firestore/repository/lesson/lesson
 import 'package:mat_practice_pte/src/networks/firestore/repository/lesson/lesson_repository_impl.dart';
 import 'package:mat_practice_pte/src/networks/firestore/repository/lesson/lesson_user_data_repository_impl.dart';
 import 'package:mat_practice_pte/src/networks/firestore/repository/lesson/raw_lesson_repository_impl.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/mark_repository.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/mark_repository_impl.dart';
 
 import '../../http/repository/word_repository.dart';
 import '../../http/repository/word_repository_impl.dart';
@@ -25,6 +27,7 @@ class DomainManager {
         rawLessonRepository: RawLessonRepositoryImpl());
     wordRepository = WordRepositoryImpl();
     server = FServerImpl();
+    markRepository = MarkRepositoryImpl();
   }
 
   static DomainManager? _instance;
@@ -36,4 +39,5 @@ class DomainManager {
   late final LessonRepository lessonRepository;
   late final WordRepository wordRepository;
   late final FServer server;
+  late final MarkRepository markRepository;
 }
