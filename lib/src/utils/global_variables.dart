@@ -7,5 +7,6 @@ class GlobalVariables {
   static final auth = FirebaseAuth.instance;
   static final nameRouteLessonType = {
     'R5': AppPaths.singleChoiceAnswerScreen,
+    'R4': AppPaths.mutipleChoiceAnswerScreen,
   };
 }

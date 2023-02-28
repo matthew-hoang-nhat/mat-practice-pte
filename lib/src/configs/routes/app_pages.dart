@@ -9,6 +9,7 @@ import 'package:mat_practice_pte/src/features/home/ui/home_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/me_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/saved_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/scaffold_with_bottom_navigation_bar.dart';
+import 'package:mat_practice_pte/src/features/lesson/multiple_hoice_answer/ui/multiple_choice_answer_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/single_choice_answer/ui/single_choice_answer_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/widgets/lesson_scaffold.dart';
 
@@ -98,6 +99,11 @@ class AppPages {
                   path: 'single-choice-answer',
                   name: AppPaths.singleChoiceAnswerScreen,
                   child: const SingleChoiceAnswerWidget(),
+                ),
+                typeLessonRoute(
+                  path: 'multiple-choice-answer',
+                  name: AppPaths.mutipleChoiceAnswerScreen,
+                  child: const MultipleChoiceAnswerWidget(),
                 ),
               ]),
         ]),

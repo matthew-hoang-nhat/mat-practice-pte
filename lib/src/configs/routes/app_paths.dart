@@ -8,4 +8,5 @@ class AppPaths {
   static const drawer = 'drawer';
   static const forgotPassword = 'forgot-password';
   static const singleChoiceAnswerScreen = 'single-choice-answer';
+  static const mutipleChoiceAnswerScreen = 'multiple-choice-answer';
 }

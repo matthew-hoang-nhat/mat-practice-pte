@@ -21,20 +21,29 @@ class FServerImpl extends FServer {
       final typeLesson =
           GlobalVariables.nameRouteLessonType[doScore.idCategory];
 
+      final lessonSnapshot = await lessonRef(doScore.idCategory!)
+          .ref
+          .where('id', isEqualTo: doScore.idLesson)
+          .get();
+      final lesson = lessonSnapshot.docs.first.data();
+
       switch (typeLesson) {
         case AppPaths.singleChoiceAnswerScreen:
-          final lessonResult = await lessonRef(doScore.idCategory!)
-              .ref
-              .where('id', isEqualTo: doScore.idLesson)
-              .get();
-          final lesson = lessonResult.docs.first.data();
+          final userChoice = doScore.answers.first;
+          final answer = lesson.questionGroup.questions.first.answer.first;
 
-          var score = 0;
-          final answer = lesson.questionGroup.questions.first.answer;
-          final maxScore = lesson.questionGroup.questions.length;
-          if (answer.contains(doScore.answers.first)) {
-            score++;
-          }
+          const maxScore = 1;
+          var score =
+              getScoreSingleAnswer(userChoice: userChoice, answer: answer);
+
+          return FResult.success({'myScore': score, 'totalScore': maxScore});
+
+        case AppPaths.mutipleChoiceAnswerScreen:
+          final answers = lesson.questionGroup.questions.first.answer;
+
+          final maxScore = answers.length;
+          final score = getScoreMultipleAnswer(
+              userChoice: doScore.answers, answers: answers);
 
           return FResult.success({'myScore': score, 'totalScore': maxScore});
         default:
@@ -43,6 +52,37 @@ class FServerImpl extends FServer {
     } catch (ex) {
       return FResult.error(ex.toString());
     }
+  }
+
+  int getScoreMultipleAnswer({
+    required List<String> userChoice,
+    required List<String> answers,
+  }) {
+    var score = 0;
+
+    for (var item in answers) {
+      if (userChoice.contains(item)) {
+        score++;
+      }
+    }
+
+    final numberFalseChoice = userChoice.length - score;
+
+    score = score - numberFalseChoice;
+    return score >= 0 ? score : 0;
+  }
+
+  int getScoreSingleAnswer({
+    required String userChoice,
+    required String answer,
+  }) {
+    var score = 0;
+
+    if (answer == userChoice) {
+      score = 1;
+    }
+
+    return score >= 0 ? score : 0;
   }
 
   @override
