@@ -32,7 +32,7 @@ class FServerImpl extends FServer {
           var score = 0;
           final answer = lesson.questionGroup.questions.first.answer;
           final maxScore = lesson.questionGroup.questions.length;
-          if (answer == doScore.answers.first) {
+          if (answer.contains(doScore.answers.first)) {
             score++;
           }
 

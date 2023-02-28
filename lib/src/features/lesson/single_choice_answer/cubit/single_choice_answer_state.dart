@@ -14,7 +14,7 @@ class SingleChoiceAnswerState extends Equatable {
     required this.isDone,
   });
   final Question? question;
-  final String? answer;
+  final List<String>? answer;
   final List<String>? options;
   final String? myOption;
 
@@ -34,7 +34,7 @@ class SingleChoiceAnswerState extends Equatable {
 
   SingleChoiceAnswerState copyWith({
     Question? question,
-    String? answer,
+    List<String>? answer,
     List<String>? options,
     List<bool>? stateMeCards,
     Wrapper<String>? myOption,
