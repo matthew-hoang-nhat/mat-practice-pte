@@ -9,4 +9,5 @@ class AppPaths {
   static const forgotPassword = 'forgot-password';
   static const singleChoiceAnswerScreen = 'single-choice-answer';
   static const mutipleChoiceAnswerScreen = 'multiple-choice-answer';
+  static const reOrderParagraph = 'reorder-paragraph';
 }

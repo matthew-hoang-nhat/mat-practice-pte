@@ -1,4 +1,5 @@
 import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
+import 'package:mat_practice_pte/src/features/server/calculator_score.dart';
 import 'package:mat_practice_pte/src/networks/firestore/reference/raw_lesson_collection_reference.dart';
 import 'package:mat_practice_pte/src/networks/models/do_score/do_score.dart';
 
@@ -33,8 +34,8 @@ class FServerImpl extends FServer {
           final answer = lesson.questionGroup.questions.first.answer.first;
 
           const maxScore = 1;
-          var score =
-              getScoreSingleAnswer(userChoice: userChoice, answer: answer);
+          var score = CalculatorScore.singleAnswerScore(
+              userChoice: userChoice, answers: answer);
 
           return FResult.success({'myScore': score, 'totalScore': maxScore});
 
@@ -42,7 +43,15 @@ class FServerImpl extends FServer {
           final answers = lesson.questionGroup.questions.first.answer;
 
           final maxScore = answers.length;
-          final score = getScoreMultipleAnswer(
+          final score = CalculatorScore.multipleAnswerScore(
+              userChoice: doScore.answers, answers: answers);
+
+          return FResult.success({'myScore': score, 'totalScore': maxScore});
+        case AppPaths.reOrderParagraph:
+          final answers = lesson.questionGroup.questions.first.answer;
+
+          final maxScore = answers.length;
+          final score = CalculatorScore.reOrderParagraphScore(
               userChoice: doScore.answers, answers: answers);
 
           return FResult.success({'myScore': score, 'totalScore': maxScore});
@@ -52,37 +61,6 @@ class FServerImpl extends FServer {
     } catch (ex) {
       return FResult.error(ex.toString());
     }
-  }
-
-  int getScoreMultipleAnswer({
-    required List<String> userChoice,
-    required List<String> answers,
-  }) {
-    var score = 0;
-
-    for (var item in answers) {
-      if (userChoice.contains(item)) {
-        score++;
-      }
-    }
-
-    final numberFalseChoice = userChoice.length - score;
-
-    score = score - numberFalseChoice;
-    return score >= 0 ? score : 0;
-  }
-
-  int getScoreSingleAnswer({
-    required String userChoice,
-    required String answer,
-  }) {
-    var score = 0;
-
-    if (answer == userChoice) {
-      score = 1;
-    }
-
-    return score >= 0 ? score : 0;
   }
 
   @override

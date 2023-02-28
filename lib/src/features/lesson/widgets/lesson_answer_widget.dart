@@ -56,10 +56,13 @@ class LessonAnswerWidget extends StatelessWidget {
                                         crossAxisAlignment:
                                             WrapCrossAlignment.center,
                                         children: [
-                                          WordInkwell(
-                                            text: e,
-                                          ),
-                                          const Text(', ')
+                                          ...e
+                                              .split(' ')
+                                              .map((e) => WordInkwell(
+                                                    text: e,
+                                                  ))
+                                              .toList(),
+                                          // const Text(', ')
                                         ],
                                       )))
                                   .toList()))
