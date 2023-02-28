@@ -120,7 +120,7 @@ class DetailLesson {
       'timeCreated': timeCreated,
       'mark': mark,
       'countPracticed': countPracticed,
-      'questionGroup': questionGroup.toMap(),
+      'questionGroup': questionGroup.toJson(),
     };
   }
 
@@ -138,7 +138,7 @@ class DetailLesson {
       countPracticed:
           map['countPracticed'] != null ? map['countPracticed'] as int : null,
       questionGroup:
-          QuestionGroup.fromMap(map['questionGroup'] as Map<String, dynamic>),
+          QuestionGroup.fromJson(map['questionGroup'] as Map<String, dynamic>),
     );
   }
 
