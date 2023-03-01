@@ -60,6 +60,7 @@ class AudioCubit extends Cubit<AudioState> {
       isPlay: false,
       speed: normalSpeed,
     ));
+    _audio.setSpeed(normalSpeed);
   }
 
   void _onPause() {
