@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mat_practice_pte/src/features/lesson/cubit/lesson_cubit.dart';
 import 'package:mat_practice_pte/src/features/lesson/cubit/lesson_type_cubit.dart';
@@ -56,7 +57,7 @@ class MultipleChoiceAnswerCubit extends Cubit<MultipleChoiceAnswerState>
     ));
   }
 
-  void cardOnClick(index, context) {
+  void cardOnClick(int index, BuildContext context) {
     final cardContent = state.options!.elementAt(index);
     if (state.myOption.contains(cardContent) == true) {
       final newMyOpinition = List<String>.from(state.myOption);
