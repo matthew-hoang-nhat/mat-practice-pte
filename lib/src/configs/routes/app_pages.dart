@@ -9,6 +9,7 @@ import 'package:mat_practice_pte/src/features/home/ui/home_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/me_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/saved_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/scaffold_with_bottom_navigation_bar.dart';
+import 'package:mat_practice_pte/src/features/lesson/highlight_summary/ui/highlight_summary_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/multiple_hoice_answer/ui/multiple_choice_answer_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/reorder_paragraph/ui/reorder_pagraph_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/single_choice_answer/ui/single_choice_answer_widget.dart';
@@ -110,6 +111,11 @@ class AppPages {
                   path: 'reorder-paragraph',
                   name: AppPaths.reOrderParagraph,
                   child: const ReOrderParagraphWidget(),
+                ),
+                typeLessonRoute(
+                  path: 'highlight-summary',
+                  name: AppPaths.highlightSummary,
+                  child: const HighlighSummaryWidget(),
                 ),
               ]),
         ]),

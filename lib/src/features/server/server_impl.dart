@@ -30,6 +30,7 @@ class FServerImpl extends FServer {
 
       switch (typeLesson) {
         case AppPaths.singleChoiceAnswerScreen:
+        case AppPaths.highlightSummary:
           final userChoice = doScore.answers.first;
           final answer = lesson.questionGroup.questions.first.answer.first;
 
