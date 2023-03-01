@@ -12,6 +12,7 @@ class PreQuestionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MultipleChoiceAnswerCubit, MultipleChoiceAnswerState>(
+      buildWhen: (previous, current) => previous.question != current.question,
       builder: (context, state) {
         if (state.question == null) return Container();
         final questionContent = state.question!.content;

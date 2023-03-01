@@ -4,7 +4,8 @@ class CalculatorScore {
     final List<int> orderAnswers = List.generate(userChoice.length,
         (index) => answers.indexOf(userChoice.elementAt(index)));
 
-    var lengthMax = 0;
+    final maxReOrderParagraphScore = answers.length;
+    var lengthMaxContinue = 0;
     for (int index = 0; index < orderAnswers.length - 1; index++) {
       var maxSubItem = orderAnswers[index];
       var lengthMaxSub = 1;
@@ -16,9 +17,11 @@ class CalculatorScore {
           maxSubItem = orderAnswers[jindex];
         }
       }
-      if (lengthMaxSub > lengthMax) lengthMax = lengthMaxSub;
+      if (lengthMaxSub > lengthMaxContinue) lengthMaxContinue = lengthMaxSub;
     }
-    return lengthMax > 1 ? lengthMax : 0;
+    final score = lengthMaxContinue > 1 ? lengthMaxContinue : 0;
+
+    return score.clamp(0, maxReOrderParagraphScore);
   }
 
   static int multipleAnswerScore({
@@ -26,6 +29,7 @@ class CalculatorScore {
     required List<String> answers,
   }) {
     var score = 0;
+    final maxMultipleAnswerScore = answers.length;
 
     for (var item in answers) {
       if (userChoice.contains(item)) {
@@ -34,9 +38,9 @@ class CalculatorScore {
     }
 
     final numberFalseChoice = userChoice.length - score;
-
     score = score - numberFalseChoice;
-    return score >= 0 ? score : 0;
+
+    return score.clamp(0, maxMultipleAnswerScore);
   }
 
   static int singleAnswerScore({
@@ -44,11 +48,11 @@ class CalculatorScore {
     required String answers,
   }) {
     var score = 0;
-
+    const maxSingleAnswerScore = 1;
     if (answers == userChoice) {
-      score = 1;
+      score = maxSingleAnswerScore;
     }
 
-    return score >= 0 ? score : 0;
+    return score.clamp(0, maxSingleAnswerScore);
   }
 }
