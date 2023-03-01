@@ -11,6 +11,11 @@ class AppIcons {
   static const iconRecorderOutline =
       CommunityMaterialIcons.record_circle_outline;
   static const iconVolumn = CommunityMaterialIcons.volume_high;
+  static const iconPauseCircleOutline =
+      CommunityMaterialIcons.pause_circle_outline;
+  static const iconPlay = CommunityMaterialIcons.play;
+  static const iconPlayCircleOutline =
+      CommunityMaterialIcons.play_circle_outline;
   static const iconBookOutline = CommunityMaterialIcons.book_outline;
   static const iconBook = CommunityMaterialIcons.book;
   static const iconUser = CommunityMaterialIcons.account;
