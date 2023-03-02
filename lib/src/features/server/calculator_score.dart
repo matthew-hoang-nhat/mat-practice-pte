@@ -43,6 +43,23 @@ class CalculatorScore {
     return score.clamp(0, maxMultipleAnswerScore);
   }
 
+  static int highlightIncorrectScore({
+    required List<String> userChoice,
+    required List<String> options,
+  }) {
+    var score = 0;
+    final maxMultipleAnswerScore = options.length;
+
+    for (int index = 0; index < options.length; index++) {
+      if (options.elementAt(index) == userChoice.elementAt(index)) score++;
+    }
+
+    final numberFalseChoice = userChoice.length - options.length;
+    score = score - numberFalseChoice;
+
+    return score.clamp(0, maxMultipleAnswerScore);
+  }
+
   static int singleAnswerScore({
     required String userChoice,
     required String answers,

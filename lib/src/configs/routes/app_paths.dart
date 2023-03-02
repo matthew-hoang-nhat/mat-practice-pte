@@ -11,4 +11,5 @@ class AppPaths {
   static const mutipleChoiceAnswerScreen = 'multiple-choice-answer';
   static const reOrderParagraph = 'reorder-paragraph';
   static const highlightSummary = 'highlight-summary';
+  static const highlightIncorrectWord = 'highlight-incorrect-word';
 }

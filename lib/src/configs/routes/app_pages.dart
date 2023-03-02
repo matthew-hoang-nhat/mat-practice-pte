@@ -9,10 +9,11 @@ import 'package:mat_practice_pte/src/features/home/ui/home_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/me_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/saved_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/scaffold_with_bottom_navigation_bar.dart';
-import 'package:mat_practice_pte/src/features/lesson/highlight_summary/ui/highlight_summary_widget.dart';
-import 'package:mat_practice_pte/src/features/lesson/multiple_hoice_answer/ui/multiple_choice_answer_widget.dart';
-import 'package:mat_practice_pte/src/features/lesson/reorder_paragraph/ui/reorder_pagraph_widget.dart';
-import 'package:mat_practice_pte/src/features/lesson/single_choice_answer/ui/single_choice_answer_widget.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/listening/highlight_incorrect_word/ui/listening_highlight_incorrect_word_widget.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/listening/highlight_summary/ui/highlight_summary_widget.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/reading/multiple_choice_answer/ui/reading_multiple_choice_answer_widget.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/reading/reorder_paragraph/ui/reaading_reorder_paragraph_widget.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/reading/single_choice_answer/ui/reading_single_choice_anwer_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/widgets/lesson_scaffold.dart';
 
 import '../../features/category/ui/drawer_screen.dart';
@@ -100,22 +101,27 @@ class AppPages {
                 typeLessonRoute(
                   path: 'single-choice-answer',
                   name: AppPaths.singleChoiceAnswerScreen,
-                  child: const SingleChoiceAnswerWidget(),
+                  child: const ReadingSingleChoiceAnswerWidget(),
                 ),
                 typeLessonRoute(
                   path: 'multiple-choice-answer',
                   name: AppPaths.mutipleChoiceAnswerScreen,
-                  child: const MultipleChoiceAnswerWidget(),
+                  child: const ReadingMultipleChoiceAnswerWidget(),
                 ),
                 typeLessonRoute(
                   path: 'reorder-paragraph',
                   name: AppPaths.reOrderParagraph,
-                  child: const ReOrderParagraphWidget(),
+                  child: const ReadingReorderParagraphWidget(),
                 ),
                 typeLessonRoute(
                   path: 'highlight-summary',
                   name: AppPaths.highlightSummary,
                   child: const HighlighSummaryWidget(),
+                ),
+                typeLessonRoute(
+                  path: 'highlight-incorrect-word',
+                  name: AppPaths.highlightIncorrectWord,
+                  child: const ListeningHighlightIncorrectWordWidget(),
                 ),
               ]),
         ]),
