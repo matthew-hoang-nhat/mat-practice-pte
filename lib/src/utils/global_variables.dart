@@ -11,5 +11,6 @@ class GlobalVariables {
     'R3': AppPaths.reOrderParagraph,
     'L3': AppPaths.highlightSummary,
     'L6': AppPaths.highlightIncorrectWord,
+    'R1': AppPaths.fillInBlanks,
   };
 }

@@ -49,23 +49,17 @@ class LessonAnswerWidget extends StatelessWidget {
                       ),
                       RichText(
                           text: TextSpan(
-                              children: state.currentLesson?.questionGroup
-                                  .questions.first.answer
-                                  .map((e) => WidgetSpan(
-                                          child: Wrap(
-                                        crossAxisAlignment:
-                                            WrapCrossAlignment.center,
-                                        children: [
-                                          ...e
-                                              .split(' ')
-                                              .map((e) => WordInkwell(
-                                                    text: e,
-                                                  ))
-                                              .toList(),
-                                          // const Text(', ')
-                                        ],
-                                      )))
-                                  .toList()))
+                              children:
+                                  state.currentLesson?.questionGroup.questions
+                                      .map((e) => e.answer
+                                          .map((e) => WidgetSpan(
+                                                child: WordInkwell(
+                                                  text: e,
+                                                ),
+                                              ))
+                                          .toList())
+                                      .expand((element) => element)
+                                      .toList()))
                     ],
                   )),
           ]),

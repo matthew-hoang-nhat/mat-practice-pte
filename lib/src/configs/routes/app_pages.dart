@@ -11,6 +11,7 @@ import 'package:mat_practice_pte/src/features/home/ui/saved_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/scaffold_with_bottom_navigation_bar.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/listening/highlight_incorrect_word/ui/listening_highlight_incorrect_word_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/listening/highlight_summary/ui/highlight_summary_widget.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/reading/fill_in_blanks/ui/reading_fill_in_blanks_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/reading/multiple_choice_answer/ui/reading_multiple_choice_answer_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/reading/reorder_paragraph/ui/reaading_reorder_paragraph_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/reading/single_choice_answer/ui/reading_single_choice_anwer_widget.dart';
@@ -122,6 +123,11 @@ class AppPages {
                   path: 'highlight-incorrect-word',
                   name: AppPaths.highlightIncorrectWord,
                   child: const ListeningHighlightIncorrectWordWidget(),
+                ),
+                typeLessonRoute(
+                  path: 'fill-in-blanks',
+                  name: AppPaths.fillInBlanks,
+                  child: const ReadingFillInBanksWidget(),
                 ),
               ]),
         ]),
