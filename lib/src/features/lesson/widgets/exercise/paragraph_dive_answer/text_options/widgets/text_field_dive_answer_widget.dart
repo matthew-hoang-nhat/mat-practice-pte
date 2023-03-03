@@ -32,7 +32,9 @@ class TextFieldDiveAnswerWidget extends StatelessWidget {
               contentPadding: EdgeInsets.symmetric(vertical: 0),
               isDense: true,
             ),
-            style: AppTextStyles.body1.copyWith(fontSize: 18),
+            textAlign: TextAlign.center,
+            style: AppTextStyles.body1
+                .copyWith(fontSize: 18, color: isDone ? foregroundColor : null),
             onChanged: onChanged,
             enabled: isDone == false,
           ),
