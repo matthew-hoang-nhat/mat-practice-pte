@@ -13,4 +13,5 @@ class AppPaths {
   static const highlightSummary = 'highlight-summary';
   static const highlightIncorrectWord = 'highlight-incorrect-word';
   static const fillInBlanks = 'fill-in-blanks';
+  static const fillInBlanksDragAndDrog = 'fill-in-blanks-drag-and-drog';
 }

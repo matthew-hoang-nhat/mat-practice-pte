@@ -66,6 +66,7 @@ class FServerImpl extends FServer {
 
           return FResult.success({'myScore': score, 'totalScore': maxScore});
         case AppPaths.fillInBlanks:
+        case AppPaths.fillInBlanksDragAndDrog:
           return FResult.success(manyQuestionsScore(lesson, doScore));
         default:
           return FResult.error('Not found category to do score');

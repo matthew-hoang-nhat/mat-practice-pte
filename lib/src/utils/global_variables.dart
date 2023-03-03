@@ -12,5 +12,6 @@ class GlobalVariables {
     'L3': AppPaths.highlightSummary,
     'L6': AppPaths.highlightIncorrectWord,
     'R1': AppPaths.fillInBlanks,
+    'R4': AppPaths.fillInBlanksDragAndDrog,
   };
 }
