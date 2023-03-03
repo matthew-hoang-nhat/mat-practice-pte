@@ -12,4 +12,5 @@ class AppPaths {
   static const reOrderParagraph = 'reorder-paragraph';
   static const highlightSummary = 'highlight-summary';
   static const highlightIncorrectWord = 'highlight-incorrect-word';
+  static const fillInBlanks = 'fill-in-blanks';
 }

@@ -21,6 +21,9 @@ class AppIcons {
   static const iconUser = CommunityMaterialIcons.account;
   static const iconPrevious = CommunityMaterialIcons.chevron_left;
   static const iconNext = CommunityMaterialIcons.chevron_right;
+  static const iconDown = CommunityMaterialIcons.chevron_down;
+  static const iconCheck = CommunityMaterialIcons.check;
+  static const iconUncheck = CommunityMaterialIcons.close;
   static const iconUserOutline = CommunityMaterialIcons.account_outline;
   static const iconLanguageOutline = CommunityMaterialIcons.translate;
   static const iconLockOutline = CommunityMaterialIcons.lock_outline;

@@ -25,4 +25,6 @@ class AppTextStyles {
   static final phonetic = GoogleFonts.voces(fontSize: 14);
 
   static final preQuestion = GoogleFonts.nunito(fontSize: 20);
+  static final titleDialog = AppTextStyles.headline5;
+  static final mediumTitleDialog = GoogleFonts.nunito(fontSize: 20);
 }

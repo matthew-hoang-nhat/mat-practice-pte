@@ -4,6 +4,7 @@ import 'package:mat_practice_pte/src/networks/firestore/reference/raw_lesson_col
 import 'package:mat_practice_pte/src/networks/models/do_score/do_score.dart';
 
 import 'package:mat_practice_pte/src/networks/f_result.dart';
+import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 
@@ -64,12 +65,26 @@ class FServerImpl extends FServer {
               userChoice: doScore.answers, answers: answers);
 
           return FResult.success({'myScore': score, 'totalScore': maxScore});
+        case AppPaths.fillInBlanks:
+          return FResult.success(manyQuestionsScore(lesson, doScore));
         default:
           return FResult.error('Not found category to do score');
       }
     } catch (ex) {
       return FResult.error(ex.toString());
     }
+  }
+
+  Map<String, int> manyQuestionsScore(DetailLesson lesson, DoScore doScore) {
+    final answers = lesson.questionGroup.questions
+        .map((e) => e.answer)
+        .expand((element) => element)
+        .toList();
+
+    final maxScore = answers.length;
+    final score = CalculatorScore.manyQuestionsScore(
+        userChoice: doScore.answers, answers: answers);
+    return {'myScore': score, 'totalScore': maxScore};
   }
 
   @override

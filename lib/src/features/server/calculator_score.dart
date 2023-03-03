@@ -1,3 +1,5 @@
+import 'package:mat_practice_pte/src/configs/constants/app_define_constants.dart';
+
 class CalculatorScore {
   static int reOrderParagraphScore(
       {required List<String> userChoice, required List<String> answers}) {
@@ -71,5 +73,33 @@ class CalculatorScore {
     }
 
     return score.clamp(0, maxSingleAnswerScore);
+  }
+
+  static int manyQuestionsScore({
+    required List<String> userChoice,
+    required List<String> answers,
+  }) {
+    var score = 0;
+    final maxMultipleAnswerScore = answers.length;
+
+    for (int index = 0; index < answers.length; index++) {
+      final isTrueChoice = answers.elementAt(index).toLowerCase() ==
+          userChoice.elementAt(index).toLowerCase();
+
+      final isEmptyChoice =
+          userChoice.elementAt(index) == AppDefineConstants.empty;
+
+      switch (isTrueChoice) {
+        case true:
+          score++;
+          break;
+        case false:
+          if (isTrueChoice == false && isEmptyChoice == false) {
+            score--;
+          }
+      }
+    }
+
+    return score.clamp(0, maxMultipleAnswerScore);
   }
 }
