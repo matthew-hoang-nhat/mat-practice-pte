@@ -10,5 +10,6 @@ class GlobalVariables {
     'R2': AppPaths.mutipleChoiceAnswerScreen,
     'R3': AppPaths.reOrderParagraph,
     'L3': AppPaths.highlightSummary,
+    'L6': AppPaths.highlightIncorrectWord,
   };
 }

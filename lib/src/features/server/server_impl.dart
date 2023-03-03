@@ -48,6 +48,14 @@ class FServerImpl extends FServer {
               userChoice: doScore.answers, answers: answers);
 
           return FResult.success({'myScore': score, 'totalScore': maxScore});
+        case AppPaths.highlightIncorrectWord:
+          final options = lesson.questionGroup.questions.first.options;
+
+          final maxScore = options.length;
+          final score = CalculatorScore.highlightIncorrectScore(
+              userChoice: doScore.answers, options: options);
+
+          return FResult.success({'myScore': score, 'totalScore': maxScore});
         case AppPaths.reOrderParagraph:
           final answers = lesson.questionGroup.questions.first.answer;
 
