@@ -9,6 +9,7 @@ class GlobalVariables {
     'R5': AppPaths.singleChoiceAnswerScreen,
     'R2': AppPaths.mutipleChoiceAnswerScreen,
     'R3': AppPaths.reOrderParagraph,
+    'L2': AppPaths.fillInBlanksTextFields,
     'L3': AppPaths.highlightSummary,
     'L6': AppPaths.highlightIncorrectWord,
     'R1': AppPaths.fillInBlanks,

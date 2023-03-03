@@ -9,6 +9,7 @@ import 'package:mat_practice_pte/src/features/home/ui/home_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/me_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/saved_screen.dart';
 import 'package:mat_practice_pte/src/features/home/ui/scaffold_with_bottom_navigation_bar.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/listening/fill_in_blanks_text_fields/ui/listening_fill_in_blanks_text_fields_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/listening/highlight_incorrect_word/ui/listening_highlight_incorrect_word_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/listening/highlight_summary/ui/highlight_summary_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/reading/fill_in_blanks/ui/reading_fill_in_blanks_widget.dart';
@@ -134,6 +135,11 @@ class AppPages {
                   path: 'fill-in-blanks-drag-and-drogs',
                   name: AppPaths.fillInBlanksDragAndDrog,
                   child: const ReadingFillInBanksDragAndDrogWidget(),
+                ),
+                typeLessonRoute(
+                  path: 'fill-in-blanks-drag-and-drogs-text-fields',
+                  name: AppPaths.fillInBlanksTextFields,
+                  child: const ListeningFillInBanksDragAndDrogWidget(),
                 ),
               ]),
         ]),
