@@ -15,4 +15,9 @@ class AppPaths {
   static const fillInBlanks = 'fill-in-blanks';
   static const fillInBlanksDragAndDrog = 'fill-in-blanks-drag-and-drog';
   static const fillInBlanksTextFields = 'fill-in-blanks-text-fields';
+
+  static const listeningMultipleChoiceAnswer =
+      'listening-multiple-choice-answer';
+  static const listeningSingleChoiceAnswer = 'listening-single-choice-answer';
+  static const selectMissingWord = 'select-missing-word';
 }

@@ -31,7 +31,9 @@ class FServerImpl extends FServer {
 
       switch (typeLesson) {
         case AppPaths.singleChoiceAnswerScreen:
+        case AppPaths.listeningSingleChoiceAnswer:
         case AppPaths.highlightSummary:
+        case AppPaths.selectMissingWord:
           final userChoice = doScore.answers.first;
           final answer = lesson.questionGroup.questions.first.answer.first;
 
@@ -42,6 +44,7 @@ class FServerImpl extends FServer {
           return FResult.success({'myScore': score, 'totalScore': maxScore});
 
         case AppPaths.mutipleChoiceAnswerScreen:
+        case AppPaths.listeningMultipleChoiceAnswer:
           final answers = lesson.questionGroup.questions.first.answer;
 
           final maxScore = answers.length;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mat_practice_pte/src/features/lesson/widgets/exercise/type_component_exercices.dart';
 import '../../../../widgets/audio/ui/audio_in_lesson_widget.dart';
-import '../../../../widgets/exercise/multiple_choice_answer/ui/multiple_choice_answer_widget.dart';
 
 class ListeningMultipleChoiceAnswerWidget extends StatelessWidget {
   const ListeningMultipleChoiceAnswerWidget({
@@ -12,7 +12,7 @@ class ListeningMultipleChoiceAnswerWidget extends StatelessWidget {
     return Column(
       children: const [
         AudioInLessonWidget(),
-        MultipleChoiceAnswerWidget(),
+        TypeComponentExercises.multipleChoiceAnswer,
       ],
     );
   }
