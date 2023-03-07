@@ -12,6 +12,9 @@ import 'package:mat_practice_pte/src/features/home/ui/scaffold_with_bottom_navig
 import 'package:mat_practice_pte/src/features/lesson/type/listening/fill_in_blanks_text_fields/ui/listening_fill_in_blanks_text_fields_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/listening/highlight_incorrect_word/ui/listening_highlight_incorrect_word_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/listening/highlight_summary/ui/highlight_summary_widget.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/listening/multiple_choice_answer/ui/listening_multiple_choice_anwer.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/listening/select_missing_word/ui/select_missing_word_widget.dart';
+import 'package:mat_practice_pte/src/features/lesson/type/listening/single_choice_answer/ui/single_choice_answer.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/reading/fill_in_blanks/ui/reading_fill_in_blanks_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/reading/fill_in_blanks_drag_and_drog/ui/reading_fill_in_blanks_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/reading/multiple_choice_answer/ui/reading_multiple_choice_answer_widget.dart';
@@ -141,6 +144,21 @@ class AppPages {
                   name: AppPaths.fillInBlanksTextFields,
                   child: const ListeningFillInBanksDragAndDrogWidget(),
                 ),
+                typeLessonRoute(
+                  path: 'select-missing-word',
+                  name: AppPaths.selectMissingWord,
+                  child: const SelectMissingWordWidget(),
+                ),
+                typeLessonRoute(
+                  path: 'listening-multiple-choice-answer',
+                  name: AppPaths.listeningMultipleChoiceAnswer,
+                  child: const ListeningMultipleChoiceAnswerWidget(),
+                ),
+                typeLessonRoute(
+                  path: 'listening-single-choice-answer',
+                  name: AppPaths.listeningSingleChoiceAnswer,
+                  child: const ListeningSingleChoiceAnswerWidget(),
+                )
               ]),
         ]),
   ];
