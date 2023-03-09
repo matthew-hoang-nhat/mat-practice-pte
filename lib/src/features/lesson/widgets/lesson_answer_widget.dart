@@ -18,9 +18,8 @@ class LessonAnswerWidget extends StatelessWidget {
       builder: (context, state) {
         if (state.currentLesson == null) return Container();
         return Container(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          decoration: const BoxDecoration(
             color: AppColors.white,
           ),
           child:
@@ -36,7 +35,7 @@ class LessonAnswerWidget extends StatelessWidget {
             if (state.isShowAnswer)
               Container(
                   width: double.infinity,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
                   padding: const EdgeInsets.all(10),
                   color: AppColors.whiteGrey,
                   child: Column(

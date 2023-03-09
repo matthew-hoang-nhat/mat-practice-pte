@@ -22,44 +22,47 @@ class TextFieldDiveAnswerWidget extends StatelessWidget {
     final foregroundColor =
         AppStatusColors.toColor(isAnswer: isAnswer, isDone: isDone);
 
-    return Wrap(
-      children: [
-        SizedBox(
-          width: 100,
-          child: TextField(
-            controller: textEditingController,
-            decoration: const InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 0),
-              isDense: true,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: Wrap(
+        children: [
+          SizedBox(
+            width: 100,
+            child: TextField(
+              controller: textEditingController,
+              decoration: const InputDecoration(
+                contentPadding: EdgeInsets.symmetric(vertical: 0),
+                isDense: true,
+              ),
+              textAlign: TextAlign.center,
+              style: AppTextStyles.body1.copyWith(
+                  fontSize: 18, color: isDone ? foregroundColor : null),
+              onChanged: onChanged,
+              enabled: isDone == false,
             ),
-            textAlign: TextAlign.center,
-            style: AppTextStyles.body1
-                .copyWith(fontSize: 18, color: isDone ? foregroundColor : null),
-            onChanged: onChanged,
-            enabled: isDone == false,
           ),
-        ),
-        // DropdownButton(
-        //   isDense: true,
-        //   value: value,
-        //   enableFeedback: isDone == false,
-        //   items: items
-        //       .map((e) => DropdownMenuItem(
-        //             value: e,
-        //             child: Text(e,
-        //                 style: AppTextStyles.body1
-        //                     .copyWith(color: foregroundColor)),
-        //           ))
-        //       .toList(),
-        //   onChanged: isDone ? null : onChanged,
-        // ),
+          // DropdownButton(
+          //   isDense: true,
+          //   value: value,
+          //   enableFeedback: isDone == false,
+          //   items: items
+          //       .map((e) => DropdownMenuItem(
+          //             value: e,
+          //             child: Text(e,
+          //                 style: AppTextStyles.body1
+          //                     .copyWith(color: foregroundColor)),
+          //           ))
+          //       .toList(),
+          //   onChanged: isDone ? null : onChanged,
+          // ),
 
-        if (isDone)
-          Icon(
-            isAnswer ? AppIcons.iconCheck : AppIcons.iconUncheck,
-            color: foregroundColor,
-          ),
-      ],
+          if (isDone)
+            Icon(
+              isAnswer ? AppIcons.iconCheck : AppIcons.iconUncheck,
+              color: foregroundColor,
+            ),
+        ],
+      ),
     );
   }
 }

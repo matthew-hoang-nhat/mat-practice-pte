@@ -12,7 +12,7 @@ class AnswerIncorrectWordWidget extends StatelessWidget {
     return InkWell(
       onTap: () => FCoordinator.showDefinition(answer),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 10),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(100)),
         child: Text(
           '(Correct: $answer)',

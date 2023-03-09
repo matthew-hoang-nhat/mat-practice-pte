@@ -23,28 +23,34 @@ class DropDownDiveAnswerWidget extends StatelessWidget {
     final foregroundColor =
         AppStatusColors.toColor(isAnswer: isAnswer, isDone: isDone);
 
-    return Wrap(
-      children: [
-        DropdownButton(
-          isDense: true,
-          value: value,
-          enableFeedback: isDone == false,
-          items: items
-              .map((e) => DropdownMenuItem(
-                    value: e,
-                    child: Text(e,
-                        style: AppTextStyles.body1
-                            .copyWith(color: foregroundColor)),
-                  ))
-              .toList(),
-          onChanged: isDone ? null : onChanged,
-        ),
-        if (isDone)
-          Icon(
-            isAnswer ? AppIcons.iconCheck : AppIcons.iconUncheck,
-            color: foregroundColor,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 13),
+      child: Wrap(
+        runAlignment: WrapAlignment.center,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          DropdownButton(
+            alignment: AlignmentDirectional.center,
+            isDense: true,
+            value: value,
+            enableFeedback: isDone == false,
+            items: items
+                .map((e) => DropdownMenuItem(
+                      value: e,
+                      child: Text(e,
+                          style: AppTextStyles.wordInkwell
+                              .copyWith(color: foregroundColor)),
+                    ))
+                .toList(),
+            onChanged: isDone ? null : onChanged,
           ),
-      ],
+          if (isDone)
+            Icon(
+              isAnswer ? AppIcons.iconCheck : AppIcons.iconUncheck,
+              color: foregroundColor,
+            ),
+        ],
+      ),
     );
   }
 }

@@ -34,21 +34,16 @@ class ParagraphDiveAnswerDropDownWidget extends StatelessWidget {
               final answers = state.answer!;
               return TextSpan(children: [
                 WidgetSpan(
-                  child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 3, vertical: 5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100)),
-                      child: DropDownDiveAnswerWidget(
-                        items: options.elementAt(index),
-                        value: state.myOption.elementAt(index),
-                        onChanged: (value) => context
-                            .read<ParagraphDiveAnswerManyOptionsCubit>()
-                            .cardOnClick(context, index, value: value),
-                        isDone: state.isDone,
-                        isAnswer: myOption.elementAt(index) ==
-                            answers.elementAt(index),
-                      )),
+                  child: DropDownDiveAnswerWidget(
+                    items: options.elementAt(index),
+                    value: state.myOption.elementAt(index),
+                    onChanged: (value) => context
+                        .read<ParagraphDiveAnswerManyOptionsCubit>()
+                        .cardOnClick(context, index, value: value),
+                    isDone: state.isDone,
+                    isAnswer:
+                        myOption.elementAt(index) == answers.elementAt(index),
+                  ),
                 ),
                 if (state.isDone)
                   WidgetSpan(

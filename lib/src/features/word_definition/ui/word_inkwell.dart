@@ -11,20 +11,23 @@ class WordInkwell extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      hoverColor: AppColors.colorPrimary,
-      splashColor: AppColors.colorPrimary,
-      focusColor: AppColors.colorPrimary,
-      onTap: () => context
-          .read<ShowBottomDefinitionCubit>()
-          .showDefinition(context, text: text),
-      borderRadius: BorderRadius.circular(5),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(100)),
-        child: Text(
-          text,
-          style: textStyle ?? AppTextStyles.body1.copyWith(fontSize: 18),
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: InkWell(
+        hoverColor: AppColors.colorPrimary,
+        splashColor: AppColors.colorPrimary,
+        focusColor: AppColors.colorPrimary,
+        onTap: () => context
+            .read<ShowBottomDefinitionCubit>()
+            .showDefinition(context, text: text),
+        borderRadius: BorderRadius.circular(5),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(100)),
+          child: Text(
+            text,
+            style: textStyle ?? AppTextStyles.wordInkwell,
+          ),
         ),
       ),
     );
