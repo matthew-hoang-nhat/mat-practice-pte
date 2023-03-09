@@ -14,6 +14,8 @@ import 'authenticate_repository_impl.dart';
 import 'category_repository.dart';
 import 'category_repository_impl.dart';
 
+import 'lesson_history_repository.dart';
+import 'lesson_history_repository_impl.dart';
 import 'user_repository.dart';
 import 'user_repository_impl.dart';
 
@@ -28,6 +30,7 @@ class DomainManager {
     wordRepository = WordRepositoryImpl();
     server = FServerImpl();
     markRepository = MarkRepositoryImpl();
+    lessonHistoryRepository = LessonHistoryRepositoryImpl();
   }
 
   static DomainManager? _instance;
@@ -40,4 +43,5 @@ class DomainManager {
   late final WordRepository wordRepository;
   late final FServer server;
   late final MarkRepository markRepository;
+  late final LessonHistoryRepository lessonHistoryRepository;
 }

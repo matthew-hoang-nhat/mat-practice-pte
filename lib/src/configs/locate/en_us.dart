@@ -95,6 +95,10 @@ final _enUS = {
   FLocalKey.iWannaSay: 'I wanna say',
   FLocalKey.score: 'Score',
   FLocalKey.hintComment: 'Enter your comments here ...',
+  FLocalKey.removeLessonHistoryLabel:
+      'Do you want to remove this history lesson?',
+  FLocalKey.delete: 'Delete',
+  FLocalKey.cancel: 'Cancel',
 
   // Noti
   FLocalKey.titleInfoNoti: 'Information',

@@ -2,6 +2,7 @@ import 'package:community_material_icon/community_material_icon.dart';
 
 class AppIcons {
   static const iconHeadphoneOutline = CommunityMaterialIcons.headphones;
+  static const iconDelete = CommunityMaterialIcons.delete;
   static const iconMarkOutline = CommunityMaterialIcons.bookmark_outline;
   static const iconMark = CommunityMaterialIcons.bookmark;
   static const iconDownCircleOutline =

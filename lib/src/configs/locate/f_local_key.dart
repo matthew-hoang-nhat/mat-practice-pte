@@ -95,7 +95,10 @@ class FLocalKey {
   static const me = 'me';
   static const iWannaSay = 'iWannaSay';
   static const score = 'score';
+  static const delete = 'delete';
+  static const cancel = 'cancel';
   static const hintComment = 'hintComment';
+  static const removeLessonHistoryLabel = 'removeLessonHistoryLabel';
 
   // Noti
   static const titleInfoNoti = 'titleInfoNoti';
