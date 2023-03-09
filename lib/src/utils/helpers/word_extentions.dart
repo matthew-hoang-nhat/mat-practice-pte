@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mat_practice_pte/src/configs/constants/app_define_constants.dart';
 import 'package:mat_practice_pte/src/features/word_definition/ui/word_inkwell.dart';
 
 import 'ultilities.dart';
@@ -62,5 +63,12 @@ class WordExtension {
         .toList();
 
     return RichText(text: TextSpan(children: words));
+  }
+
+  static RichText answersToTextSpan(List<String> answers) {
+    String paragraph = answers.join(' - ');
+    paragraph = paragraph.replaceAll(AppDefineConstants.empty, '   ');
+
+    return _paragraphToTextSpan(paragraph);
   }
 }

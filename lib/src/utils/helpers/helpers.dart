@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mat_practice_pte/src/utils/helpers/ultilities.dart';
 
 class Helpers {
   /// String is in the format "aabbcc" or "ffaabbcc" with an optional leading "#".
@@ -16,5 +17,14 @@ class Helpers {
     final seconds = twoDigits(duration.inSeconds.remainder(60));
 
     return [if (duration.inHours > 0) hours, minutes, seconds].join(':');
+  }
+
+  static String formatDateTime(DateTime dateTime) {
+    return Ultilities.formatDate.format(dateTime);
+  }
+
+  static String parseTimeStampToStr(int timeStamp) {
+    var dateTime = DateTime.fromMicrosecondsSinceEpoch(timeStamp);
+    return Ultilities.formatDate.format(dateTime);
   }
 }

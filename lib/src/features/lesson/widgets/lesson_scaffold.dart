@@ -7,11 +7,16 @@ import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
 import 'package:mat_practice_pte/src/features/lesson/cubit/lesson_cubit.dart';
 import 'package:mat_practice_pte/src/features/lesson/cubit/lesson_state.dart';
+import 'package:mat_practice_pte/src/features/lesson/widgets/discuss/cubit/history_cubit.dart';
 import 'package:mat_practice_pte/src/features/lesson/widgets/done_button_widget.dart';
 import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
-import 'package:mat_practice_pte/src/widgets/dimentions/f_sizeboxs.dart';
+import 'package:mat_practice_pte/src/widgets/footer_load_more_widget.dart';
 import 'package:mat_practice_pte/src/widgets/loading_widget.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../widgets/dimentions/f_sizeboxs.dart';
+import 'discuss/cubit/discuss_cubit.dart';
+import 'discuss/ui/discuss_component_widget.dart';
 import 'lesson_answer_widget.dart';
 import 'lesson_app_bar.dart';
 import 'lesson_bottom_navigation_bar.dart';
@@ -36,35 +41,71 @@ class LessonScaffold extends StatelessWidget {
   final String idCategory;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LessonCubit(
-          idCategory: idCategory,
-          filterMark: filterMark,
-          initIdLesson: initIdLesson,
-          initIndex: initIndex,
-          isQNumDescending: isQNumDescending,
-          filterPracticed: filterPracticed)
-        ..initCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LessonCubit(
+              idCategory: idCategory,
+              filterMark: filterMark,
+              initIdLesson: initIdLesson,
+              initIndex: initIndex,
+              isQNumDescending: isQNumDescending,
+              filterPracticed: filterPracticed)
+            ..initCubit(),
+        ),
+        BlocProvider(create: (context) => DiscussCubit()),
+        BlocProvider(
+            create: (context) => HistoryCubit(
+                controller: context.read<LessonCubit>().refreshController,
+                idCategory: idCategory)),
+      ],
       child: Scaffold(
           backgroundColor: AppColors.colorGreyBackground,
           body: Stack(
             children: [
               Builder(builder: (context) {
-                return SingleChildScrollView(
-                  controller: context.read<LessonCubit>().scrollController,
-                  child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          titleCodeWidget(),
-                          FSizeBoxs.h10,
-                          child,
-                          FSizeBoxs.h10,
-                          const LessonAnswerWidget(),
-                        ],
-                      )),
+                return SmartRefresher(
+                  controller: context.read<LessonCubit>().refreshController,
+                  scrollController:
+                      context.read<LessonCubit>().scrollController,
+                  onLoading: context.read<HistoryCubit>().scrollOnLoading,
+                  enablePullUp: true,
+                  enablePullDown: false,
+                  footer: const FooterLoadMoreWidget(),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          // horizontal: 10,
+                          vertical: 20,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 20,
+                              ),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    titleCodeWidget(),
+                                    FSizeBoxs.h10,
+                                    child,
+                                    FSizeBoxs.h10,
+                                  ]),
+                            ),
+                            LessonAnswerWidget(
+                                key:
+                                    context.read<LessonCubit>().answerPosition),
+                            FSizeBoxs.h10,
+                            DiscussComponentWidget(
+                              controller:
+                                  context.read<LessonCubit>().refreshController,
+                            ),
+                          ],
+                        )),
+                  ),
                 );
               }),
               BlocBuilder<LessonCubit, LessonState>(

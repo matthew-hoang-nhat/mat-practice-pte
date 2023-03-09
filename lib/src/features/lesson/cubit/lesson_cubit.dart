@@ -11,6 +11,7 @@ import 'package:mat_practice_pte/src/networks/firestore/repository/lesson/lesson
 import 'package:mat_practice_pte/src/networks/models/do_score/do_score.dart';
 import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
 import 'package:mat_practice_pte/src/utils/wrapper.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 part 'lesson_action.dart';
 
 class LessonCubit extends Cubit<LessonState> {
@@ -31,6 +32,8 @@ class LessonCubit extends Cubit<LessonState> {
 
   final lessonRepo = DomainManager.instance.lessonRepository;
   final scrollController = ScrollController();
+
+  final refreshController = RefreshController();
 
   final markRepo = DomainManager.instance.markRepository;
   Future<void> markOnClick(String? value) async {
@@ -86,24 +89,26 @@ class LessonCubit extends Cubit<LessonState> {
   }
 
   void doneOnCLick() async {
-    emit(state.copyWith(isDone: true));
-    setIsShowAnswer(true);
+    setIsLoading(true);
 
-    if (state.isDone && state.doScore != null) {
+    final isDoneHandle = state.isDone == false;
+
+    if (isDoneHandle && state.doScore != null) {
       await _doScore();
       clearDoScore();
     }
+
+    emit(state.copyWith(isDone: true));
+    setIsShowAnswer(true);
+
+    setIsLoading(false);
   }
 
   void redoOnClick() async {
     emit(state.copyWith(isDone: false));
     setIsShowAnswer(false);
 
-    scrollController.animateTo(
-      0,
-      duration: const Duration(seconds: 1),
-      curve: Curves.easeIn,
-    );
+    scrollToTop();
   }
 
   final serverRepo = DomainManager.instance.server;
@@ -176,14 +181,23 @@ class LessonCubit extends Cubit<LessonState> {
       isShowAnswer: false,
     ));
 
-    scrollController.animateTo(
+    scrollToTop();
+    await Future.delayed(const Duration(seconds: 1));
+
+    setIsLoading(false);
+  }
+
+  GlobalKey answerPosition = GlobalKey();
+
+  double width = 0;
+  double height = 0;
+
+  Future<void> scrollToTop() async {
+    return scrollController.animateTo(
       0,
       duration: const Duration(seconds: 1),
       curve: Curves.easeIn,
     );
-    await Future.delayed(const Duration(seconds: 1));
-
-    setIsLoading(false);
   }
 
   Future<void> previousOnTap() async {
@@ -204,11 +218,7 @@ class LessonCubit extends Cubit<LessonState> {
       isShowAnswer: false,
     ));
 
-    scrollController.animateTo(
-      0,
-      duration: const Duration(seconds: 1),
-      curve: Curves.easeIn,
-    );
+    scrollToTop();
 
     await Future.delayed(const Duration(seconds: 1));
 
