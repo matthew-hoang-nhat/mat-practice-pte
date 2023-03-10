@@ -20,11 +20,11 @@ LessonUserData _$LessonUserDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LessonUserData {
-  String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'id_category')
+  String get uid => throw _privateConstructorUsedError;
+  String get idLesson => throw _privateConstructorUsedError;
   String get idCategory => throw _privateConstructorUsedError;
-  String get mark => throw _privateConstructorUsedError;
-  int get practiced => throw _privateConstructorUsedError;
+  String? get codeMark => throw _privateConstructorUsedError;
+  int get countPracticed => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,10 +39,11 @@ abstract class $LessonUserDataCopyWith<$Res> {
       _$LessonUserDataCopyWithImpl<$Res, LessonUserData>;
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'id_category') String idCategory,
-      String mark,
-      int practiced});
+      {String uid,
+      String idLesson,
+      String idCategory,
+      String? codeMark,
+      int countPracticed});
 }
 
 /// @nodoc
@@ -58,27 +59,32 @@ class _$LessonUserDataCopyWithImpl<$Res, $Val extends LessonUserData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? uid = null,
+    Object? idLesson = null,
     Object? idCategory = null,
-    Object? mark = null,
-    Object? practiced = null,
+    Object? codeMark = freezed,
+    Object? countPracticed = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      idLesson: null == idLesson
+          ? _value.idLesson
+          : idLesson // ignore: cast_nullable_to_non_nullable
               as String,
       idCategory: null == idCategory
           ? _value.idCategory
           : idCategory // ignore: cast_nullable_to_non_nullable
               as String,
-      mark: null == mark
-          ? _value.mark
-          : mark // ignore: cast_nullable_to_non_nullable
-              as String,
-      practiced: null == practiced
-          ? _value.practiced
-          : practiced // ignore: cast_nullable_to_non_nullable
+      codeMark: freezed == codeMark
+          ? _value.codeMark
+          : codeMark // ignore: cast_nullable_to_non_nullable
+              as String?,
+      countPracticed: null == countPracticed
+          ? _value.countPracticed
+          : countPracticed // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -93,10 +99,11 @@ abstract class _$$_LessonUserDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      @JsonKey(name: 'id_category') String idCategory,
-      String mark,
-      int practiced});
+      {String uid,
+      String idLesson,
+      String idCategory,
+      String? codeMark,
+      int countPracticed});
 }
 
 /// @nodoc
@@ -110,27 +117,32 @@ class __$$_LessonUserDataCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? uid = null,
+    Object? idLesson = null,
     Object? idCategory = null,
-    Object? mark = null,
-    Object? practiced = null,
+    Object? codeMark = freezed,
+    Object? countPracticed = null,
   }) {
     return _then(_$_LessonUserData(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      idLesson: null == idLesson
+          ? _value.idLesson
+          : idLesson // ignore: cast_nullable_to_non_nullable
               as String,
       idCategory: null == idCategory
           ? _value.idCategory
           : idCategory // ignore: cast_nullable_to_non_nullable
               as String,
-      mark: null == mark
-          ? _value.mark
-          : mark // ignore: cast_nullable_to_non_nullable
-              as String,
-      practiced: null == practiced
-          ? _value.practiced
-          : practiced // ignore: cast_nullable_to_non_nullable
+      codeMark: freezed == codeMark
+          ? _value.codeMark
+          : codeMark // ignore: cast_nullable_to_non_nullable
+              as String?,
+      countPracticed: null == countPracticed
+          ? _value.countPracticed
+          : countPracticed // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -140,27 +152,30 @@ class __$$_LessonUserDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LessonUserData implements _LessonUserData {
   _$_LessonUserData(
-      {required this.id,
-      @JsonKey(name: 'id_category') required this.idCategory,
-      required this.mark,
-      required this.practiced});
+      {required this.uid,
+      required this.idLesson,
+      required this.idCategory,
+      required this.codeMark,
+      this.countPracticed = 0});
 
   factory _$_LessonUserData.fromJson(Map<String, dynamic> json) =>
       _$$_LessonUserDataFromJson(json);
 
   @override
-  final String id;
+  final String uid;
   @override
-  @JsonKey(name: 'id_category')
+  final String idLesson;
+  @override
   final String idCategory;
   @override
-  final String mark;
+  final String? codeMark;
   @override
-  final int practiced;
+  @JsonKey()
+  final int countPracticed;
 
   @override
   String toString() {
-    return 'LessonUserData(id: $id, idCategory: $idCategory, mark: $mark, practiced: $practiced)';
+    return 'LessonUserData(uid: $uid, idLesson: $idLesson, idCategory: $idCategory, codeMark: $codeMark, countPracticed: $countPracticed)';
   }
 
   @override
@@ -168,17 +183,21 @@ class _$_LessonUserData implements _LessonUserData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LessonUserData &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.idLesson, idLesson) ||
+                other.idLesson == idLesson) &&
             (identical(other.idCategory, idCategory) ||
                 other.idCategory == idCategory) &&
-            (identical(other.mark, mark) || other.mark == mark) &&
-            (identical(other.practiced, practiced) ||
-                other.practiced == practiced));
+            (identical(other.codeMark, codeMark) ||
+                other.codeMark == codeMark) &&
+            (identical(other.countPracticed, countPracticed) ||
+                other.countPracticed == countPracticed));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, idCategory, mark, practiced);
+  int get hashCode => Object.hash(
+      runtimeType, uid, idLesson, idCategory, codeMark, countPracticed);
 
   @JsonKey(ignore: true)
   @override
@@ -196,23 +215,25 @@ class _$_LessonUserData implements _LessonUserData {
 
 abstract class _LessonUserData implements LessonUserData {
   factory _LessonUserData(
-      {required final String id,
-      @JsonKey(name: 'id_category') required final String idCategory,
-      required final String mark,
-      required final int practiced}) = _$_LessonUserData;
+      {required final String uid,
+      required final String idLesson,
+      required final String idCategory,
+      required final String? codeMark,
+      final int countPracticed}) = _$_LessonUserData;
 
   factory _LessonUserData.fromJson(Map<String, dynamic> json) =
       _$_LessonUserData.fromJson;
 
   @override
-  String get id;
+  String get uid;
   @override
-  @JsonKey(name: 'id_category')
+  String get idLesson;
+  @override
   String get idCategory;
   @override
-  String get mark;
+  String? get codeMark;
   @override
-  int get practiced;
+  int get countPracticed;
   @override
   @JsonKey(ignore: true)
   _$$_LessonUserDataCopyWith<_$_LessonUserData> get copyWith =>

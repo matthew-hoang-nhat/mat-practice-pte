@@ -6,10 +6,11 @@ part 'lesson_user_data.g.dart';
 @freezed
 class LessonUserData with _$LessonUserData {
   factory LessonUserData({
-    required String id,
-    @JsonKey(name: 'id_category') required String idCategory,
-    required String mark,
-    required int practiced,
+    required String uid,
+    required String idLesson,
+    required String idCategory,
+    required String? codeMark,
+    @Default(0) int countPracticed,
   }) = _LessonUserData;
 
   factory LessonUserData.fromJson(Map<String, Object?> json) =>

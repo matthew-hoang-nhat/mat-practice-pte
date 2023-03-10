@@ -69,7 +69,7 @@ class ParagraphDiveAnswerOneOptionCubit
     shuffleOptions();
     emit(state.copyWith(
       isDone: false,
-      myOption: List.filled(state.options!.length, null),
+      myOption: List.filled(state.answer!.length, null),
     ));
   }
 

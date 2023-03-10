@@ -2,6 +2,7 @@ class FirebaseCollectionNames {
   static String categories = 'categories';
   static String lessons = 'lessons';
   static String users = 'users';
+  static String lessonUserData = 'lesson_user_data';
   static String lessonHistory = 'lesson_history';
   static String lessonDiscuss = 'lesson_discuss';
 

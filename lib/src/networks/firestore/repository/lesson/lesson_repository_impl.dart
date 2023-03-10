@@ -39,19 +39,20 @@ class LessonRepositoryImpl extends LessonRepository {
         lessons.addAll(result.data!);
       });
 
-      final List<Future<FResult<LessonUserData>>> awaitLessonUserDataArr = [];
-      for (var item in lessons) {
-        awaitLessonUserDataArr.add(lessonUserDataRepository.getLessonUserData(
-            idLesson: item.id, idCategory: idCategory));
-      }
+      final List<Future<FResult<LessonUserData>>> awaitLessonUserDataArr =
+          lessons
+              .map((e) => lessonUserDataRepository.getLessonUserData(
+                  idLesson: e.id, idCategory: idCategory))
+              .toList();
 
       final resultLessonUserDataArr = await Future.wait(awaitLessonUserDataArr);
+
       for (int index = 0; index < lessons.length; index++) {
         final lessonUserData = resultLessonUserDataArr.elementAt(index).data;
         if (lessonUserData != null) {
           lessons[index] = lessons[index].copyWith(
-            countPracticed: lessonUserData.practiced,
-            mark: Wrapper(lessonUserData.mark),
+            countPracticed: lessonUserData.countPracticed,
+            mark: Wrapper(lessonUserData.codeMark),
           );
         }
       }
@@ -74,8 +75,8 @@ class LessonRepositoryImpl extends LessonRepository {
       final lessonUserData = lessonUserDataResult.data;
 
       rawDetailLesson = rawDetailLesson?.copyWith(
-        mark: Wrapper(lessonUserData?.mark),
-        countPracticed: lessonUserData?.practiced,
+        mark: Wrapper(lessonUserData?.codeMark),
+        countPracticed: lessonUserData?.countPracticed,
       );
       return FResult.success(rawDetailLesson);
     } catch (ex) {
@@ -95,7 +96,7 @@ class LessonRepositoryImpl extends LessonRepository {
       List<LessonUserData> lessonUserDatas = <LessonUserData>[];
       Logger().i(fetchArrowType);
       final lessonUserDatasResult =
-          await lessonUserDataRepository.getUserLessons(
+          await lessonUserDataRepository.getLessonUserDatas(
         idCategory: idCategory,
         filterMark: filterMark,
         filterPracticed: filterPracticed,
@@ -103,6 +104,7 @@ class LessonRepositoryImpl extends LessonRepository {
         fetchArrowType: fetchArrowType,
         lastIdLesson: lastIdLesson,
       );
+
       fetchResource(lessonUserDatasResult, onSuccess: () {
         lessonUserDatas = lessonUserDatasResult.data!;
       }, onError: () {
@@ -125,7 +127,7 @@ class LessonRepositoryImpl extends LessonRepository {
       final lessonUserDataAwaitArr = <Future<FResult<DetailLesson>>>[];
       for (var lessonUserData in lessonUserDatas) {
         lessonUserDataAwaitArr.add(getDetailLesson(
-            idCategory: idCategory, idLesson: lessonUserData.id));
+            idCategory: idCategory, idLesson: lessonUserData.idLesson));
       }
 
       // get Lesson
@@ -135,14 +137,14 @@ class LessonRepositoryImpl extends LessonRepository {
       }
 
       for (int index = 0; index < lessons.length; index++) {
-        final countPracticed = lessonUserDatas.elementAt(index).practiced;
+        final countPracticed = lessonUserDatas.elementAt(index).countPracticed;
         lessons[index] =
             lessons[index].copyWith(countPracticed: countPracticed);
       }
 
       // get mark practiced a lesson
       for (int index = 0; index < lessons.length; index++) {
-        final markCode = lessonUserDatas.elementAt(index).mark;
+        final markCode = lessonUserDatas.elementAt(index).codeMark;
         lessons[index] = lessons[index].copyWith(mark: Wrapper(markCode));
       }
 
@@ -192,4 +194,9 @@ class LessonRepositoryImpl extends LessonRepository {
     return Future.value(
         rawLessonRepository.getRawCountFoundLesson(idCategory: idCategory));
   }
+
+  // @override
+  // Future<FResult<String>> addRawLessons() {
+  //   return rawLessonRepository.addRawLessons();
+  // }
 }

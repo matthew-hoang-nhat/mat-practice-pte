@@ -308,7 +308,7 @@ class DrawerScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Practice * ',
+                                  'Practice * ${lesson.countPracticed ?? 0}',
                                   style: AppTextStyles.labelMedium,
                                 ),
                                 Container(
