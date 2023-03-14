@@ -12,7 +12,7 @@ class FooterLoadMoreWidget extends StatelessWidget {
         Widget body;
         switch (mode) {
           case LoadStatus.idle:
-            body = Container();
+            body = const SizedBox(height: 50);
             break;
           case LoadStatus.loading:
             body = const CircularProgressIndicator();
@@ -26,14 +26,10 @@ class FooterLoadMoreWidget extends StatelessWidget {
               ],
             );
             break;
-
           default:
-            body = Container();
+            body = const SizedBox(height: 50, width: 50);
         }
-        return SizedBox(
-          height: 55.0,
-          child: Center(child: body),
-        );
+        return Center(child: body);
       },
     );
   }

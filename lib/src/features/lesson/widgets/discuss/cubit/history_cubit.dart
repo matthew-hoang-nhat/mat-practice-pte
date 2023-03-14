@@ -39,17 +39,18 @@ class HistoryCubit extends Cubit<HistoryState> {
     refreshLessonHistories();
   }
 
+  bool isLoading = false;
   Future<void> _loadLessonHistories() async {
+    if (isLoading) return;
+    isLoading = true;
     final idLastHistory =
         state.lessonHistories.isEmpty ? null : state.lessonHistories.last.id;
-
     final lessonHistoriesResult = await lessonHistoryRepo.getLessonHistories(
       uid,
       idCategory,
       state.idLesson,
       idLastHistory: idLastHistory,
     );
-
     fetchResource(lessonHistoriesResult, onSuccess: () {
       final newLessonHistories = <LessonHistory>[
         ...state.lessonHistories,
@@ -59,6 +60,7 @@ class HistoryCubit extends Cubit<HistoryState> {
     }, onError: () {
       Logger().e('Thất bại');
     });
+    isLoading = false;
   }
 
   void removeHistoryLessonOnClick(BuildContext context, String id) async {

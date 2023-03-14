@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
 import 'package:mat_practice_pte/src/features/word_definition/cubit/show_bottom_definition_cubit.dart';
 import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
+import 'package:mat_practice_pte/src/networks/models/lesson_data/lesson_discuss.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 
@@ -106,6 +107,23 @@ class FCoordinator {
       {required Widget title, required Widget widget}) {
     fShows.showBottomModalSheet(
         sizeHeight: 0.4, context, title: title, widget: widget);
+  }
+
+  static void showAddComment(
+      {required String idCategory,
+      required String idLesson,
+      required Function() onSuccess}) {
+    pushNamed(AppPaths.addComment, extra: {
+      'idCategory': idCategory,
+      'idLesson': idLesson,
+      'onSuccess': onSuccess
+    });
+  }
+
+  static void showReplyComment(
+      {required LessonDiscuss parentDiscuss, required Function() onSuccess}) {
+    pushNamed(AppPaths.replyComment,
+        extra: {'parentDiscuss': parentDiscuss, 'onSuccess': onSuccess});
   }
 
   static void pushDetailLesson(

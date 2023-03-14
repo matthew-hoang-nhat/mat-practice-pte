@@ -7,6 +7,8 @@ class AppPaths {
   static const parentCategory = 'parentCategory';
   static const drawer = 'drawer';
   static const forgotPassword = 'forgot-password';
+  static const replyComment = 'reply-comment';
+  static const addComment = 'comment';
   static const singleChoiceAnswerScreen = 'single-choice-answer';
   static const mutipleChoiceAnswerScreen = 'multiple-choice-answer';
   static const reOrderParagraph = 'reorder-paragraph';
@@ -20,4 +22,5 @@ class AppPaths {
       'listening-multiple-choice-answer';
   static const listeningSingleChoiceAnswer = 'listening-single-choice-answer';
   static const selectMissingWord = 'select-missing-word';
+  static const draft = 'draft';
 }

@@ -5,7 +5,9 @@ import 'app_colors.dart';
 
 class DarkTheme extends AppThemes {
   final ThemeData _darkTheme = ThemeData(
-      appBarTheme: const AppBarTheme(color: AppColors.colorPrimary),
+      appBarTheme: const AppBarTheme(
+        color: AppColors.colorPrimary,
+      ),
       checkboxTheme: CheckboxThemeData(
           overlayColor: MaterialStateProperty.all(AppColors.colorPrimary)),
       splashColor: Colors.transparent,
@@ -40,7 +42,8 @@ class DarkTheme extends AppThemes {
 
 class LightTheme extends AppThemes {
   static final ThemeData lightTheme = ThemeData(
-      appBarTheme: const AppBarTheme(color: AppColors.colorPrimary),
+      appBarTheme:
+          const AppBarTheme(color: AppColors.colorPrimary, centerTitle: true),
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       primaryColor: AppColors.colorPrimary,

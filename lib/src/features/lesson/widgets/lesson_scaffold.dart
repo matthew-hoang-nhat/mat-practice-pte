@@ -7,6 +7,7 @@ import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
 import 'package:mat_practice_pte/src/features/lesson/cubit/lesson_cubit.dart';
 import 'package:mat_practice_pte/src/features/lesson/cubit/lesson_state.dart';
+import 'package:mat_practice_pte/src/features/lesson/widgets/discuss/cubit/comment_cubit.dart';
 import 'package:mat_practice_pte/src/features/lesson/widgets/discuss/cubit/history_cubit.dart';
 import 'package:mat_practice_pte/src/features/lesson/widgets/done_button_widget.dart';
 import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
@@ -21,7 +22,7 @@ import 'lesson_answer_widget.dart';
 import 'lesson_app_bar.dart';
 import 'lesson_bottom_navigation_bar.dart';
 
-class LessonScaffold extends StatelessWidget {
+class LessonScaffold extends StatefulWidget {
   final Widget child;
   const LessonScaffold({
     Key? key,
@@ -39,25 +40,38 @@ class LessonScaffold extends StatelessWidget {
   final String initIdLesson;
   final int initIndex;
   final String idCategory;
+
+  @override
+  State<LessonScaffold> createState() => _LessonScaffoldState();
+}
+
+class _LessonScaffoldState extends State<LessonScaffold>
+    with TickerProviderStateMixin {
+  late TabController _tabBarController;
   @override
   Widget build(BuildContext context) {
+    _tabBarController = TabController(length: 2, vsync: this);
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) => LessonCubit(
-              idCategory: idCategory,
-              filterMark: filterMark,
-              initIdLesson: initIdLesson,
-              initIndex: initIndex,
-              isQNumDescending: isQNumDescending,
-              filterPracticed: filterPracticed)
+              idCategory: widget.idCategory,
+              filterMark: widget.filterMark,
+              initIdLesson: widget.initIdLesson,
+              initIndex: widget.initIndex,
+              isQNumDescending: widget.isQNumDescending,
+              filterPracticed: widget.filterPracticed)
             ..initCubit(),
         ),
-        BlocProvider(create: (context) => DiscussCubit()),
+        BlocProvider(create: (context) => DiscussCubit(_tabBarController)),
         BlocProvider(
             create: (context) => HistoryCubit(
                 controller: context.read<LessonCubit>().refreshController,
-                idCategory: idCategory)),
+                idCategory: widget.idCategory)),
+        BlocProvider(
+            create: (context) => CommentCubit(
+                controller: context.read<LessonCubit>().refreshController,
+                idCategory: widget.idCategory)),
       ],
       child: Scaffold(
           backgroundColor: AppColors.colorGreyBackground,
@@ -68,7 +82,8 @@ class LessonScaffold extends StatelessWidget {
                   controller: context.read<LessonCubit>().refreshController,
                   scrollController:
                       context.read<LessonCubit>().scrollController,
-                  onLoading: context.read<HistoryCubit>().scrollOnLoading,
+                  onLoading: () =>
+                      context.read<DiscussCubit>().scrollOnLoading(context),
                   enablePullUp: true,
                   enablePullDown: false,
                   footer: const FooterLoadMoreWidget(),
@@ -91,7 +106,7 @@ class LessonScaffold extends StatelessWidget {
                                   children: [
                                     titleCodeWidget(),
                                     FSizeBoxs.h10,
-                                    child,
+                                    widget.child,
                                     FSizeBoxs.h10,
                                   ]),
                             ),
@@ -118,7 +133,7 @@ class LessonScaffold extends StatelessWidget {
               )
             ],
           ),
-          appBar: LessonAppBar(codeCategory: idCategory),
+          appBar: LessonAppBar(codeCategory: widget.idCategory),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           floatingActionButton: const DoneButtonWidget(),

@@ -11,6 +11,7 @@ class TabBarDiscuss extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DiscussCubit, DiscussState>(
+      buildWhen: (previous, current) => previous.tab != current.tab,
       builder: (context, state) {
         return Column(
           children: [
@@ -19,6 +20,7 @@ class TabBarDiscuss extends StatelessWidget {
               child: Column(
                 children: [
                   TabBar(
+                    controller: context.read<DiscussCubit>().tabController,
                     labelColor: AppColors.black,
                     unselectedLabelColor: AppColors.grey,
                     indicatorColor: AppColors.black,

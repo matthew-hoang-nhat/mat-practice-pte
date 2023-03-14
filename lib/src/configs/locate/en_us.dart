@@ -61,6 +61,7 @@ final _enUS = {
   FLocalKey.guide: 'Guide',
   FLocalKey.mark: 'Mark',
   FLocalKey.unmark: 'Unmark ALL',
+  FLocalKey.unknown: 'Unknown',
   FLocalKey.pracStatus: 'Prac. Status',
   FLocalKey.resetStatus: 'Reset Status',
   FLocalKey.ok: 'OK',
@@ -97,6 +98,8 @@ final _enUS = {
   FLocalKey.hintComment: 'Enter your comments here ...',
   FLocalKey.removeLessonHistoryLabel:
       'Do you want to remove this history lesson?',
+  FLocalKey.removeLessonDiscussLabel:
+      'Do you want to remove this discuss lesson?',
   FLocalKey.delete: 'Delete',
   FLocalKey.cancel: 'Cancel',
 

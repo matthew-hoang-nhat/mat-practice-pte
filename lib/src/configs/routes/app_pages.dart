@@ -20,6 +20,7 @@ import 'package:mat_practice_pte/src/features/lesson/type/reading/fill_in_blanks
 import 'package:mat_practice_pte/src/features/lesson/type/reading/multiple_choice_answer/ui/reading_multiple_choice_answer_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/reading/reorder_paragraph/ui/reaading_reorder_paragraph_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/type/reading/single_choice_answer/ui/reading_single_choice_anwer_widget.dart';
+import 'package:mat_practice_pte/src/features/lesson/widgets/discuss/ui/add_comment_screen.dart';
 import 'package:mat_practice_pte/src/features/lesson/widgets/lesson_scaffold.dart';
 
 import '../../features/category/ui/drawer_screen.dart';
@@ -83,6 +84,17 @@ class AppPages {
         name: AppPaths.forgotPassword,
         builder: (context, state) => const ForgotPasswordScreen(),
         routes: const []),
+    GoRoute(
+        path: '/comment',
+        name: AppPaths.addComment,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>;
+          return AddCommentScreen(
+            idCategory: extra['idCategory']! as String,
+            idLesson: extra['idLesson']! as String,
+            onSuccess: extra['onSuccess'] as Function(),
+          );
+        }),
     GoRoute(
         path: '/category',
         name: AppPaths.parentCategory,
@@ -170,6 +182,16 @@ class AppPages {
         name: name,
         builder: (context, state) {
           final extra = state.extra as Map<String, dynamic>;
+
+          // final extra = <String, dynamic>{
+          //   // 'filterMark': extra['filterMark'],
+          //   // 'isQNumDescending': extra['isQNumDescending'],
+          //   // 'filterPracticed': extra['filterPracticed'],
+          //   'idCategory': 'R1',
+          //   'initIdLesson': '235',
+          //   'initIndex': 0
+          // };
+
           return LessonScaffold(
             filterMark: extra['filterMark'],
             isQNumDescending: extra['isQNumDescending'],

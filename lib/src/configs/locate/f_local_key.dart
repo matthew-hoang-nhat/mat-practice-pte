@@ -60,6 +60,7 @@ class FLocalKey {
   static const String guide = 'guide';
   static const String mark = 'mark';
   static const String unmark = 'unmark';
+  static const String unknown = 'unknown';
   static const String pracStatus = 'pracStatus';
   static const String resetStatus = 'resetStatus';
   static const String ok = 'ok';
@@ -99,6 +100,7 @@ class FLocalKey {
   static const cancel = 'cancel';
   static const hintComment = 'hintComment';
   static const removeLessonHistoryLabel = 'removeLessonHistoryLabel';
+  static const removeLessonDiscussLabel = 'removeLessonDiscussLabel';
 
   // Noti
   static const titleInfoNoti = 'titleInfoNoti';

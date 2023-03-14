@@ -187,7 +187,7 @@ class AndroidFApp extends FApp {
         break;
       case FShowType.error:
       case FShowType.warning:
-        SmartDialog.showToast('${msg}aaa');
+        SmartDialog.showToast(msg);
         break;
       default:
     }
