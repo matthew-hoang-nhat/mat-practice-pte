@@ -5,6 +5,7 @@ import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 
+
 class FCoordinator {
   static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
@@ -124,4 +125,5 @@ class FCoordinator {
       );
     }
   }
+
 }
