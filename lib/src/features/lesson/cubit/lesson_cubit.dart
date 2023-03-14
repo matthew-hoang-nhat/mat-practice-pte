@@ -32,31 +32,31 @@ class LessonCubit extends Cubit<LessonState> {
   final lessonRepo = DomainManager.instance.lessonRepository;
   final scrollController = ScrollController();
 
-  // final markRepo = DomainManager.instance.markRepository;
-  // Future<void> markOnClick(String? value) async {
-  //   final newCurrentLesson =
-  //       state.currentLesson?.copyWith(mark: Wrapper(value));
-  //   var lessons = List<DetailLesson>.from(state.lessons);
-  //   lessons[_indexLesson(newCurrentLesson!.id)] = newCurrentLesson;
+  final markRepo = DomainManager.instance.markRepository;
+  Future<void> markOnClick(String? value) async {
+    final newCurrentLesson =
+        state.currentLesson?.copyWith(mark: Wrapper(value));
+    var lessons = List<DetailLesson>.from(state.lessons);
+    lessons[_indexLesson(newCurrentLesson!.id)] = newCurrentLesson;
 
-  //   emit(state.copyWith(
-  //     lessons: lessons,
-  //     currentLesson: newCurrentLesson,
-  //   ));
+    emit(state.copyWith(
+      lessons: lessons,
+      currentLesson: newCurrentLesson,
+    ));
 
-  //   final isDoMark = value != null;
-  //   if (isDoMark) {
-  //     markRepo.doMark(
-  //         idCategory: state.idCategory,
-  //         idLesson: state.currentLesson!.id,
-  //         mark: value);
-  //   } else {
-  //     markRepo.unMark(
-  //       idCategory: state.idCategory,
-  //       idLesson: state.currentLesson!.id,
-  //     );
-  //   }
-  // }
+    final isDoMark = value != null;
+    if (isDoMark) {
+      markRepo.doMark(
+          idCategory: state.idCategory,
+          idLesson: state.currentLesson!.id,
+          mark: value);
+    } else {
+      markRepo.unMark(
+        idCategory: state.idCategory,
+        idLesson: state.currentLesson!.id,
+      );
+    }
+  }
 
   void initCubit() async {
     setIsLoading(true);
