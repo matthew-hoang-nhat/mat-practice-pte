@@ -1,21 +1,15 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'definition.freezed.dart';
 part 'definition.g.dart';
 
-@JsonSerializable()
-class Definition {
-  @JsonKey(name: 'definition')
-  String? definition;
-  @JsonKey(name: 'example')
-  String? example;
+@freezed
+class Definition with _$Definition {
+  factory Definition({
+    String? definition,
+    String? example,
+  }) = _Definition;
 
-  Definition({
-    this.definition,
-    this.example,
-  });
-
-  factory Definition.fromJson(Map<String, dynamic> json) =>
+  factory Definition.fromJson(Map<String, Object?> json) =>
       _$DefinitionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DefinitionToJson(this);
 }

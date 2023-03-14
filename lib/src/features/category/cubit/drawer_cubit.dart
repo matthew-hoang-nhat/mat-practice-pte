@@ -176,7 +176,7 @@ class DrawerCubit extends Cubit<DrawerState> {
     fetchResource(result, onSuccess: () {
       emit(state.copyWith(
           lessons: newLessons,
-          category: state.category?.copyWith(foundLesson: newFoundLesson)));
+          category: state.category?.copyWith(foundLesson: newFoundLesson!)));
     });
   }
 

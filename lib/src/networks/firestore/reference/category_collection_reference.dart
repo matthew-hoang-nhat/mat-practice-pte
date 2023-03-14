@@ -10,8 +10,8 @@ class CategoryCollectionReference extends BaseCollectionReference<FCategory> {
               .collection(FirebaseCollectionNames.categories)
               .withConverter(
                 fromFirestore: (snapshot, options) =>
-                    FCategory.fromMap(snapshot.data()!),
-                toFirestore: (value, options) => value.toMap(),
+                    FCategory.fromJson(snapshot.data()!),
+                toFirestore: (value, options) => value.toJson(),
               ),
         );
 }

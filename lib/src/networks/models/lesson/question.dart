@@ -1,35 +1,17 @@
-import 'dart:convert';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Question {
-  String content;
-  String answer;
-  List<String> options;
+part 'question.freezed.dart';
+part 'question.g.dart';
 
-  Question({
-    required this.content,
-    required this.answer,
-    required this.options,
-  });
+@freezed
+class Question with _$Question {
+  factory Question({
+    required String content,
+    required List<String> answer,
+    required List<String> options,
+  }) = _Question;
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'content': content,
-      'answer': answer,
-      'options': options,
-    };
-  }
-
-  factory Question.fromMap(Map<String, dynamic> map) {
-    return Question(
-        content: map['content'] as String,
-        answer: map['answer'] as String,
-        options: List<String>.from(
-          (map['options'] as List),
-        ));
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Question.fromJson(String source) =>
-      Question.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Question.fromJson(Map<String, Object?> json) =>
+      _$QuestionFromJson(json);
 }

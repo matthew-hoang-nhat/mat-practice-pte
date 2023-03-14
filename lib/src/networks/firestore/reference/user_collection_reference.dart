@@ -10,8 +10,8 @@ class UserCollectionReference extends BaseCollectionReference<MUser> {
               .collection(FirebaseCollectionNames.users)
               .withConverter(
                 fromFirestore: (snapshot, options) =>
-                    MUser.fromMap(snapshot.data()!),
-                toFirestore: (value, options) => value.toMap(),
+                    MUser.fromJson(snapshot.data()!),
+                toFirestore: (value, options) => value.toJson(),
               ),
         );
 }

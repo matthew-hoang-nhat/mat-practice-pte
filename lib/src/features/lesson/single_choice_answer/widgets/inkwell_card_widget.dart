@@ -34,7 +34,7 @@ class InkwellCardWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: FCardColors.backgroundColor(
                   isDone: state.isDone,
-                  isAnswer: state.answer == state.options!.elementAt(index),
+                  isAnswer: state.answer?.contains(content) == true,
                   isSelected:
                       state.myOption == state.options!.elementAt(index)),
               borderRadius: BorderRadius.circular(5),

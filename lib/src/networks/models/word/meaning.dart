@@ -1,19 +1,17 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'definition.dart';
 
 part 'meaning.g.dart';
+part 'meaning.freezed.dart';
 
-@JsonSerializable()
-class Meaning {
-  @JsonKey(name: 'definitions')
-  List<Definition>? definitions;
-  @JsonKey(name: 'partOfSpeech')
-  String? partOfSpeech;
-  Meaning({this.definitions});
+@freezed
+class Meaning with _$Meaning {
+  factory Meaning({
+    List<Definition>? definitions,
+    String? partOfSpeech,
+  }) = _Meaning;
 
-  factory Meaning.fromJson(Map<String, dynamic> json) =>
+  factory Meaning.fromJson(Map<String, Object?> json) =>
       _$MeaningFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MeaningToJson(this);
 }
