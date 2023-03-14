@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
-
-import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
-
+import 'package:mat_practice_pte/src/networks/models/category/f_category.dart';
 part 'parent_category_state.dart';
 
 class ParentCategoryCubit extends Cubit<ParentCategoryState> {

@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:mat_practice_pte/src/utils/remote/models/m_user_practice.dart';
+import 'm_user_practice.dart';
 
 class MUser {
   final String uid;

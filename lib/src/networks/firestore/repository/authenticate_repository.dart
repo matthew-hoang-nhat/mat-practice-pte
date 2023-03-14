@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mat_practice_pte/src/utils/remote/f_result.dart';
+import '../../f_result.dart';
 
 abstract class AuthenticateRepository {
   Future<FResult<String>> registerEmailPassword(

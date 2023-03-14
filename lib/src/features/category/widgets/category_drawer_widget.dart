@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
 import 'package:mat_practice_pte/src/features/category/cubit/drawer_cubit.dart';
+import 'package:mat_practice_pte/src/networks/models/lesson/detail_lesson.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/repository/lesson_repository.dart';
 import 'package:mat_practice_pte/src/widgets/dimentions/f_sizeboxs.dart';
 import 'package:mat_practice_pte/src/widgets/f_app.dart';
 

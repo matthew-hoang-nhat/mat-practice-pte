@@ -6,10 +6,9 @@ import 'package:mat_practice_pte/src/configs/locate/f_local_key.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/app_cubit.dart';
 import 'package:mat_practice_pte/src/features/category/cubit/parent_category_cubit.dart';
+import 'package:mat_practice_pte/src/networks/models/category/f_category.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/helpers/helpers.dart';
-
-import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
 import 'package:mat_practice_pte/src/widgets/dimentions/f_padding_sizes.dart';
 import 'package:mat_practice_pte/src/widgets/dimentions/f_sizeboxs.dart';
 

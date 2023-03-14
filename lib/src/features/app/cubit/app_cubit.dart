@@ -1,10 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
+import 'package:mat_practice_pte/src/networks/firestore/repository/domain_manager.dart';
+import 'package:mat_practice_pte/src/networks/models/category/f_category.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
-import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
-import 'package:mat_practice_pte/src/utils/repository/category_repository_impl.dart';
-
 import 'f_user.dart';
 
 part 'app_state.dart';
@@ -23,7 +22,7 @@ class AppCubit extends Cubit<AppState> {
     fetchCategories();
   }
 
-  final categoryRepo = GlobalVariables.getIt<CategoryRepositoryImpl>();
+  final categoryRepo = DomainManager.instance.categoryRepository;
 
   Future<void> fetchCategories() async {
     final result = await categoryRepo.getCategories();

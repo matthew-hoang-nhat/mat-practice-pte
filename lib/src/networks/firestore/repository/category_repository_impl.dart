@@ -1,0 +1,29 @@
+import 'package:mat_practice_pte/src/networks/f_result.dart';
+import 'package:mat_practice_pte/src/networks/models/category/f_category.dart';
+import 'package:mat_practice_pte/src/networks/firestore/reference/category_collection_reference.dart';
+
+import 'category_repository.dart';
+
+class CategoryRepositoryImpl extends CategoryRepository {
+  final ref = CategoryCollectionReference();
+
+  @override
+  Future<FResult<List<FCategory>>> getCategories() async {
+    try {
+      final categories = await ref.getALl();
+      return FResult.success(categories);
+    } catch (ex) {
+      return FResult.error(ex.toString());
+    }
+  }
+
+  @override
+  Future<FResult<FCategory>> getCategory({required String id}) async {
+    try {
+      final category = await ref.get(id);
+      return FResult.success(category);
+    } catch (ex) {
+      return FResult.error(ex.toString());
+    }
+  }
+}
