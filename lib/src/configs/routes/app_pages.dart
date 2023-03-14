@@ -5,7 +5,10 @@ import 'package:mat_practice_pte/src/features/auth/ui/login_screen.dart';
 import 'package:mat_practice_pte/src/features/auth/ui/register_screen.dart';
 import 'package:mat_practice_pte/src/features/category/ui/drawer_screen.dart';
 import 'package:mat_practice_pte/src/features/category/ui/parent_category_screen.dart';
-import 'package:mat_practice_pte/src/features/home/ui/main_screen.dart';
+import 'package:mat_practice_pte/src/features/home/ui/home_screen.dart';
+import 'package:mat_practice_pte/src/features/home/ui/me_screen.dart';
+import 'package:mat_practice_pte/src/features/home/ui/saved_screen.dart';
+import 'package:mat_practice_pte/src/features/home/ui/scaffold_with_bottom_navigation_bar.dart';
 
 class AppPages {
   static const List<String> noNeedAuthenticatedPages = [
@@ -13,36 +16,65 @@ class AppPages {
     AppPaths.register,
     AppPaths.forgotPassword,
   ];
-  static final pages = <GoRoute>[
-    GoRoute(
-        path: '/',
-        name: AppPaths.home,
-        builder: (context, state) => const MainScreen(),
+  static final pages = [
+    ShellRoute(
+        builder: (_, state, child) =>
+            ScaffoldWithBottomNavigationBar(child: child),
         routes: [
           GoRoute(
-              path: 'category',
-              name: AppPaths.parentCategory,
-              builder: (context, state) {
-                final type = state.extra;
-                switch (type) {
-                  case 'listening':
-                    return const ParentCategoryScreen(initIndexTab: 1);
-                  case 'reading':
-                  default:
-                    return const ParentCategoryScreen();
-                }
+              path: '/',
+              name: AppPaths.home,
+              pageBuilder: (context, state) {
+                return NoTransitionPage(
+                    child: HomeScreen(
+                  key: state.pageKey,
+                ));
               },
               routes: [
                 GoRoute(
-                  path: 'drawer/:id',
-                  name: AppPaths.drawer,
-                  builder: (context, state) => DrawerScreen(
-                    idCategory: state.params['id']!,
-                  ),
-                ),
+                    path: 'category',
+                    name: AppPaths.parentCategory,
+                    builder: (context, state) {
+                      final type = state.extra;
+                      switch (type) {
+                        case 'listening':
+                          return const ParentCategoryScreen(initIndexTab: 1);
+                        case 'reading':
+                        default:
+                          return const ParentCategoryScreen();
+                      }
+                    },
+                    routes: [
+                      GoRoute(
+                        path: 'drawer/:id',
+                        name: AppPaths.drawer,
+                        builder: (context, state) => DrawerScreen(
+                          idCategory: state.params['id']!,
+                        ),
+                      ),
+                    ]),
               ]),
+          GoRoute(
+            path: '/saved',
+            name: AppPaths.saved,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                  child: SavedScreen(
+                key: state.pageKey,
+              ));
+            },
+          ),
+          GoRoute(
+            path: '/me',
+            name: AppPaths.me,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                  child: MeScreen(
+                key: state.pageKey,
+              ));
+            },
+          ),
         ]),
-
     GoRoute(
         path: '/login',
         name: AppPaths.login,
@@ -53,10 +85,6 @@ class AppPages {
               name: AppPaths.register,
               builder: (context, state) => const RegisterScreen()),
         ]),
-    // GoRoute(
-    //     path: '/admin',
-    //     builder: (context, state) => const AdminScreen(),
-    //     routes: const []),
     GoRoute(
         path: '/forgot-password',
         name: AppPaths.forgotPassword,

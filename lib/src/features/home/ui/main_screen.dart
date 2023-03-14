@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mat_practice_pte/src/features/home/cubit/main_cubit.dart';
 import 'package:mat_practice_pte/src/features/home/ui/home_screen.dart';
 
-import 'package:mat_practice_pte/src/widgets/bottom_app_bar/f_home_bottom_app_bar.dart';
+import 'package:mat_practice_pte/src/features/home/widgets/f_home_bottom_app_bar.dart';
 
 import 'me_screen.dart';
 import 'saved_screen.dart';
@@ -32,8 +32,7 @@ class MainScreen extends StatelessWidget {
         ),
         bottomNavigationBar: BlocBuilder<MainCubit, MainState>(
           builder: (context, state) {
-            return FHomeBottomAppBar(
-                onTap: context.read<MainCubit>().changeTab);
+            return const FHomeBottomAppBar();
           },
         ),
       ),

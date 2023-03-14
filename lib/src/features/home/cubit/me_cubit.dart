@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
+import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
@@ -31,9 +29,7 @@ class MeCubit extends Cubit<MeState> {
         redAction: {
           'Yes': () {
             GlobalVariables.auth.signOut();
-            final BuildContext context =
-                GlobalVariables.navigatorKey.currentContext!;
-            GoRouter.of(context).goNamed(AppPaths.login);
+            FCoordinator.showLoginScreen();
           }
         });
   }

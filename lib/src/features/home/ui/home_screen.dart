@@ -131,24 +131,23 @@ class HomeScreen extends StatelessWidget {
   Widget practiceComponent(FLocate fLocate) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (cubitContext, state) {
-        final context = GlobalVariables.navigatorKey.currentContext!;
         return Row(
           children: [
             itemPracticeWidget(
-                backgroundColor: AppColors.red,
-                hint: fLocate.str(FLocalKey.hintReading),
-                title: fLocate.str(FLocalKey.reading),
-                iconData: AppIcons.iconBookOutline,
-                onTap: () =>
-                    cubitContext.read<HomeCubit>().readingOnClick(context)),
+              backgroundColor: AppColors.red,
+              hint: fLocate.str(FLocalKey.hintReading),
+              title: fLocate.str(FLocalKey.reading),
+              iconData: AppIcons.iconBookOutline,
+              onTap: cubitContext.read<HomeCubit>().readingOnClick,
+            ),
             FSizeBoxs.w20,
             itemPracticeWidget(
-                backgroundColor: AppColors.green,
-                hint: fLocate.str(FLocalKey.hintListening),
-                title: fLocate.str(FLocalKey.listening),
-                iconData: AppIcons.iconHeadphoneOutline,
-                onTap: () =>
-                    cubitContext.read<HomeCubit>().listeningOnCLick(context)),
+              backgroundColor: AppColors.green,
+              hint: fLocate.str(FLocalKey.hintListening),
+              title: fLocate.str(FLocalKey.listening),
+              iconData: AppIcons.iconHeadphoneOutline,
+              onTap: cubitContext.read<HomeCubit>().listeningOnCLick,
+            ),
           ],
         );
       },
@@ -178,15 +177,13 @@ class HomeScreen extends StatelessWidget {
                 ),
                 _iconWithTextWidget(
                   text: fLocate.str(FLocalKey.reading),
-                  onTap: () =>
-                      cubitContext.read<HomeCubit>().readingOnClick(context),
+                  onTap: cubitContext.read<HomeCubit>().readingOnClick,
                   iconData: AppIcons.iconBookOutline,
                   type: _HomeWidgetType.guide,
                 ),
                 _iconWithTextWidget(
                   text: fLocate.str(FLocalKey.listening),
-                  onTap: () =>
-                      cubitContext.read<HomeCubit>().listeningOnCLick(context),
+                  onTap: cubitContext.read<HomeCubit>().listeningOnCLick,
                   iconData: AppIcons.iconHeadphoneOutline,
                   type: _HomeWidgetType.guide,
                 ),

@@ -38,6 +38,7 @@ final _enUS = {
   FLocalKey.termsOfUseAnd: 'Terms of Use',
   FLocalKey.and: 'and',
   FLocalKey.privacyPolicy: 'Privacy Policy',
+  FLocalKey.successfullyLogin: 'Successfully Login',
 
   // register screen
   FLocalKey.hintNickName: 'User Name',

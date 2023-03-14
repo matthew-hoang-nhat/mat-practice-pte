@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
+import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
@@ -53,12 +52,12 @@ class HomeCubit extends Cubit<HomeState> {
     addListenerPageView();
   }
 
-  readingOnClick(context) {
-    GoRouter.of(context).pushNamed(AppPaths.parentCategory, extra: 'reading');
+  readingOnClick() {
+    FCoordinator.showParentCategoryScreen(parentCategoryType: 'reading');
   }
 
-  listeningOnCLick(context) {
-    GoRouter.of(context).pushNamed(AppPaths.parentCategory, extra: 'listening');
+  listeningOnCLick() {
+    FCoordinator.showParentCategoryScreen(parentCategoryType: 'listening');
   }
 
   Future<void> fetchUserData() async {

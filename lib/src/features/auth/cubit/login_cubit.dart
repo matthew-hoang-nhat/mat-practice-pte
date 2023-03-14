@@ -1,10 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_local_key.dart';
 import 'package:mat_practice_pte/src/configs/locate/f_locate.dart';
-import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
+import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/utils/global_variables.dart';
 import 'package:mat_practice_pte/src/utils/remote/fetch_resource.dart';
 import 'package:mat_practice_pte/src/utils/repository/authenticate_repository_impl.dart';
@@ -60,7 +59,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   forgotPasswordOnClick(context) {
-    GoRouter.of(context).pushNamed(AppPaths.forgotPassword);
+    FCoordinator.showForgotScreen();
   }
 
   loginWithEmailPasswordOnClick(context) async {
@@ -80,8 +79,7 @@ class LoginCubit extends Cubit<LoginState> {
       result,
       onSuccess: () {
         mat.showToast(maLocate.str(FLocalKey.successfullyLogin));
-        GoRouter.of(GlobalVariables.navigatorKey.currentContext!)
-            .goNamed(AppPaths.home);
+        FCoordinator.showHomeScreen();
       },
       onError: () {
         notificationError(result.error ?? '');
@@ -109,8 +107,7 @@ class LoginCubit extends Cubit<LoginState> {
     fetchResource(
       result,
       onSuccess: () {
-        GoRouter.of(GlobalVariables.navigatorKey.currentContext!)
-            .goNamed(AppPaths.home);
+        FCoordinator.showHomeScreen();
       },
       onError: () {},
     );

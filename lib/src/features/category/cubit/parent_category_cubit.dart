@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:mat_practice_pte/src/configs/routes/app_paths.dart';
+import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 
 import 'package:mat_practice_pte/src/utils/remote/models/f_category.dart';
 
@@ -15,7 +14,7 @@ class ParentCategoryCubit extends Cubit<ParentCategoryState> {
   initCubit() async {}
 
   categoryOnClick(context, {required String id}) {
-    GoRouter.of(context).pushNamed(AppPaths.drawer, params: {'id': id});
+    FCoordinator.showDrawerScreen(idCategory: id);
   }
 
   separateCategories(List<FCategory> categories) {
