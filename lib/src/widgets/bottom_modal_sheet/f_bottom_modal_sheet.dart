@@ -22,7 +22,7 @@ class FBottomModalSheet {
         isScrollControlled: true,
         context: context,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(5),
         ),
         backgroundColor: Colors.transparent,
         builder: (context) {
@@ -47,8 +47,8 @@ class FBottomModalSheet {
                         ),
                         decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(20),
-                              topLeft: Radius.circular(20)),
+                              topRight: Radius.circular(10),
+                              topLeft: Radius.circular(10)),
                           color: AppColors.white,
                         ),
                         child: Column(

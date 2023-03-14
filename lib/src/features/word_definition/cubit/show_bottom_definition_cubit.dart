@@ -27,14 +27,16 @@ class ShowBottomDefinitionCubit extends Cubit<ShowBottomDefinitionState> {
 
   Future<void> _fetchDefinition(String word) async {
     emit(state.copyWith(
-      definition: Wrapper(null),
-      isSaved: Wrapper(null),
-    ));
+        definition: Wrapper(null),
+        isSaved: Wrapper(null),
+        error: Wrapper(null)));
     final result = await wordRepo.getDefinition(word);
     fetchResource(result, onSuccess: () {
       final definition = result.data!;
       emit(state.copyWith(definition: Wrapper(definition)));
-    }, onError: () {});
+    }, onError: () {
+      emit(state.copyWith(error: Wrapper('Lỗi mất rồi')));
+    });
   }
 
   setIsSaved(bool value) {
@@ -76,8 +78,12 @@ class ShowBottomDefinitionCubit extends Cubit<ShowBottomDefinitionState> {
           child:
               BlocBuilder<ShowBottomDefinitionCubit, ShowBottomDefinitionState>(
             buildWhen: (previous, current) =>
-                previous.definition != current.definition,
+                previous.definition != current.definition ||
+                previous.error != current.error,
             builder: (context, state) {
+              if (state.error != null) {
+                return const Text('Not found this word.');
+              }
               if (state.definition == null) return const LoadingWidget();
 
               final phonetics = state.definition?.phonetics ?? [];

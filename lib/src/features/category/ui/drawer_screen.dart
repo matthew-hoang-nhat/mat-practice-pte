@@ -90,7 +90,7 @@ class DrawerScreen extends StatelessWidget {
                                 children: List.generate(
                                     state.lessons.length,
                                     (index) => itemLessonWidget(
-                                        index + 1, state.lessons[index])));
+                                        index, state.lessons[index])));
                           },
                         ),
                       ],
@@ -276,58 +276,70 @@ class DrawerScreen extends StatelessWidget {
       }
     }
 
-    final countPracticed = lesson.countPracticed ?? 0;
-    return Stack(
-      alignment: Alignment.topRight,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: FPaddingSizes.s20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocBuilder<DrawerCubit, DrawerState>(
+      builder: (context, state) {
+        return InkWell(
+          onTap: () {
+            context
+                .read<DrawerCubit>()
+                .lessonOnClick(index: index, idLesson: lesson.id);
+          },
+          child: Stack(
+            alignment: Alignment.topRight,
             children: [
-              Container(
-                padding: const EdgeInsets.only(bottom: FPaddingSizes.s50),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: FPaddingSizes.s20),
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('$index. ${lesson.title}',
-                          style: AppTextStyles.body1.copyWith(
-                            color: AppColors.colorTextColor,
-                            fontSize: 18,
-                          )),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Practice * $countPracticed',
-                            style: AppTextStyles.labelMedium,
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: AppColors.grey),
-                            child: Text(
-                              '#${lesson.codeLesson}',
-                              style: AppTextStyles.body2
-                                  .copyWith(color: AppColors.white),
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(bottom: FPaddingSizes.s50),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('${index + 1}. ${lesson.title}',
+                                style: AppTextStyles.body1.copyWith(
+                                  color: AppColors.colorTextColor,
+                                  fontSize: 18,
+                                )),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Practice * ',
+                                  style: AppTextStyles.labelMedium,
+                                ),
+                                Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 5),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: AppColors.grey),
+                                  child: Text(
+                                    '#${lesson.codeLesson}',
+                                    style: AppTextStyles.body2
+                                        .copyWith(color: AppColors.white),
+                                  ),
+                                )
+                              ],
                             ),
-                          )
-                        ],
-                      ),
-                    ]),
+                          ]),
+                    ),
+                    const Divider(),
+                  ],
+                ),
               ),
-              const Divider(),
+              if (markColor != null)
+                CustomPaint(
+                  painter: TrianglePainter(backgroundColor: markColor),
+                  size: const Size(30, 30),
+                ),
             ],
           ),
-        ),
-        if (markColor != null)
-          CustomPaint(
-            painter: TrianglePainter(backgroundColor: markColor),
-            size: const Size(30, 30),
-          ),
-      ],
+        );
+      },
     );
   }
 }
