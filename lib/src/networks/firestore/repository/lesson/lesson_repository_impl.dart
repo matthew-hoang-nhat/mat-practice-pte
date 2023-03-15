@@ -94,7 +94,6 @@ class LessonRepositoryImpl extends LessonRepository {
   }) async {
     try {
       List<LessonUserData> lessonUserDatas = <LessonUserData>[];
-      Logger().i(fetchArrowType);
       final lessonUserDatasResult =
           await lessonUserDataRepository.getLessonUserDatas(
         idCategory: idCategory,
@@ -195,8 +194,43 @@ class LessonRepositoryImpl extends LessonRepository {
         rawLessonRepository.getRawCountFoundLesson(idCategory: idCategory));
   }
 
-  // @override
-  // Future<FResult<String>> addRawLessons() {
-  //   return rawLessonRepository.addRawLessons();
-  // }
+  @override
+  Future<FResult<List<DetailLesson>>> searchLessons({
+    required String idCategory,
+    required String text,
+  }) async {
+    try {
+      final lessons = <DetailLesson>[];
+      final result = await rawLessonRepository.searchLessons(
+        idCategory: idCategory,
+        text: text,
+      );
+
+      fetchResource(result, onSuccess: () {
+        lessons.addAll(result.data!);
+      });
+
+      final List<Future<FResult<LessonUserData>>> awaitLessonUserDataArr =
+          lessons
+              .map((e) => lessonUserDataRepository.getLessonUserData(
+                  idLesson: e.id, idCategory: idCategory))
+              .toList();
+
+      final resultLessonUserDataArr = await Future.wait(awaitLessonUserDataArr);
+
+      for (int index = 0; index < lessons.length; index++) {
+        final lessonUserData = resultLessonUserDataArr.elementAt(index).data;
+        if (lessonUserData != null) {
+          lessons[index] = lessons[index].copyWith(
+            countPracticed: lessonUserData.countPracticed,
+            mark: Wrapper(lessonUserData.codeMark),
+          );
+        }
+      }
+
+      return FResult.success(lessons);
+    } catch (ex) {
+      return FResult.error(ex.toString());
+    }
+  }
 }

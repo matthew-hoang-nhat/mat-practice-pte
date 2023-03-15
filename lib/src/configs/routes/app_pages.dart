@@ -22,6 +22,7 @@ import 'package:mat_practice_pte/src/features/lesson/type/reading/reorder_paragr
 import 'package:mat_practice_pte/src/features/lesson/type/reading/single_choice_answer/ui/reading_single_choice_anwer_widget.dart';
 import 'package:mat_practice_pte/src/features/lesson/widgets/discuss/ui/add_comment_screen.dart';
 import 'package:mat_practice_pte/src/features/lesson/widgets/lesson_scaffold.dart';
+import 'package:mat_practice_pte/src/features/search/ui/search_screen.dart';
 
 import '../../features/category/ui/drawer_screen.dart';
 import 'coordinator.dart';
@@ -41,6 +42,7 @@ class AppPages {
           GoRoute(
             path: '/',
             name: AppPaths.home,
+            parentNavigatorKey: FCoordinator.shellNavigatorKey,
             pageBuilder: (context, state) {
               return NoTransitionPage(
                   child: HomeScreen(
@@ -51,6 +53,7 @@ class AppPages {
           GoRoute(
             path: '/saved',
             name: AppPaths.saved,
+            parentNavigatorKey: FCoordinator.shellNavigatorKey,
             pageBuilder: (context, state) {
               return NoTransitionPage(
                   child: SavedScreen(
@@ -61,6 +64,7 @@ class AppPages {
           GoRoute(
             path: '/me',
             name: AppPaths.me,
+            parentNavigatorKey: FCoordinator.shellNavigatorKey,
             pageBuilder: (context, state) {
               return NoTransitionPage(
                   child: MeScreen(
@@ -72,21 +76,31 @@ class AppPages {
     GoRoute(
         path: '/login',
         name: AppPaths.login,
+        parentNavigatorKey: FCoordinator.navigatorKey,
         builder: (context, state) => const LoginScreen(),
         routes: [
           GoRoute(
               path: 'register',
               name: AppPaths.register,
+              parentNavigatorKey: FCoordinator.navigatorKey,
               builder: (context, state) => const RegisterScreen()),
         ]),
     GoRoute(
         path: '/forgot-password',
+        parentNavigatorKey: FCoordinator.navigatorKey,
         name: AppPaths.forgotPassword,
         builder: (context, state) => const ForgotPasswordScreen(),
         routes: const []),
     GoRoute(
+        path: '/search',
+        parentNavigatorKey: FCoordinator.navigatorKey,
+        name: AppPaths.search,
+        builder: (context, state) => SearchScreen(key: UniqueKey()),
+        routes: const []),
+    GoRoute(
         path: '/comment',
         name: AppPaths.addComment,
+        parentNavigatorKey: FCoordinator.navigatorKey,
         builder: (context, state) {
           final extra = state.extra as Map<String, dynamic>;
           return AddCommentScreen(
@@ -98,6 +112,7 @@ class AppPages {
     GoRoute(
         path: '/category',
         name: AppPaths.parentCategory,
+        parentNavigatorKey: FCoordinator.navigatorKey,
         builder: (context, state) {
           final type = state.extra;
           switch (type) {
@@ -112,6 +127,7 @@ class AppPages {
           GoRoute(
               path: 'drawer/:id',
               name: AppPaths.drawer,
+              parentNavigatorKey: FCoordinator.navigatorKey,
               builder: (context, state) => DrawerScreen(
                     idCategory: state.params['id']!,
                   ),
@@ -180,6 +196,7 @@ class AppPages {
     return GoRoute(
         path: path,
         name: name,
+        parentNavigatorKey: FCoordinator.navigatorKey,
         builder: (context, state) {
           final extra = state.extra as Map<String, dynamic>;
 

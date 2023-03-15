@@ -7,6 +7,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_colors.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_icons.dart';
 import 'package:mat_practice_pte/src/configs/constants/app_text_styles.dart';
+import 'package:mat_practice_pte/src/configs/routes/coordinator.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/app_cubit.dart';
 import 'package:mat_practice_pte/src/features/category/cubit/drawer_cubit.dart';
 import 'package:mat_practice_pte/src/features/category/widgets/category_drawer_widget.dart';
@@ -33,9 +34,12 @@ class DrawerScreen extends StatelessWidget {
         backgroundColor: AppColors.white,
         appBar: AppBar(
           actions: [
-            Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(AppIcons.iconSearchOutline, size: 30))
+            InkWell(
+              onTap: FCoordinator.showSearch,
+              child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: const Icon(AppIcons.iconSearchOutline, size: 30)),
+            )
           ],
         ),
         body: SafeArea(

@@ -66,6 +66,9 @@ class FLocalKey {
   static const String ok = 'ok';
   static const String reset = 'reset';
 
+// Search Screen
+  static const String searchTitle = 'searchTitle';
+
   // Detail lesson
   static const String hintReorderParagraph = 'hintReorderParagraph';
   static const String cancelled = 'cancelled';

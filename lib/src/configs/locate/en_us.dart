@@ -67,6 +67,9 @@ final _enUS = {
   FLocalKey.ok: 'OK',
   FLocalKey.reset: 'Reset',
 
+  // Search Screen
+  FLocalKey.searchTitle: 'Search Questions',
+
   // Detail lesson
   FLocalKey.hintReorderParagraph: 'Long press to drag to the correct order',
 

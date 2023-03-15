@@ -82,7 +82,9 @@ class LessonCubit extends Cubit<LessonState> {
         filterPracticed: state.filterPracticed);
 
     fetchResource(countLessonResult, onSuccess: () {
-      emit(state.copyWith(maxIndex: countLessonResult.data));
+      bool isLessonSearch = state.currentIndex == -1;
+      final maxIndex = isLessonSearch ? 1 : countLessonResult.data;
+      emit(state.copyWith(currentIndex: 0, maxIndex: maxIndex));
     });
 
     setIsLoading(false);

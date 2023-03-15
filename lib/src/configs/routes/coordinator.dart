@@ -14,6 +14,9 @@ class FCoordinator {
   static final GlobalKey<NavigatorState> shellNavigatorKey =
       GlobalKey<NavigatorState>();
   static BuildContext get context => navigatorKey.currentState!.context;
+  static BuildContext get shellContext =>
+      shellNavigatorKey.currentState!.context;
+
   static String get location => GoRouter.of(context).location;
 
   static bool canPop() {
@@ -86,7 +89,7 @@ class FCoordinator {
   }
 
   static void showParentCategoryScreen({required String parentCategoryType}) {
-    goNamed(AppPaths.parentCategory, extra: parentCategoryType);
+    pushNamed(AppPaths.parentCategory, extra: parentCategoryType);
   }
 
   static void showSavedScreen() {
@@ -126,6 +129,60 @@ class FCoordinator {
         extra: {'parentDiscuss': parentDiscuss, 'onSuccess': onSuccess});
   }
 
+  static void showSearch() {
+    pushNamed(AppPaths.search);
+  }
+
+  // static void _pushShellNamed(
+  //   String name, {
+  //   Map<String, String> params = const <String, String>{},
+  //   Map<String, dynamic> queryParams = const <String, dynamic>{},
+  //   Object? extra,
+  // }) =>
+  //     shellContext.pushNamed(
+  //       name,
+  //       params: params,
+  //       queryParams: queryParams,
+  //       extra: extra,
+  //     );
+
+  // static void _goShellNamed(
+  //   String name, {
+  //   Map<String, String> params = const <String, String>{},
+  //   Map<String, dynamic> queryParams = const <String, dynamic>{},
+  //   Object? extra,
+  // }) =>
+  //     shellContext.goNamed(
+  //       name,
+  //       params: params,
+  //       queryParams: queryParams,
+  //       extra: extra,
+  //     );
+
+  // static void pushShellDetailLesson(
+  //     {required String initIdLesson,
+  //     required int initIndex,
+  //     required String idCategory,
+  //     required FilterMarkEnum? filterMark,
+  //     required bool? isQNumDescending,
+  //     required FilterPracticedEnum? filterPracticed}) {
+  //   final nameRoute = GlobalVariables.nameRouteLessonType[idCategory];
+  //   if (nameRoute != null) {
+  //     _pushShellNamed(
+  //       nameRoute,
+  //       params: {'id': idCategory},
+  //       extra: {
+  //         'isQNumDescending': isQNumDescending,
+  //         'filterMark': filterMark,
+  //         'filterPracticed': filterPracticed,
+  //         'idCategory': idCategory,
+  //         'initIdLesson': initIdLesson,
+  //         'initIndex': initIndex,
+  //       },
+  //     );
+  //   }
+  // }
+
   static void pushDetailLesson(
       {required String initIdLesson,
       required int initIndex,
@@ -135,7 +192,7 @@ class FCoordinator {
       required FilterPracticedEnum? filterPracticed}) {
     final nameRoute = GlobalVariables.nameRouteLessonType[idCategory];
     if (nameRoute != null) {
-      goNamed(
+      pushNamed(
         nameRoute,
         params: {'id': idCategory},
         extra: {
@@ -149,4 +206,14 @@ class FCoordinator {
       );
     }
   }
+
+  // static bool canShellPop() {
+  //   return shellNavigatorKey.currentState!.canPop();
+  // }
+
+  // static void onShellBack([Object? result]) {
+  //   if (canShellPop()) {
+  //     shellNavigatorKey.currentState!.pop(result);
+  //   }
+  // }
 }

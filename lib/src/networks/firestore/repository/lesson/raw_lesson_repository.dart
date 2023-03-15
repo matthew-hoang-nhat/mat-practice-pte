@@ -15,4 +15,7 @@ abstract class RawLessonRepository {
     required FetchArrowType fetchArrowType,
     required bool isQNumDescending,
   });
+
+  Future<FResult<List<DetailLesson>>> searchLessons(
+      {required String idCategory, required String text});
 }

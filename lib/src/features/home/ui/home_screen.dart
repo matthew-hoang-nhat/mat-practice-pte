@@ -15,6 +15,8 @@ import 'package:mat_practice_pte/src/widgets/f_app.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
+import '../widgets/concrete_search_text_field.dart';
+
 enum _HomeWidgetType {
   studyTool,
   guide,
@@ -49,11 +51,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    fWidgets.textField(
-                        borderRadius: 100,
-                        hintText: fLocate.str(FLocalKey.hintSearch),
-                        controller: TextEditingController(),
-                        onChanged: (value) {}),
+                    const ConcreteSearchTextField(),
                     FSizeBoxs.h50,
                     Text(fLocate.str(FLocalKey.practice),
                         style: AppTextStyles.headline5

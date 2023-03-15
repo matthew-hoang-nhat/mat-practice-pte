@@ -24,4 +24,7 @@ abstract class LessonRepository {
     FilterMarkEnum? filterMark,
     FilterPracticedEnum? filterPracticed,
   });
+
+  Future<FResult<List<DetailLesson>>> searchLessons(
+      {required String idCategory, required String text});
 }

@@ -23,4 +23,5 @@ class AppPaths {
   static const listeningSingleChoiceAnswer = 'listening-single-choice-answer';
   static const selectMissingWord = 'select-missing-word';
   static const draft = 'draft';
+  static const search = 'search';
 }

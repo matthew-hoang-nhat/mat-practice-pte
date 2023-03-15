@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:mat_practice_pte/src/features/app/cubit/f_user.dart';
 import 'package:mat_practice_pte/src/networks/f_result.dart';
 import 'package:mat_practice_pte/src/networks/firestore/repository/lesson/lesson_repository.dart';
@@ -83,6 +84,26 @@ class RawLessonRepositoryImpl extends RawLessonRepository {
       final result = await lessonsRef(idCategory).ref.count().get();
       final count = result.count;
       return FResult.success(count);
+    } catch (ex) {
+      return FResult.error(ex.toString());
+    }
+  }
+
+  @override
+  Future<FResult<List<DetailLesson>>> searchLessons(
+      {required String idCategory, required String text}) async {
+    try {
+      final processedText = text.trim();
+      final snapShotLessons = await lessonsRef(idCategory)
+          .ref
+          .where('title', isGreaterThanOrEqualTo: processedText)
+          .where('title', isLessThanOrEqualTo: '$processedText\uf8ff')
+          .get();
+      final lessons = snapShotLessons.docs.map((e) => e.data()).toList();
+
+      Logger().i(lessons);
+
+      return FResult.success(lessons);
     } catch (ex) {
       return FResult.error(ex.toString());
     }
